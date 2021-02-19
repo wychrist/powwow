@@ -132,6 +132,9 @@ module.exports = configure(function (ctx) {
     ssr: {
       pwa: false
     },
+    htmlVariables: {
+      socketio: socketIoDomain
+    },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
