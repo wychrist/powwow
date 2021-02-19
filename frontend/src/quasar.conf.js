@@ -14,6 +14,12 @@ dotenv.config({
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { configure } = require('quasar/wrappers');
 
+let = socketIoDomain = '{{ socket_io_domain }}'
+
+if (process.env.NODE_ENV == 'development') {
+  socketIoDomain = (process.env.CP_SERVER_PORT) ? `${process.env.CP_SERVER_DOMAIN}:${process.env.CP_SERVER_PORT}`: `${process.env.CP_SERVER_DOMAIN}`
+}
+
 module.exports = configure(function (ctx) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
