@@ -136,6 +136,7 @@ module.exports = configure(function (ctx) {
       pwa: false
     },
     htmlVariables: {
+      /* eslint-disable @typescript-eslint/no-unsafe-assignment */
       socketio: socketIoDomain
     },
 
