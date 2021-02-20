@@ -18,7 +18,10 @@ const { configure } = require('quasar/wrappers');
 let = socketIoDomain = '{{ socket_io_domain }}'
 
 if (process.env.NODE_ENV == 'development') {
-  socketIoDomain = (process.env.CP_SERVER_PORT) ? `${process.env.CP_SERVER_DOMAIN}:${process.env.CP_SERVER_PORT}`: `${process.env.CP_SERVER_DOMAIN}`
+  const domain = process.env.CP_SERVER_DOMAIN || ''
+  const port = process.env.CP_SERVER_PORT || ''
+
+  socketIoDomain = (port) ? `${domain}:${port}`: domain
 }
 
 module.exports = configure(function (ctx) {
