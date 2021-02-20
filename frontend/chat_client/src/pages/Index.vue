@@ -10,27 +10,27 @@
 </template>
 
 <script lang="ts">
-import { Todo, Meta } from 'components/models';
 import { defineComponent, ref } from '@vue/composition-api';
+import { client } from 'src/lib/socketio'
 
 export default defineComponent({
   name: 'PageIndex',
-  setup(props, ctx) {
+  setup() {
 
-    let newMessage = ref<String>('')
-    let messages = ref<String[]>([])
+    let newMessage = ref<string>('')
+    let messages = ref<string[]>([])
 
     // test sending events to server
-    let doSend = (event)  => {
+    let doSend = (event: { key: string})  => {
       if (event.key.toString().toLowerCase() === 'enter') {
-        ctx.root.cpSocket.emit('message',  newMessage.value)
+        client.emit('message',  newMessage.value)
         messages.value.push(newMessage.value)
         newMessage.value = ''
       }
     }
 
     // test handling events from server
-    ctx.root.cpSocket.on('message', (msg) => {
+    client.on('message', (msg: string) => {
       messages.value.push(msg)
     })
 
