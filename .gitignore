@@ -6,6 +6,7 @@ node_modules
 # Quasar core related directories
 .quasar
 frontend/src/dist
+backend/chat_server/build
 
 # Cordova related directories and files
 frontend/src/src-cordova/node_modules
