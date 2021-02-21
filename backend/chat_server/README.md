@@ -4,7 +4,18 @@
 - source node modules by running **yarn**
 
 ## Staring the server
-- Run
+- In development mode
 ```
-node server.js
+yarn run start:dev
+```
+
+- In production mode
+```
+yarn run start
+```
+**Note:** *you need to build the application for production as shown below*
+
+## Build for production
+```
+yarn run build
 ```
