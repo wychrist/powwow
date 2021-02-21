@@ -1,12 +1,6 @@
 # Christian Powwow (christianpowwow)
 
-Collection of applications with some Christian specific features
-
- ** Applications **
- - Chat
- - Micro blogging
- - Social Network
- - Church Management system
+Christian chat application
 
 ## Install the dependencies
 ```bash
