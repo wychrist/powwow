@@ -33,7 +33,7 @@
         </q-menu>
       </q-btn>
     </template>
-    <template slot="append">
+    <template v-slot:append>
       <q-btn round dense flat icon="add">
         <q-menu anchor="center left" self="bottom middle">
           <q-item clickable>
