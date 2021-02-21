@@ -1,3 +1,9 @@
 # Christian Powwow
 
-*A chat application where Christians can meet and have some fun*
+Collection of applications with some Christian specific features
+
+ **Applications**
+ - Chat
+ - Micro blogging
+ - Social Network
+ - Church Management system
