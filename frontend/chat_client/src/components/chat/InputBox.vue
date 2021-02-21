@@ -10,7 +10,7 @@
     @keyup="onKeyUp"
     @keydown="onKeyDown"
   >
-    <template slot="prepend">
+    <template v-slot:prepend>
       <q-btn round dense flat icon="emoji_emotions">
         <q-menu anchor="center left" self="bottom middle">
           <div class="row no-wrap q-pa-md">
@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from 'vue'
 interface IPresses {
   [key: string ]: boolean
 }

@@ -32,7 +32,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent } from 'vue/'
 import LeftDrawer from 'components/chat/LeftDrawer.vue';
 import RightDrawer from 'components/chat/RightDrawer.vue'
 

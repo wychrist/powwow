@@ -1,9 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-const dotenv = require('dotenv')
-
-dotenv.config({
-  path: '../../.env'
-})
 /*
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
@@ -11,25 +5,20 @@ dotenv.config({
 
 // Configuration for your app
 // https://quasar.dev/quasar-cli/quasar-conf-js
+
 /* eslint-env node */
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { configure } = require('quasar/wrappers');
 
-let = socketIoDomain = '{{ socket_io_domain }}'
-
-if (process.env.NODE_ENV == 'development') {
-  const domain = process.env.CP_SERVER_DOMAIN || ''
-  const port = process.env.CP_SERVER_PORT || ''
-
-  socketIoDomain = (port) ? `${domain}:${port}`: domain
-}
-
-module.exports = configure(function (ctx) {
+module.exports = configure(function (/* ctx */) {
   return {
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: {
       tsCheckerConfig: {
-        eslint: true
+        eslint: {
+          enabled: true,
+          files: './src/**/*.{ts,tsx,js,jsx,vue}',
+        },
       }
     },
 
@@ -40,9 +29,8 @@ module.exports = configure(function (ctx) {
     // --> boot files are part of "main.js"
     // https://quasar.dev/quasar-cli/boot-files
     boot: [
-      'composition-api',
       'i18n',
-      'axios'
+      'axios',
     ],
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -85,17 +73,11 @@ module.exports = configure(function (ctx) {
       // extractCSS: false,
 
       // https://quasar.dev/quasar-cli/handling-webpack
-      extendWebpack (cfg) {
-          // linting is slow in TS projects, we execute it only for production builds
-        if (ctx.prod) {
-        cfg.module.rules.push({
-          enforce: 'pre',
-          test: /\.(js|vue)$/,
-          loader: 'eslint-loader',
-          exclude: /node_modules/
-        })
-        }
+      // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
+      chainWebpack (/* chain */) {
+        //
       },
+      
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
@@ -107,16 +89,12 @@ module.exports = configure(function (ctx) {
 
     // https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-framework
     framework: {
-      iconSet: 'material-icons', // Quasar icon set
-      lang: 'en-us', // Quasar language pack
       config: {},
 
-      // Possible values for "importStrategy":
-      // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
-      // * 'all'  - Manually specify what to import
-      importStrategy: 'auto',
+      // iconSet: 'material-icons', // Quasar icon set
+      // lang: 'en-US', // Quasar language pack
 
-      // For special cases outside of where "auto" importStrategy can have an impact
+      // For special cases outside of where the auto-import stategy can have an impact
       // (like functional components as one of the examples),
       // you can manually specify Quasar components/directives to be available everywhere:
       //
@@ -135,10 +113,6 @@ module.exports = configure(function (ctx) {
     ssr: {
       pwa: false
     },
-    htmlVariables: {
-      /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-      socketio: socketIoDomain
-    },
 
     // https://quasar.dev/quasar-cli/developing-pwa/configuring-pwa
     pwa: {
@@ -147,7 +121,7 @@ module.exports = configure(function (ctx) {
       manifest: {
         name: 'Christian Powwow',
         short_name: 'Christian Powwow',
-        description: 'Christian chatting application',
+        description: 'Christian chat application',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -215,13 +189,19 @@ module.exports = configure(function (ctx) {
         appId: 'christianpowwow'
       },
 
-      // More info: https://quasar.dev/quasar-cli/developing-electron-apps/node-integration
-      nodeIntegration: true,
+      // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
+      chainWebpack (/* chain */) {
+        // do something with the Electron main process Webpack cfg
+        // extendWebpackMain also available besides this chainWebpackMain
+      },
+      
 
-      extendWebpack (/* cfg */) {
-        // do something with Electron main process Webpack cfg
-        // chainWebpack also available besides this extendWebpack
-      }
+      // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
+      chainWebpackPreload (/* chain */) {
+        // do something with the Electron main process Webpack cfg
+        // extendWebpackPreload also available besides this chainWebpackPreload
+      },
+      
     }
   }
 });

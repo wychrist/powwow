@@ -1,6 +1,6 @@
 # Christian Powwow (christianpowwow)
 
-Christian chatting application
+Christian chat application
 
 ## Install the dependencies
 ```bash
