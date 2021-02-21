@@ -51,9 +51,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-interface IPresses {
-  [key: string ]: boolean
-}
 
 export default defineComponent({
   name: 'ChatInputBox',
