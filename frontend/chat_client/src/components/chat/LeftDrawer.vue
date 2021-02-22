@@ -52,6 +52,7 @@
       </q-tab-panel>
       <q-tab-panel name="tab3">The user current settings</q-tab-panel>
     </q-tab-panels>
+    <div class="bg-dark">hi</div>
   </div>
 </template>
 

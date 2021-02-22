@@ -13,6 +13,13 @@ const routes: RouteRecordRaw[] = [
       { path: '', component: () => import('pages/chat/Index.vue') }
     ]
   },
+  {
+    path: '/chat-desktop-dn',
+    component: () => import('layouts/ChatLayoutDesktop.vue'),
+    children: [
+      { path: '', component: () => import('pages/chat/Home.vue') }
+    ]
+  },
   // Always leave this as last one,
   // but you can also remove it
   {
