@@ -1,0 +1,3 @@
+# * * * * * echo "hello world, jibao" > /proc/1/fd/1 2>/proc/1/fd/2
+# * * * * * echo "hello world2, jibao2" > /proc/1/fd/1 2>/proc/1/fd/2
+# Do not delete this line or the invisisable one below

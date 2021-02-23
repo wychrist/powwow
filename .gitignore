@@ -36,3 +36,9 @@ yarn-error.log*
 .env
 frontend/src/.env
 backend/src/.env
+docker/db/data
+docker/minio/data
+docker/mongo/data
+docker/postgres/data
+docker/redis/data
+backend/devtools
