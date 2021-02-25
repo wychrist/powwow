@@ -1,6 +1,6 @@
 import { io } from 'socket.io-client'
 
-const chatDomain = document.querySelector('meta[name=\'cp_chat_server\']')?.getAttribute('content') || 'http://localhost:3000'
+const chatDomain = document.querySelector('meta[name=\'cp_chat_server\']')?.getAttribute('content') || 'http://realtime.test'
 // const ioClient =  io(chatDomain)
 
 

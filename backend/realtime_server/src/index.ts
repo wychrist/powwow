@@ -8,7 +8,7 @@ import fs from "fs";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const envFilePath = `${__dirname}/../../../.env`;
+/*const envFilePath = `${__dirname}/../../../.env`;
 const envFilePathFallback = `${__dirname}/../../../.env.example`;
 
 if (fs.existsSync(envFilePath)) {
@@ -19,9 +19,9 @@ if (fs.existsSync(envFilePath)) {
   dotenv.config({
     path: envFilePathFallback,
   });
-}
+} */
 
-const PORT = process.env.CP_SERVER_PORT;
+const PORT = process.env.CP_SERVER_PORT || 3000;
 const httpServer = createServer();
 const io = new Server(httpServer, {
   cors: {

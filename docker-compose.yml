@@ -1,0 +1,196 @@
+version: "3.6"
+services:
+  workspace:
+    build:
+      context: ./docker/workspace
+      args:
+        - USERID=${USERID}
+        - GROUPID=${GROUPID}
+        - USER_NAME=${USER_NAME}
+        - GROUP_NAME=${GROUP_NAME}
+    tty: true
+    hostname: workspace
+    volumes:
+      - ./backend:/backend
+      - ./frontend:/frontend
+    networks:
+      - webnetwork
+
+  redisdb:
+    build:
+      context: ./docker/redis
+    volumes:
+      - ./docker/redis/data:/data
+    networks:
+      - webnetwork
+    hostname: redisdb
+  nginx:
+     build:
+       context: ./docker/nginx
+       args:
+        - USERID=${USERID}
+        - GROUPID=${GROUPID}
+        - USER_NAME=${USER_NAME}
+        - GROUP_NAME=${GROUP_NAME}
+     restart: always
+     ports:
+       - ${HTTP_PORT}:80
+       - ${HTTPS_PORT}:443
+     volumes:
+        - ./backend:/backend
+        - ./frontend:/frontend
+        - ./docker/nginx/sites:/etc/nginx/conf.d
+     depends_on:
+        - phpfpm
+        - phpfpm8
+        - redisdb
+        - db
+        - nodejs
+     networks:
+        webnetwork:
+            aliases:
+                - realtime.test
+     hostname: nginx
+         
+  db:
+    build:
+      context: ./docker/db
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=dbpassword
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=dbuser
+    networks:
+      - webnetwork
+    volumes:
+     - ./docker/db/data:/var/lib/mysql
+     - ./projects:/projects
+    hostname: mariadb
+
+  postgres:
+    build:
+       context: ./docker/postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=dbpassword
+      - POSTGRES_USER=dbuser
+    networks:
+      - webnetwork
+    volumes:
+      - ./docker/postgres/data:/var/lib/postgresql/data
+    hostname: postgres
+
+  phpfpm:
+    build:
+      context: ./docker/phpfpm
+      args:
+        - USERID=${USERID}
+        - GROUPID=${GROUPID}
+        - USER_NAME=${USER_NAME}
+        - GROUP_NAME=${GROUP_NAME}
+    volumes:
+      - ./backend:/backend
+      - ./frontend:/frontend
+    networks:
+      - webnetwork
+    hostname: phpfpm
+
+  phpfpm8:
+    build:
+      context: ./docker/phpfpm8
+      args:
+        - USERID=${USERID}
+        - GROUPID=${GROUPID}
+        - USER_NAME=${USER_NAME}
+        - GROUP_NAME=${GROUP_NAME}
+    volumes:
+      - ./backend:/backend
+      - ./frontend:/frontend
+    networks:
+      - webnetwork
+    hostname: phpfpm8
+
+  cron:
+    build:
+      context: ./docker/cron
+    volumes:
+      - ./backend:/backend
+      - ./frontend:/frontend
+    networks:
+      - webnetwork
+    hostname: cron
+
+
+  supervisor:
+    build:
+      context: ./docker/supervisor
+    volumes:
+      - ./backend:/backend
+      - ./frontend:/frontend
+    networks:
+      - webnetwork
+    hostname: supervisor
+
+  nodejs:
+    build: 
+      context: ./docker/nodejs
+    volumes:
+      - ./backend:/backend
+      - ./frontend:/frontend
+    hostname: nodejs
+    command: tail -F anything
+    ports:
+      - 8080:8080
+      - 3000:3000
+    networks:
+      - webnetwork
+
+  mongo:
+    build: 
+       context: ./docker/mongo
+    restart: always
+    environment:
+      - MONGODB_ROOT_PASSWORD=dbpassword
+      - MONGODB_USERNAME=dbuser
+      - MONGODB_PASSWORD=dbpassword
+    volumes:
+      - ./docker/mongo/data:/data/db
+    networks:
+      - webnetwork
+    hostname: mongodb
+    # ports:
+    #  - 27017:27017
+    #  - 27018:27018
+
+  mail:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+    networks:
+      - webnetwork
+    hostname: mailhog
+  
+  minio:
+    build:
+      context: './docker/minio'
+    volumes: 
+      - ./docker/minio/data:/data
+    ports:
+      - 9001:9000
+    environment: 
+      MINIO_ACCESS_KEY: minio
+      MINIO_SECRET_KEY: minio123
+    networks:
+      - webnetwork
+    hostname: minio
+    command: server /data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+networks:
+  webnetwork:
+    driver: bridge
