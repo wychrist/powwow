@@ -1,0 +1,13 @@
+{
+    "name": "CPBase",
+    "alias": "cpbase",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CPBase\\Providers\\CPBaseServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
