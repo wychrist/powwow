@@ -210,10 +210,10 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'nwidart',
+        'vendor' => 'christianpowwow',
         'author' => [
-            'name' => 'Nicolas Widart',
-            'email' => 'n.widart@gmail.com',
+            'name' => 'Christian Powwow',
+            'email' => 'jibaomansaray@gmail.com',
         ],
     ],
 
