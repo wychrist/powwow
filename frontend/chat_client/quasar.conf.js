@@ -18,8 +18,6 @@ dotenv.config(
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { configure } = require('quasar/wrappers');
 
-console.log('realtime server domain', process.env.CP_REALTIME_SERVER)
-
 module.exports = configure(function (/* ctx */) {
   return {
     htmlVariables: {
