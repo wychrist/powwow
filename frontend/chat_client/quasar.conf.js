@@ -1,3 +1,11 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const dotenv = require('dotenv')
+
+dotenv.config(
+  {
+    path: '../.env'
+  }
+)
 /*
  * This file runs in a Node context (it's NOT transpiled by Babel), so use only
  * the ES6 features that are supported by your Node version. https://node.green/
@@ -12,6 +20,9 @@ const { configure } = require('quasar/wrappers');
 
 module.exports = configure(function (/* ctx */) {
   return {
+    htmlVariables: {
+      cpRealtimeServer: process.env.CP_REALTIME_SERVER
+    },
     // https://quasar.dev/quasar-cli/supporting-ts
     supportTS: {
       tsCheckerConfig: {
@@ -77,7 +88,7 @@ module.exports = configure(function (/* ctx */) {
       chainWebpack (/* chain */) {
         //
       },
-      
+
     },
 
     // Full list of options: https://quasar.dev/quasar-cli/quasar-conf-js#Property%3A-devServer
@@ -194,14 +205,14 @@ module.exports = configure(function (/* ctx */) {
         // do something with the Electron main process Webpack cfg
         // extendWebpackMain also available besides this chainWebpackMain
       },
-      
+
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       chainWebpackPreload (/* chain */) {
         // do something with the Electron main process Webpack cfg
         // extendWebpackPreload also available besides this chainWebpackPreload
       },
-      
+
     }
   }
 });
