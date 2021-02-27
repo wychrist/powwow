@@ -138,11 +138,12 @@ services:
       - ./backend:/backend
       - ./frontend:/frontend
       - ./.env:/frontend/.env
+      - ./.env:/backend/.env
     hostname: nodejs
     command: tail -F anything
     ports:
       - 8080:8080
-      - 3000:3000
+      - ${CP_REALTIME_PORT}:3000
     networks:
       - webnetwork
 
