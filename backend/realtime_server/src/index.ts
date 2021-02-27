@@ -2,6 +2,10 @@ import { createServer } from "http";
 import { Server } from "socket.io";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import {
+  IMessage
+} from './protocol/model'
+
 import dotenv from "dotenv";
 import fs from "fs";
 
@@ -32,8 +36,14 @@ const io = new Server(httpServer, {
   // ws is awesome and we are sticking with it!!! :)
 });
 
+
 io.on("connection", (socket) => {
   console.log("we got a new connection: " + socket.id);
+
+  /*socket.on('client_pusher_event', (event: IMessage) => {
+    pusherServer.handleEvent(event, socket)
+  }) */
+
   socket.on("message", (msg: string) => {
     // io.emit('message', msg);
     // test broadcasting message received from a client to other clients
