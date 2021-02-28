@@ -42,3 +42,4 @@ docker/mongo/data
 docker/postgres/data
 docker/redis/data
 backend/devtools
+projects
