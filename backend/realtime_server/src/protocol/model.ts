@@ -1,10 +1,10 @@
-interface IMessage {
+export interface IMessage {
     event: string,
     data: string
 }
 
 
-interface IConnectionEstablished {
+export interface IConnectionEstablished {
     event: string,
     data: {
         socket_id: string,
