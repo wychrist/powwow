@@ -24,9 +24,6 @@
 <script>
 export default {
   name: 'MainChatArea',
-  created () {
-    console.log('hi')
-  }
 }
 </script>
 
