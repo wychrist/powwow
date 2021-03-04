@@ -21,24 +21,20 @@
       class="q-mx-sm"
     >
       <q-tab-panel class="bg-dark" name="rooms">
-        <q-list>
-          <q-item>
-            <q-item-section avatar>
-              <q-avatar
-                color="accent" text-color="white"
-              >
-              </q-avatar>
-            </q-item-section>
-            <q-item-section
-            >
-              <q-item-label class="text-white">Room Name</q-item-label>
-              <q-item-label caption lines="1" class="text-white">Subtitle</q-item-label>
-            </q-item-section>
-          </q-item>
-        </q-list>
+        <avatar-list-item
+          :title="roomTitle"
+          subTitle="Room description"
+          @click="roomClicked"
+        >
+        </avatar-list-item>
       </q-tab-panel>
       <q-tab-panel class="bg-dark" name="dms">
-        this is the dms
+        <avatar-list-item
+          :title="dmTitle"
+          subTitle="status message"
+          @click="dmClicked"
+        >
+        </avatar-list-item>
       </q-tab-panel>
     </q-tab-panels>
     <div class="stick-bottom bg-dark justify" style="height: 56px; width: 100%">
@@ -52,12 +48,30 @@
 </template>
 <script>
 import { ref, defineComponent } from 'vue'
+import AvatarListItem from './AvatarListItem.vue'
 
 export default defineComponent({
   name: 'LeftChatPanel',
+  components: {
+    AvatarListItem
+  },
+  emits: ['roomTitle', 'dmTitle'],
+  created () {
+    this.$emit('roomTitle', this.roomTitle)
+  },
   setup () {
     return {
-      tab: ref('rooms')
+      roomTitle: 'A Room Name',
+      dmTitle: 'Username',
+      tab: ref('rooms'),
+    }
+  },
+  methods: {
+    dmClicked () {
+      this.$emit('dmTitle', this.dmTitle)
+    },
+    roomClicked () {
+      this.$emit('roomTitle', this.roomTitle)
     }
   }
 })
