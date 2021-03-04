@@ -12,9 +12,6 @@ export default {
     components: {
       ChatBody
     },
-    created () {
-      console.log('yo')
-    },
     setup() {
       return {}
     }
