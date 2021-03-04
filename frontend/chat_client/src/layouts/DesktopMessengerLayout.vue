@@ -36,7 +36,7 @@
 
 <script lang="ts">
 import { ref, defineComponent } from 'vue'
-import UsersAndRoomsPanel from '../components/chat/LeftPanel.vue'
+import UsersAndRoomsPanel from '../components/messenger/LeftPanel.vue'
 
 export default defineComponent({
   components: {

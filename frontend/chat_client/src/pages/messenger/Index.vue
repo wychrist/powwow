@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import ChatBody from 'components/chat/ChatMain.vue'
+import ChatBody from 'components/messenger/ChatBody.vue'
 
 export default {
     name: 'ChatHomePage',

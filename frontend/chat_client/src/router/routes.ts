@@ -15,9 +15,9 @@ const routes: RouteRecordRaw[] = [
   },
   {
     path: '/chat-desktop-dn',
-    component: () => import('layouts/ChatLayoutDesktop.vue'),
+    component: () => import('layouts/DesktopMessengerLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/chat/Home.vue') }
+      { path: '', component: () => import('pages/messenger/Index.vue') }
     ]
   },
   // Always leave this as last one,
