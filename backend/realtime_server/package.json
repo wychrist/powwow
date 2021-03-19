@@ -1,21 +1,26 @@
 {
-  "scripts": {
-    "start:dev": "nodemon",
-    "build": "rimraf ./build && tsc",
-    "start": "yarn run build && node build/index.js"
-  },
-  "dependencies": {
-    "bufferutil": "^4.0.3",
-    "dotenv": "^8.2.0",
-    "socket.io": "^3.1.1",
-    "utf-8-validate": "^5.0.4"
-  },
-  "devDependencies": {
-    "@types/node": "^14.14.31",
-    "nodemon": "^2.0.7",
-    "rimraf": "^3.0.2",
-    "ts-node": "^9.1.1",
-    "typescript": "^4.1.5"
-  },
-  "type": "module"
+   "name": "example",
+   "version": "0.0.1",
+   "description": "Awesome project developed with TypeORM.",
+   "devDependencies": {
+      "ts-node": "3.3.0",
+      "@types/node": "^8.0.29",
+      "typescript": "3.3.3333",
+      "nodemon": "^2.0.7"
+   },
+   "dependencies": {
+      "typeorm": "0.2.31",
+      "reflect-metadata": "^0.1.10",
+      "mysql": "^2.14.1",
+      "express": "^4.15.4",
+      "body-parser": "^1.18.1",
+      "socket.io": "^3.1.1",
+      "bufferutil": "^4.0.3",
+      "utf-8-validate": "^5.0.4",
+      "dotenv": "^8.2.0"
+   },
+   "scripts": {
+      "start": "ts-node src/index.ts",
+      "start:dev": "nodemon"
+   }
 }
