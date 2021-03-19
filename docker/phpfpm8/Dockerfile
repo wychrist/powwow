@@ -42,6 +42,6 @@ RUN cp composer.phar /usr/bin/composer
 RUN chmod a+x /usr/bin/composer
 RUN composer self-update
 
-WORKDIR /projects
+WORKDIR /backend
 
 USER ${USERID}

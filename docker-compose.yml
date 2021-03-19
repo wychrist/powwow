@@ -137,8 +137,6 @@ services:
     volumes:
       - ./backend:/backend
       - ./frontend:/frontend
-      - ./.env:/frontend/.env
-      - ./.env:/backend/.env
     hostname: nodejs
     command: tail -F anything
     ports:

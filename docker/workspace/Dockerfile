@@ -13,6 +13,6 @@ RUN groupadd -g ${GROUPID} ${GROUP_NAME} && \
 RUN apt-get update &&  apt-get -y install vim redis-tools
 RUN apt-get -y install mysql-client mongo-tools
 
-WORKDIR /projects
+WORKDIR /
 
 USER ${USERID}
