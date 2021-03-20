@@ -1,17 +1,30 @@
-const fs = require('fs')
-const https = require('https')
-const devtoolsDir = __dirname + '/backend/devtools'
+const fs = require("fs");
+const https = require("https");
+const devtoolsDir = __dirname + "/backend/devtools";
+const file = fs.createWriteStream(`${devtoolsDir}/adminer/index.php`);
+const url = "https://www.adminer.org/latest-en.php"
 
-if (fs.existsSync('.env.example') && !fs.existsSync('.env')) {
-    fs.copyFileSync('.env.example', '.env')
+function fetchFile(url) {
+  https.get(url, function (response) {
+    if (response.statusCode === 302) {
+      const url = (response.headers.location.indexOf("http") != -1)
+        ? response.headers.location
+        : `https://www.adminer.org/${response.headers.location}`;
+        fetchFile(url)
+    } else {
+      response.pipe(file);
+    }
+  });
 }
 
-if (!fs.existsSync(devtoolsDir)){
-    fs.mkdirSync(devtoolsDir);
-    fs.mkdirSync(`${devtoolsDir}/adminer`);
+if (fs.existsSync(".env.example") && !fs.existsSync(".env")) {
+  fs.copyFileSync(".env.example", ".env");
 }
 
-/* const file = fs.createWriteStream(`${devtoolsDir}/adminer/index.php`);
-https.get('https://www.adminer.org/latest-en.php', function(response) {
-  response.pipe(file);
-});*/
+if (!fs.existsSync(devtoolsDir)) {
+  fs.mkdirSync(devtoolsDir);
+  fs.mkdirSync(`${devtoolsDir}/adminer`);
+}
+
+
+fetchFile(url);
