@@ -1,3 +1,4 @@
+const tablePrefix = process.env.DB_TABLE_PREFIX ?? 'rt_'
 module.exports = {
    "type": process.env.DB_TYPE,
    "host": process.env.DB_HOST,
@@ -7,7 +8,8 @@ module.exports = {
    "database": process.env.DB_DATABASE,
    "synchronize": process.env.NODE_ENV != 'production',
    "logging": process.env.DB_LOGGIN ?? false,
-   "entityPrefix": 'rt_',
+   "entityPrefix": tablePrefix ,
+   "migrationsTableName": `${tablePrefix}migrations`,
    "entities": [
       "src/entity/**/*.ts"
    ],
