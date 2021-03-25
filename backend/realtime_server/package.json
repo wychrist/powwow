@@ -21,6 +21,7 @@
    },
    "scripts": {
       "start": "ts-node src/index.ts",
-      "start:dev": "nodemon"
+      "dev:start": "nodemon",
+      "dev:typeorm": "ts-node ./node_modules/typeorm/cli.js"
    }
 }
