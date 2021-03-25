@@ -1,10 +1,11 @@
+import { env } from "process";
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
 export class Application1616158722399 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         queryRunner.createTable(new Table({
-            name: 'application',
+            name: `${env.DB_TABLE_PREFIX}application`,
             columns: [
                 {
                     name: 'id',
@@ -13,12 +14,17 @@ export class Application1616158722399 implements MigrationInterface {
                 },
                 {
                     name: 'name',
-                    type: 'string',
+                    type: 'varchar',
                     length: '255'
                 },
                 {
                     name: 'status',
-                    type: 'string',
+                    type: 'varchar',
+                    length: '255'
+                },
+                {
+                    name: 'server',
+                    type: 'varchar',
                     length: '255'
                 }
             ]
