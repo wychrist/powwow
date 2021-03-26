@@ -5,9 +5,9 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import {Request, Response} from "express";
 import {Routes} from "./routes";
-import {User} from "./entity/User";
 import { Server, Socket } from "socket.io";
 import { createServer } from 'http'
+import { getSettings } from './settings'
 
 const socketIoOption = {
     cors: {
@@ -19,6 +19,7 @@ const socketIoOption = {
 }
 
 createConnection().then(async connection => {
+    getSettings()
 
     // create express app
     const app = express();
