@@ -3,8 +3,8 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 @Entity()
 export class Application {
 
-    @PrimaryGeneratedColumn()
-    id: number
+    @PrimaryGeneratedColumn('uuid')
+    id: string
 
     @Column({
         type: 'varchar',
@@ -16,12 +16,23 @@ export class Application {
         type: 'varchar',
         length: '255'
     })
-    server: string
+    status: string 
 
     @Column({
         type: 'varchar',
-        length: '120'
+        length: '512'
     })
-    status: string
+    domain: string
 
+    @Column({
+        type: 'varchar',
+        length: '256'
+    })
+    key: string
+
+    @Column({
+        type: 'varchar',
+        length: '256'
+    })
+    secret: string
 }
