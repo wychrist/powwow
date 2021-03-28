@@ -1,5 +1,4 @@
 // import { UserController } from "./controller/UserController";
-import { ApplicationController } from './controller/ApplicationController'
 import { AdminController } from './controller/AdminController'
 import { IRoute } from './type/Interfaces'
 
@@ -31,35 +30,24 @@ import { IRoute } from './type/Interfaces'
 const adminRoutes: IRoute[] = [
     {
         method: 'get',
-        route: '/admin/applications',
+        route: '/api/admin/applications',
         controller: AdminController,
         action: 'getApplications'
     },
     {
         method: 'post',
-        route: '/admin/applications',
+        route: '/api/admin/applications',
         controller: AdminController,
         action: 'createApplication'
-    }
-];
-
-const applicationRoutes: IRoute[] = [
-    {
-        method: 'get',
-        route: '/applications',
-        controller: ApplicationController,
-        action: 'get'
     },
     {
-        method: 'post',
-        route: '/applications',
-        controller: ApplicationController,
-        action: 'create'
+        method: 'put',
+        route: '/api/admin/applications/:id',
+        controller: AdminController,
+        action: 'updateApplication'
     }
 ];
 
 export const Routes = [
-    // ...userRoutes,
-    ...applicationRoutes,
     ...adminRoutes
 ];
