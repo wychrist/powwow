@@ -50,32 +50,56 @@ export class AdminController extends Controler {
         })
     }
 
-    private validate(data: object): object {
-        let rule = {
+    async updateApplication(request: Request, response: Response): Promise<Application> {
+        return new Promise(async (resolve, _) => {
+            console.log('in....')
+            this.isBearerEqual(request, this.adminToken, async (isValid: boolean) => {
+                if (isValid) {
+                    try {
+                        let app = await this.appRepository.findOneOrFail(request.params.id)
+                        const clean = this.validate(request.body, app)
+                        for (let name in clean) {
+                            app[name] = clean[name]
+                        }
+                        this.appRepository.save(app)
+                        resolve(app)
+                    } catch (error) {
+                        response.status(400).end(error.message)
+                    }
+                } else {
+                    this.returnInvalidToken(response)
+                }
+            })
+        })
+    }
+
+    private validate(data: object, app: Application = null): object {
+        let clean = {}
+        const rule = {
             name: (val: string) => {
-                return (val.trim()) ? true : 'application name is requried';
+                if (val && val.trim()) {
+                    clean['name'] = val
+                } else if (!app || !app.id) {
+                    throw Error('application name is requried')
+                }
             },
             domain: (val: string) => {
-                return (val && val.indexOf('http') == 0) ? true : 'valid domain is required'
+                if (val && val.indexOf('http')) {
+                    clean['domain'] = val
+                } else if (!app || !app.id) {
+                    throw Error('valid domain is required');
+                }
+            },
+            status: (val: string = null) => {
+                if (val && val.trim())  {
+                    clean['status'] = val
+                } else if (!app || !app.id) {
+                    throw Error('status is required');
+                }
             }
         }
-        let clean = {}
         for (let name in rule) {
-            if (data[name]) {
-                let result = rule[name](data[name])
-                if (typeof result === 'boolean') {
-                    clean[name] = data[name]
-                } else {
-                    throw Error(result)
-                }
-            } else {
-                let result = rule[name]('')
-                if (typeof result === 'boolean') {
-                    clean[name] = ''
-                } else {
-                    throw Error(result);
-                }
-            }
+            rule[name](data[name] || undefined)
         }
 
         return clean
