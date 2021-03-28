@@ -35,7 +35,6 @@ export class AdminController extends Controler {
                         for (let name in clean) {
                             app[name] = clean[name]
                         }
-                        app.status = 'active';
                         app.secret = generateRadom();
                         app.key = generateRadom();
                         resolve(this.appRepository.save(app));
