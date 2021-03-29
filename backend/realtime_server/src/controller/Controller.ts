@@ -44,7 +44,17 @@ export class Controler {
     }
 
     protected returnInvalidToken(response: Response) {
-        response.status(403).end('token in invalid')
+        response.status(403).json(this.buildResponseMessage('token is invalid'))
+    }
+
+    protected return404(response: Response, message: string | object) {
+        response.status(404).json(this.buildResponseMessage(message))
+    }
+
+    protected buildResponseMessage(message: string | object) {
+        return {
+            message
+        }
     }
 
 }
