@@ -1,38 +1,47 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm";
 
 @Entity()
 export class Application {
 
     @PrimaryGeneratedColumn('uuid')
-    id: string
+    id: string;
 
     @Column({
         type: 'varchar',
         length: '255'
     })
-    name: string
+    name: string;
 
     @Column({
         type: 'varchar',
         length: '255'
     })
-    status: string 
+    status: string;
 
     @Column({
         type: 'varchar',
         length: '512'
     })
-    domain: string
+    domain: string;
 
     @Column({
         type: 'varchar',
         length: '256'
     })
-    key: string
+    key: string;
 
     @Column({
         type: 'varchar',
         length: '256'
     })
-    secret: string
+    secret: string;
+
+    @CreateDateColumn()
+    createdAt: Date;
+
+    @UpdateDateColumn()
+    updatedAt: Date;
+
+    @DeleteDateColumn()
+    deletedAt: Date
 }
