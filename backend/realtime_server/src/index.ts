@@ -70,7 +70,6 @@ createConnection().then(async connection => {
                 appRepo.findOne({ where: { key: Equal(appKey) } })
                     .then((app) => {
                         if (app) {
-                            console.log('application', app)
                             activeApplications[appKey] = new PusherApplication(socket.nsp, app)
                             activeApplications[appKey].authenticate(socket)
                         } else {
