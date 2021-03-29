@@ -35,6 +35,12 @@ const adminRoutes: IRoute[] = [
         action: 'getApplications'
     },
     {
+        method: 'get',
+        route: '/api/admin/applications/:id',
+        controller: AdminController,
+        action: 'getAnApplication'
+    },
+    {
         method: 'post',
         route: '/api/admin/applications',
         controller: AdminController,
@@ -45,6 +51,18 @@ const adminRoutes: IRoute[] = [
         route: '/api/admin/applications/:id',
         controller: AdminController,
         action: 'updateApplication'
+    },
+    {
+        method: 'delete',
+        route: '/api/admin/applications/:id',
+        controller: AdminController,
+        action: 'deleteApplication'
+    },
+    {
+        method: 'put',
+        route: '/api/admin/applications/restore/:id',
+        controller: AdminController,
+        action: 'restoreApplication'
     }
 ];
 
