@@ -50,18 +50,10 @@ createConnection().then(async connection => {
 
 
     io.on("connection", (socket) => {
-        console.log("we got a new connection: " + socket.id);
-
-        /*socket.on('client_pusher_event', (event: IMessage) => {
-          pusherServer.handleEvent(event, socket)
-        }) */
-
-        socket.on("message", (msg: string) => {
-            // io.emit('message', msg);
-            // test broadcasting message received from a client to other clients
-            socket.broadcast.emit('message', msg)
-        });
+        // set a timeout and see if the client has joined an application
+        // if not, close the connection
     });
+
 
     io.of(/^\/\w+$/)
         .on('connection', (socket) => {
