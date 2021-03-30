@@ -1,5 +1,4 @@
 import { Socket, io } from 'socket.io-client'
-import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
 import { chatDomain } from '../socketio'
 import { IConnection, ISetupOption } from './model';
 
