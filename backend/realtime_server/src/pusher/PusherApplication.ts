@@ -1,7 +1,11 @@
-import { Namespace, Server, Socket } from "socket.io";
+
+import { Namespace, Socket } from "socket.io";
 import { Application } from "../entity/Application";
+import { Pusher } from "./Pusher";
 
-
+interface PusherSocket {
+  _pusherChannels: Set<string>
+}
 export class PusherApplication {
 
   private ns: Namespace;
