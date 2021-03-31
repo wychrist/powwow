@@ -11,6 +11,7 @@ import { getSettings } from './settings'
 import { getRepository } from "typeorm";
 import { Application } from './entity/Application'
 import { PusherApplication } from './pusher/PusherApplication'
+import { Pusher } from './pusher/Pusher'
 
 const socketIoOption = {
     cors: {
@@ -30,6 +31,7 @@ createConnection().then(async connection => {
     const server = createServer(app)
     const io = new Server(server, socketIoOption)
     const appRepo = getRepository(Application)
+    const pusher = new Pusher()
     app.use(bodyParser.json());
 
     // register express routes from defined application routes
@@ -65,12 +67,11 @@ createConnection().then(async connection => {
                             activeApplications[appKey] = new PusherApplication(socket.nsp, app)
                             activeApplications[appKey].authenticate(socket)
                         } else {
-                            // @todo close connection
+                            Pusher.sendError(socket, Pusher.errorCode[4001])
                         }
                     })
                     .catch(() => {
-                        // @todo close connection
-
+                        Pusher.sendError(socket, Pusher.errorCode[4009])
                     })
             } else {
                 activeApplications[appKey].authenticate(socket)
