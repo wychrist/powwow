@@ -3,6 +3,7 @@ import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Application } from '../entity/Application'
 import { generateRadom } from '../type/api'
+import { Pusher } from "../pusher/Pusher";
 
 export class AdminController extends Controler {
     private adminToken = '';
@@ -118,7 +119,7 @@ export class AdminController extends Controler {
                         const app = await this.appRepository.findOneOrFail(result.affected);
                         resolve(app);
                     } catch (error) {
-                        response.status(404).end({ message: error.message })
+                        response.status(404).json({ message: error.message })
                     }
 
                 } else {
@@ -126,6 +127,19 @@ export class AdminController extends Controler {
                 }
             });
         });
+    }
+
+    testHash (request: Request, response: Response) {
+        const hash = Pusher.generateClientChannelHashMac(
+            '91a6eda65fd1d51c68f0b63f8127652ad376355a40e06c6ee7860bd9470bb695',
+            request.body.socket_id as string,
+            request.body.channel_name as string,
+            "{\"user_id\":1}"
+        );
+
+        response.status(200).json({
+            auth: hash
+        })
     }
 
     private validate(data: object, app: Application = null): object {
