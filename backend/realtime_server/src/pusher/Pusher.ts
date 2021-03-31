@@ -29,11 +29,7 @@ export class Pusher {
             message
         }))
 
-        if (code >= 4000 && code <= 4099) { //4000-4099
-            socket.disconnect()
-        } else if (code >= 4100 && code <= 4199) { //4100-4199
-            socket.disconnect()
-        } else if (code >= 4200 && code <= 4299) { //4200-4299
+        if (code >= 4000 && code <= 4999) {
             socket.disconnect()
         }
     }
