@@ -1,4 +1,4 @@
-import { Controler } from "../controller/Controller";
+import { Socket } from "socket.io";
 
 export interface IApplication {
     id?: number,
@@ -21,4 +21,8 @@ export interface IRoute {
 
 export interface ISettingEntry {
     [name: string]: string
+}
+
+export interface PusherSocket extends Socket {
+  _pusherChannels?: Set<string>
 }
