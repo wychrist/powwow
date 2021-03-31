@@ -2,10 +2,8 @@
 import { Namespace, Socket } from "socket.io";
 import { Application } from "../entity/Application";
 import { Pusher } from "./Pusher";
+import { PusherSocket } from '../type/Interfaces'
 
-interface PusherSocket {
-  _pusherChannels: Set<string>
-}
 export class PusherApplication {
 
   private ns: Namespace;
@@ -16,16 +14,15 @@ export class PusherApplication {
     this.app = app;
   }
 
-  authenticate(socket: Socket & PusherSocket) {
-
-    socket._pusherChannels = new Set<string>()
+  authenticate(socket: PusherSocket) {
+    socket._pusherChannels = new Set<string>();
 
     console.log(`socket connected on ${this.app.name}`, socket.id)
 
-    // wait for a specified timeout and see if the client has joined a private room
-    this.doConnectionAuth(socket)
-    this.acceptConnection(socket)
-    this.registerEventHandlers(socket)
+    this.doConnectionAuth(socket); // wait for a specified timeout and see if the client has joined a private room
+    this.acceptConnection(socket);
+    this.registerEventHandlers(socket);
+
   }
 
   acceptConnection(socket: Socket) {
@@ -54,7 +51,7 @@ export class PusherApplication {
     })
   }
 
-  private doConnectionAuth(socket: Socket & PusherSocket) {
+  private doConnectionAuth(socket: PusherSocket) {
     setTimeout(() => {
       if (socket._pusherChannels.size === 0) {
         Pusher.sendError(socket, Pusher.errorCode[4009])
