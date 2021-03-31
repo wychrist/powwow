@@ -1,6 +1,7 @@
 
 import { Socket } from "socket.io";
 import { ErrorCode } from "./ErrorCode";
+import { createHmac } from 'crypto'
 
 export class Pusher {
 
@@ -32,5 +33,15 @@ export class Pusher {
         if (code >= 4000 && code <= 4999) {
             socket.disconnect()
         }
+    }
+
+    public static generateClientChannelHashMac(secret: string, socketId: string, channelName: string, data: string = null): string {
+        let signature = `${socketId}:${channelName}`;
+        if (data) {
+            data = JSON.stringify(JSON.parse(data));
+            signature += `:${data}`
+        }
+
+        return createHmac('sha256', secret).update(signature).digest('hex').toString()
     }
 }
