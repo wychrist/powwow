@@ -129,19 +129,6 @@ export class AdminController extends Controler {
         });
     }
 
-    testHash (request: Request, response: Response) {
-        const hash = Pusher.generateClientChannelHashMac(
-            '91a6eda65fd1d51c68f0b63f8127652ad376355a40e06c6ee7860bd9470bb695',
-            request.body.socket_id as string,
-            request.body.channel_name as string,
-            "{\"user_id\":1}"
-        );
-
-        response.status(200).json({
-            auth: hash
-        })
-    }
-
     private validate(data: object, app: Application = null): object {
         let clean = {}
         const rule = {
