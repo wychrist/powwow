@@ -11,7 +11,7 @@ import { getSettings } from './settings'
 import { getRepository } from "typeorm";
 import { Application } from './entity/Application'
 import { PusherApplication } from './pusher/PusherApplication'
-import { Pusher } from './pusher/Pusher'
+import { PusherServer } from './pusher/PusherServer'
 
 const socketIoOption = {
     cors: {
@@ -64,16 +64,16 @@ createConnection().then(async connection => {
                     .then((app) => {
                         if (app) {
                             activeApplications[appKey] = new PusherApplication(socket.nsp, app)
-                            activeApplications[appKey].authenticate(socket)
+                            activeApplications[appKey].authenticate(PusherServer.toPusherSocket(socket))
                         } else {
-                            Pusher.sendError(socket, Pusher.errorCode[4001])
+                            PusherServer.sendError(socket, PusherServer.errorCode[4001])
                         }
                     })
                     .catch(() => {
-                        Pusher.sendError(socket, Pusher.errorCode[4009])
+                        PusherServer.sendError(socket, PusherServer.errorCode[4009])
                     })
             } else {
-                activeApplications[appKey].authenticate(socket)
+                activeApplications[appKey].authenticate(PusherServer.toPusherSocket(socket))
             }
         })
 
