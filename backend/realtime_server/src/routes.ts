@@ -63,12 +63,6 @@ const adminRoutes: IRoute[] = [
         route: '/api/admin/applications/restore/:id',
         controller: AdminController,
         action: 'restoreApplication'
-    },
-    {
-        method: 'post',
-        route: '/api/pusher/auth',
-        controller: AdminController,
-        action: 'testHash'
     }
 ];
 
