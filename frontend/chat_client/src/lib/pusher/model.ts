@@ -88,6 +88,9 @@ export interface IClient {
 }
 
 export type EventHandler = (data: string, meta?: string) => void
+
+export type ClientEventHandler = (data: unknown) => void
+
 export interface IChannel {
 
   /**
@@ -98,7 +101,7 @@ export interface IChannel {
    *
    * @return {IChannel}
    */
-  bind(event: string, callback: EventHandler): IChannel
+  bind(event: string, callback: ClientEventHandler): IChannel
 
   /**
    * Unregister an event handler
@@ -108,7 +111,7 @@ export interface IChannel {
    *
    * @return {IChannel}
    */
-  unbind(event?: string, handler?: EventHandler): IChannel
+  unbind(event?: string, handler?: ClientEventHandler): IChannel
 
   /**
    * Emits an event
