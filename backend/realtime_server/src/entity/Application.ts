@@ -1,4 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm";
+import { type } from "os";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from "typeorm";
+import { ApplicationSetting } from "./ApplicationSetting";
 
 @Entity()
 export class Application {
@@ -35,6 +37,9 @@ export class Application {
         length: '256'
     })
     secret: string;
+
+    @OneToMany(() => ApplicationSetting, setting => setting.application)
+    settings: ApplicationSetting[]
 
     @CreateDateColumn()
     createdAt: Date;
