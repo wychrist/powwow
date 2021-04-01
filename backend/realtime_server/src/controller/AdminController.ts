@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 import { Application } from '../entity/Application'
 import { generateRadom } from '../type/api'
-import { Pusher } from "../pusher/Pusher";
+import { ApplicationSetting } from "../entity/ApplicationSetting";
 
 export class AdminController extends Controler {
     private adminToken = '';
