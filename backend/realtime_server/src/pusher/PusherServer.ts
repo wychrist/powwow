@@ -51,56 +51,143 @@ export class PusherServer {
         return (channel.indexOf('private-') === 0 || channel.indexOf('presence-') === 0)
     }
 
-    public static addClientToChannel(socket: PusherSocket, app: Application, data: string): boolean {
-        const payload = JSON.parse(data) as { channel: string, auth?: string, channel_data?: string }
-        let result = false
+    public static async addClientToChannel(socket: PusherSocket, app: Application, data: string): Promise<boolean> {
+        return new Promise(async (resolve, reject) => {
 
-        if (this.channelNeedsAuthenticating(payload.channel)) {
-            const hash = app.key + ':' + this.generateClientChannelHashMac(app.secret, socket.id, payload.channel, payload.channel_data)
-            if (hash == payload.auth) {
-                socket.join(payload.channel)
-                socket.to(payload.channel).emit(`${payload.channel}:testevent`, "Let's welcome socket to private room")
-                socket._pusherChannels.add(payload.channel)
-                socket.emit('pusher_internal:subscription_succeeded', JSON.stringify({ channel: payload.channel }))
-                result = true
+            const payload = JSON.parse(data) as { channel: string, auth?: string, channel_data?: string }
+            let result = false
+            let presenceData: IPresenceData = { user_id: socket.id, user_info: {} }
+
+            if (this.channelNeedsAuthenticating(payload.channel)) {
+                const hash = `${app.key}:${this.generateClientChannelHashMac(app.secret, socket.id, payload.channel, payload.channel_data)}`
+
+                if (payload.channel_data) {
+                    presenceData = Object.assign({ user_info: {} }, JSON.parse(payload.channel_data) as IPresenceData)
+                }
+
+                if (hash == payload.auth) {
+                    console.log('authentication passed');
+                    try {
+
+                        const channelRepo = getRepository(Channel)
+                        let channel = await channelRepo.findOne({ where: { name: payload.channel, application: app } });
+                        if (!channel) {
+                            channel = new Channel()
+                            channel.application = app;
+                            channel.name = payload.channel;
+                            channel.status = Status.ACTIVE;
+                            channel = await channelRepo.save(channel);
+                        }
+
+                        if (channel.status === Status.ACTIVE) {
+                            //@todo check if channel limit has been reached
+
+                            let client = new ChannelClient();
+
+                            client.channel = channel;
+                            client.clientId = socket.id;
+                            client.userId = presenceData.user_id as string;
+                            client.info = JSON.stringify(presenceData.user_info);
+
+                            client = await getRepository(ChannelClient).save(client)
+
+                            socket.join(payload.channel)
+                            socket._pusherChannels.set(payload.channel, client.id)
+
+                            socket.emit('pusher_internal:subscription_succeeded', JSON.stringify({ channel: payload.channel }))
+
+                            result = true;
+                        }
+                        if (result && this.isPresenceChannel(payload.channel)) {
+                            socket.to(payload.channel).emit('pusher_internal:member_added', JSON.stringify({
+                                channel: payload.channel,
+                                data: presenceData
+                            }));
+                        }
+
+                    } catch (error) {
+                        this.sendError(socket, ErrorCode[4200].code, error.message);
+                        reject(error)
+                    }
+                } else {
+                    socket.emit('pusher_internal:subscription_failed', JSON.stringify({ channel: payload.channel }))
+                    result = false;
+                }
             } else {
-                console.log('too bad')
-                return false
+                socket.join(payload.channel)
+                socket._pusherChannels.set(payload.channel, '')
+                result = true;
             }
-        } else {
-            socket.join(payload.channel)
-            socket.to(payload.channel).emit(`${payload.channel}:testevent`, "okay guys we are on a role")
-            socket._pusherChannels.add(payload.channel)
-            result = true
-        }
 
-        if (result) {
-            //@todo notify other clients if this is a presence channel
-        }
+            resolve(result)
+        });
+    }
 
-        return result
+    public static isPresenceChannel(name: string): boolean {
+        return name.indexOf('presence-') === 0;
     }
 
     public static toPusherSocket(socket: PusherSocket): PusherSocket {
-        socket._pusherChannels = new Set<string>();
+        socket._pusherChannels = new Map<string, string>();
+        return socket;
+    }
+
+    public static removeClientFromChannel(socket: PusherSocket, channelName: string, channelClient?: ChannelClient): PusherSocket {
+        (async () => {
+            if (!channelClient) {
+                channelClient = await getRepository(ChannelClient).findOne({ where: { name: socket._pusherChannels.get(channelName) } });
+            }
+            if (this.isPresenceChannel(channelName)) {
+                socket.to(channelName).emit('pusher_internal:member_removed', JSON.stringify({
+                    channel: channelName,
+                    data: {
+                        user_id: channelClient.userId,
+                        user_info: channelClient.info
+                    }
+                }));
+            }
+            socket.leave(channelName);
+            getRepository(ChannelClient).delete(channelClient.id);
+        })();
+
         return socket
     }
 
-    public static removeClientFromChannel(socket: PusherSocket, data: string): PusherSocket {
-        const payload = JSON.parse(data) as { channel: string, auth?: string, channel_data?: string }
+    public static cleanUp(socket: PusherSocket): PusherSocket {
+        const clientIds = []
+        let entries = socket._pusherChannels.entries()
 
-        // @todo notify the other clients?!!!?
-        socket.leave(payload.channel)
+        do {
+            const channel = entries.next();
+            if (channel.done) {
+                break;
+            }
 
-        return socket
+            if (channel.value[1]) {
+                clientIds.push(channel.value[1]);
+            }
+
+        } while (true)
+
+        // get the client data
+        if (clientIds.length) {
+            ; (async () => {
+                let clientData = await getRepository(ChannelClient).find({ where: { id: In(clientIds) }, relations: ['channel'] })
+                clientData.forEach((client) => {
+                    this.removeClientFromChannel(socket, client.channel.name, client)
+                })
+            })();
+        }
+
+        return socket;
     }
 
     public static generateClientChannelHashMac(secret: string, socketId: string, channelName: string, data: string = null): string {
         let signature = `${socketId}:${channelName}`;
         if (data) {
-            signature += `:${data}`
+            signature += `:${data}`;
         }
 
-        return createHmac('sha256', secret).update(signature).digest('hex').toString()
+        return createHmac('sha256', secret).update(signature).digest('hex').toString();
     }
 }
