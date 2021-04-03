@@ -19,13 +19,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('pusher/auth', function () {
-    $appKey = 'f97b3be0c78ac08b953aa486565786c120e7de03914df750612b9c52afce7528';
-    $appSecret = '91a6eda65fd1d51c68f0b63f8127652ad376355a40e06c6ee7860bd9470bb695';
+    $appKey = 'f3c81d3408ab29d549f6ceba187b96eb862814041773574ee0884a4e8c09cb8e';
+    $appSecret = 'e98d39aa17768e9c50efaabe787449b38cc0a6721e64d5db57837fab7562a56b';
     $socketId = request()->input('socket_id', '');
     $channelName = request()->input('channel_name', '');
 
     if (strstr($channelName, 'presence-') !== false) {
-        $channelData = json_encode(['user_id' => 1]);
+        $channelData = json_encode([
+            'user_id' => 1,
+            'user_info' => [
+                'username' => 'awesomeuser',
+                'roles' => ['admin', 'customer']
+            ]
+        ]);
 
         $signature = hash_hmac('sha256', $socketId . ':' . $channelName . ':' . $channelData, $appSecret);
         return [
