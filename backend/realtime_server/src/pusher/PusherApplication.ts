@@ -55,11 +55,13 @@ export class PusherApplication {
 
 
     socket.on('pusher:unsubscribe', (data: string) => {
-      PusherServer.removeClientFromChannel(socket, data)
+      const payload = JSON.parse(data) as { channel: string }
+      PusherServer.removeClientFromChannel(socket, payload.channel)
     })
 
-    socket.on('pusher:subscribe', (data: string) => {
-      if (PusherServer.addClientToChannel(socket, this.app, data)) {
+    socket.on('pusher:subscribe', async (data: string) => {
+      let result = await PusherServer.addClientToChannel(socket, this.app, data)
+      if (result) {
         // @todo log the user as connected
       } else {
         // @todo ...
