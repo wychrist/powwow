@@ -3,34 +3,45 @@ import { NextFunction, Request, Response } from "express";
 import { Application } from '../entity/Application'
 import { IApplication } from '../type/Interfaces'
 import { Controler } from "./Controller";
+import { Server, Socket } from "socket.io";
+import { PusherApplication } from '../pusher/PusherApplication'
 
 export class ApplicationController extends Controler {
     private applicationRepo = getRepository(Application)
+    private io: Server;
+    private apps: { [key: string]: PusherApplication };
 
-    async get() {
+    constructor(io: Server, apps: { [key: string]: PusherApplication }) {
+        super();
+        this.io = io;
+        this.apps = apps
+    }
+
+    async get(req: Request) {
+        let app = this.apps[req.params.key]
         return [{
-            name: 'hello'
+            name: app ? app.getApp(): req.params.key
         }];
     }
 
-    async create(request: Request, response: Response, next: NextFunction) {
-
-        let authToken = request.headers.authorization.toString().replace('Bearer', '').trim();
-
-        if (authToken === process.env.CP_API_TOKEN) {
-            return 'All good!!';
-            // return this.applicationRepo.save(request.body);
-        } else {
-            return `Not so good ${authToken} == ${process.env.CP_API_TOKEN}`;
-        }
-    }
-
-
-    private validateData(data: IApplication, creating: boolean = false) {
-        let fields = {
-            name: (val: string, creating: boolean) => {
-                return (!!val) ? 'name value is missing': true
+    trigger(req: Request, _: Response) {
+        let app = this.apps[req.params.key]
+        if (app) {
+            // @todo parse payload
+            let payload = req.body as { channel: string, event: string, data: string }
+            if (payload.channel) {
+                this.io.of(req.params.key)
+                    .to(payload.channel)
+                    .emit(payload.event, payload.data)
+                return {
+                    success: true
+                }
             }
+
+        }
+
+        return {
+            success: false
         }
     }
 }
