@@ -2,9 +2,12 @@
 import { Socket } from "socket.io";
 import { ErrorCode } from "./ErrorCode";
 import { createHmac } from 'crypto'
-import { PusherSocket } from "../type/Interfaces";
+import { PusherSocket, IPresenceData } from "../type/Interfaces";
 import { Application } from "../entity/Application";
-
+import { getRepository, In } from "typeorm";
+import { Channel } from "../entity/Channel";
+import { Status } from "../type/status";
+import { ChannelClient } from "../entity/ChannelClient";
 export class PusherServer {
 
 
@@ -40,7 +43,7 @@ export class PusherServer {
     public static sendSubscriptionSeucced(socket: Socket, channel: string, data?: string) {
         socket.emit('pusher_internal:subscription_succeeded', JSON.stringify({
             channel,
-
+            data: data
         }))
     }
 
