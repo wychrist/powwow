@@ -23,6 +23,11 @@ export class PusherApplication {
 
   }
 
+
+  getApp(): Application {
+    return this.app
+  }
+
   acceptConnection(socket: Socket) {
     socket.emit('pusher:connection_established', JSON.stringify({
       socket_id: socket.id,
