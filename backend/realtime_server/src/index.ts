@@ -100,23 +100,8 @@ createConnection().then(async connection => {
             }
         })
 
-    // setup express app here
-    // ...
-
     // start express server
     server.listen(env.CP_REALTIME_PORT);
-
-    // insert new users for test
-    /* await connection.manager.save(connection.manager.create(User, {
-        firstName: "Timber",
-        lastName: "Saw",
-        age: 27
-    }));
-    await connection.manager.save(connection.manager.create(User, {
-        firstName: "Phantom",
-        lastName: "Assassin",
-        age: 24
-    })); */
 
     console.log(`Realtime server has started on port ${env.CP_REALTIME_PORT}.`);
 
