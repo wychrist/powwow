@@ -69,13 +69,21 @@ export class PusherApplication {
     })
   }
 
+
+  /**
+   * Check if this socket has join at least one private or presence channel
+   * 
+   * @param {Socket} socket 
+   * 
+   * @returns  {boolean}
+   */
   private hasJoinAuthChannel(socket: PusherSocket): boolean {
     let valid = false;
     if (socket._pusherChannels.size === 0) {
       PusherServer.sendError(socket, PusherServer.errorCode[4009])
     } else {
       let done = true;
-      const interator = socket._pusherChannels.values()
+      const interator = socket._pusherChannels.keys()
       do {
         const result = interator.next()
         done = result.done
@@ -85,9 +93,6 @@ export class PusherApplication {
         }
       } while (!done)
     }
-
-
-    console.log(`socker ${socket.id} has right to ?`, valid)
 
     return valid
   }
