@@ -44,6 +44,7 @@ export class PusherApplication {
 
     // Handle client disconnecting event
     socket.on('disconnecting', (reason) => {
+      PusherServer.cleanUp(socket);
       console.log('client disconnecting', reason);
     });
 
