@@ -1,6 +1,6 @@
 import { Controler } from "./Controller";
 import { Request, Response } from "express";
-import { getRepository } from "typeorm";
+import { getRepository, In } from "typeorm";
 import { Application } from '../entity/Application'
 import { generateRadom } from '../type/api'
 import { ApplicationSetting } from "../entity/ApplicationSetting";
@@ -30,7 +30,7 @@ export class AdminController extends Controler {
             this.isBearerEqual(request, this.adminToken, async (isValid: boolean) => {
                 if (isValid) {
                     try {
-                        const app = await this.appRepository.findOneOrFail(request.params.id);
+                        const app = await this.getApplication(request.params.id)
                         resolve(app)
                     } catch (error) {
                         this.return404(response, error.message)
@@ -57,8 +57,10 @@ export class AdminController extends Controler {
                         }
                         app.secret = generateRadom();
                         app.key = generateRadom();
-                        resolve(this.appRepository.save(app));
 
+                        this.appRepository.save(app);
+                        app = await this.setApplicationSettings(app, request.body);
+                        resolve(app);
                     } catch (error) {
                         response.status(400).json(this.buildResponseMessage(error.message))
                     }
@@ -80,7 +82,9 @@ export class AdminController extends Controler {
                         for (let name in clean) {
                             app[name] = clean[name]
                         }
-                        this.appRepository.save(app)
+
+                        app = await this.appRepository.save(app)
+                        app = await this.setApplicationSettings(app, request.body)
                         resolve(app)
                     } catch (error) {
                         response.status(400).json(this.buildResponseMessage(error.message));
@@ -159,5 +163,56 @@ export class AdminController extends Controler {
         }
 
         return clean
+    }
+
+    private setApplicationSettings(app: Application, data: { settings?: { name: string, value: string }[] }): Promise<Application> {
+        return new Promise((resolve, reject) => {
+            if (data.settings) {
+                let names = data.settings.map((setting) => setting.name);
+                getRepository(ApplicationSetting).find({ where: { application: app, name: In(names) } })
+                    .then((result) => {
+                        let builtSettings = {}
+                        data.settings.forEach((settingData) => {
+                            if (settingData.name) {
+                                builtSettings[settingData.name] = new ApplicationSetting();
+                                builtSettings[settingData.name].application = app;
+                                builtSettings[settingData.name].name = settingData.name;
+                                builtSettings[settingData.name].value = settingData.value;
+                            }
+                        })
+
+                        result.forEach((setting) => {
+                            if (builtSettings[setting.name]) {
+                                let value = builtSettings[setting.name].value;
+                                builtSettings[setting.name] = setting
+                                builtSettings[setting.name].value = value
+                            }
+                        });
+
+                        getRepository(ApplicationSetting).save(Object.values(builtSettings))
+                            .then(() => {
+                                this.getApplication(app.id)
+                                    .then((app) => {
+                                        resolve(app)
+                                    })
+                                    .catch(reject)
+                            })
+                            .catch(reject)
+
+                    })
+                    .catch(reject)
+            } else {
+                this.getApplication(app.id)
+                    .then(resolve).catch(reject)
+            }
+        });
+    }
+
+    private getApplication(id: string, include: string[] = ['settings']): Promise<Application> {
+        return new Promise<Application>((resolve, reject) => {
+            this.appRepository.findOneOrFail(id, { relations: include })
+                .then(resolve).catch(reject);
+
+        });
     }
 }
