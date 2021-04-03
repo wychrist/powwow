@@ -23,6 +23,11 @@ export interface ISettingEntry {
     [name: string]: string
 }
 
+export interface IPresenceData {
+    user_id: string | number,
+    user_info?: unknown
+}
+
 export interface PusherSocket extends Socket {
-  _pusherChannels?: Set<string>
+  _pusherChannels?: Map<string, string>
 }
