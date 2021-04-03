@@ -8,6 +8,7 @@ import { ApplicationSetting } from "../entity/ApplicationSetting";
 export class AdminController extends Controler {
     private adminToken = '';
     private appRepository = getRepository(Application)
+
     constructor() {
         super()
         this.adminToken = this.getSetting('admin_token', 'random' + Date.now())
@@ -58,7 +59,7 @@ export class AdminController extends Controler {
                         app.secret = generateRadom();
                         app.key = generateRadom();
 
-                        this.appRepository.save(app);
+                        app = await this.appRepository.save(app);
                         app = await this.setApplicationSettings(app, request.body);
                         resolve(app);
                     } catch (error) {
