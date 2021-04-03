@@ -6,12 +6,14 @@ import * as bodyParser from "body-parser";
 import { Request, Response } from "express";
 import { Routes } from "./routes";
 import { Server, Socket } from "socket.io";
+import { RedisAdapter, createAdapter } from 'socket.io-redis'
 import { createServer } from 'http'
 import { getSettings } from './settings'
 import { getRepository } from "typeorm";
 import { Application } from './entity/Application'
 import { PusherApplication } from './pusher/PusherApplication'
 import { PusherServer } from './pusher/PusherServer'
+import { RedisClient } from 'redis';
 
 const socketIoOption = {
     cors: {
@@ -31,7 +33,28 @@ createConnection().then(async connection => {
     const server = createServer(app)
     const io = new Server(server, socketIoOption)
     const appRepo = getRepository(Application)
+    let redisClient;
+    if (env.REDIS_USER && env.REDIS_PASSWORD) {
+        redisClient = new RedisClient({
+            host: env.REDIS_HOST,
+            port: env.REDIS_PORT,
+            user: env.REDIS_USER,
+            password: env.REDIS_PASSWORD
+        })
+    } else {
+        redisClient = new RedisClient({
+            host: env.REDIS_HOST,
+            port: env.REDIS_PORT
+        })
+    }
+
+    redisClient.on('error', (error: any) => {
+        console.error("redis client error", error)
+    })
+
+    // middleware and additions
     app.use(bodyParser.json());
+    io.adapter(createAdapter({ pubClient: redisClient, subClient: redisClient.duplicate() }));
 
     // register express routes from defined application routes
     Routes.forEach(route => {
