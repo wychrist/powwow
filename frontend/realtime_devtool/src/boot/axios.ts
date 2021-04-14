@@ -22,3 +22,8 @@ export default boot(({ app }) => {
 });
 
 export { axios, api };
+
+
+export const useAxios = () => {
+  return axios
+}

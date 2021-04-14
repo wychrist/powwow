@@ -3,8 +3,13 @@ import { RouteRecordRaw } from 'vue-router';
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('layouts/MainLayout.vue'),
+    component: () => import('layouts/DefaultLayout.vue'),
     children: [{ path: '', component: () => import('pages/Index.vue') }],
+  },
+  {
+    path: '/test/:id',
+    component: () => import('layouts/DefaultLayout.vue'),
+    children: [{ path: '', component: () => import('pages/Testui.vue'), name: 'test_ui' }],
   },
 
   // Always leave this as last one,
