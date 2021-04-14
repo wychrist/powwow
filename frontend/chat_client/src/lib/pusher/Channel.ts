@@ -20,6 +20,13 @@ export class Channel implements IChannel {
       }
     })
 
+    this.client?.on('pusher_internal:member_added', (data: string) => {
+      console.log('new user joined the channel', data)
+    })
+
+    this.client?.on('someevent', (data: string) => {
+      console.log('handling some event', data)
+    })
   }
 
   trigger(event: string, data: string): IChannel {
@@ -36,7 +43,7 @@ export class Channel implements IChannel {
         break;
       default:
         this.client?.on(`${this.name}:${event}`, (data) => {
-          this.trigger(event, data)
+          this.dispatch(event, data)
         });
     }
 
