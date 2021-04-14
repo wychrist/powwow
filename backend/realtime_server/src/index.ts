@@ -14,6 +14,7 @@ import { Application } from './entity/Application'
 import { PusherApplication } from './pusher/PusherApplication'
 import { PusherServer } from './pusher/PusherServer'
 import { RedisClient } from 'redis';
+import * as cors from 'cors'
 
 const socketIoOption = {
     cors: {
@@ -53,7 +54,9 @@ createConnection().then(async connection => {
     })
 
     // middleware and additions
+    app.use(cors());
     app.use(bodyParser.json());
+
     io.adapter(createAdapter({ pubClient: redisClient, subClient: redisClient.duplicate() }));
 
     // register express routes from defined application routes
