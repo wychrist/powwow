@@ -32,7 +32,8 @@ export class ApplicationController extends Controler {
             if (payload.channel) {
                 this.io.of(req.params.key)
                     .to(payload.channel)
-                    .emit(payload.event, payload.data)
+                    .emit(`${payload.channel}:${payload.event}`, payload.data)
+
                 return {
                     success: true
                 }
@@ -43,5 +44,8 @@ export class ApplicationController extends Controler {
         return {
             success: false
         }
+    }
+    triggerEvent() {
+
     }
 }
