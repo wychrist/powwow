@@ -20,7 +20,7 @@ export class ApplicationController extends Controler {
     async get(req: Request) {
         let app = this.apps[req.params.key]
         return [{
-            name: app ? app.getApp(): req.params.key
+            name: app ? app.getApp() : req.params.key
         }];
     }
 
