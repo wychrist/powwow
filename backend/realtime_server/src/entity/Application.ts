@@ -38,7 +38,14 @@ export class Application {
     })
     secret: string;
 
-    @OneToMany(() => ApplicationSetting, setting => setting.application)
+    @Column({
+        type: 'varchar',
+        length: '512',
+        nullable: true
+    })
+    webhook: string;
+
+    @OneToMany(() => ApplicationSetting, setting => setting.application, { lazy: true })
     settings: ApplicationSetting[]
 
     @OneToMany(() => Channel, channel => channel.application)
