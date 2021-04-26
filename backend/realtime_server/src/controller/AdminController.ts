@@ -157,6 +157,13 @@ export class AdminController extends Controler {
                 } else if (!app || !app.id) {
                     throw Error('status is required');
                 }
+            },
+            webhook: (val: string = null) => {
+                if (val && val.indexOf('http') !== -1) {
+                    clean['webhook'] = val
+                } else {
+                    throw Error('webhook endpont must be a full url')
+                }
             }
         }
         for (let name in rule) {
