@@ -31,6 +31,12 @@ export class Application1616158722399 implements MigrationInterface {
                     length: "512"
                 },
                 {
+                    name: "webhook",
+                    type: "varchar",
+                    length: "512",
+                    isNullable: true
+                },
+                {
                     name: "key",
                     type: "varchar",
                     length: "256"
