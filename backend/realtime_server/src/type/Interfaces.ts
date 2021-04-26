@@ -13,10 +13,10 @@ export interface ValidationResult {
 }
 
 export interface IRoute {
-        method: string,
-        route: string,
-        controller: Function, 
-        action: string
+    method: string,
+    route: string,
+    controller: Function,
+    action: string
 }
 
 export interface ISettingEntry {
@@ -29,5 +29,22 @@ export interface IPresenceData {
 }
 
 export interface PusherSocket extends Socket {
-  _pusherChannels?: Map<string, string>
+    _pusherChannels?: Map<string, string>
+}
+
+export interface IChannelEventPayload {
+    channels: string[],
+    event: string,
+    data?: string,
+    socket_id?: string
+    auth_key: string,
+    auth_timestamp: string,
+    auth_version: string,
+    body_md5: string,
+    auth_signature: string,
+    info: string
+}
+
+export interface IChannelEventResponse {
+
 }
