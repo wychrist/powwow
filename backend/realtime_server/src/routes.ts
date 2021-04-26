@@ -18,11 +18,16 @@ const appRoutes: IRoute[] = [
     action: 'trigger'
   },
   {
-
     method: 'post',
     route: '/apps/:id/events',
     controller: ApplicationController,
     action: 'triggerEvent'
+  },
+  {
+    method: 'post',
+    route: '/apps/:id/batch_events',
+    controller: ApplicationController,
+    action: 'batchTriggerEvent'
   }
 ];
 
