@@ -1,7 +1,7 @@
 import { env } from "process";
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-const tableName = `${env.DB_TABLE_PREFIX}app_channel_client`;
+const tableName = `${env.DB_TABLE_PREFIX}channel_client`;
 
 export class ChannelClient1617445194101 implements MigrationInterface {
 
