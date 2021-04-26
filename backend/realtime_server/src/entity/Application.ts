@@ -1,4 +1,3 @@
-import { type } from "os";
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, OneToMany } from "typeorm";
 import { ApplicationSetting } from "./ApplicationSetting";
 import { Channel } from "./Channel";
