@@ -59,4 +59,13 @@ export class Application {
 
     @DeleteDateColumn()
     deletedAt: Date
+
+    public getSettings() {
+        let built = {}
+        this.settings.forEach((setting) => {
+            built[setting.name] = setting.value
+        })
+
+        return built;
+    }
 }
