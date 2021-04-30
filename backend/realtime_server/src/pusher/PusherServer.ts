@@ -2,12 +2,13 @@
 import { Socket } from "socket.io";
 import { ErrorCode } from "./ErrorCode";
 import { createHmac } from 'crypto'
-import { PusherSocket, IPresenceData } from "../type/Interfaces";
+import { IPusherSocket, IPresenceData, IChannelSubscribePayload } from "../type/Interfaces";
 import { Application } from "../entity/Application";
 import { getRepository, In } from "typeorm";
 import { Channel } from "../entity/Channel";
 import { Status } from "../type/status";
 import { ChannelClient } from "../entity/ChannelClient";
+import { Webhook } from './Webhook'
 export class PusherServer {
 
 
@@ -40,7 +41,7 @@ export class PusherServer {
         }
     }
 
-    public static sendSubscriptionSeucced(socket: Socket, channel: string, data?: string) {
+    public static sendSubscriptionSucceed(socket: Socket, channel: string, data?: string) {
         socket.emit('pusher_internal:subscription_succeeded', JSON.stringify({
             channel,
             data: data
@@ -51,11 +52,16 @@ export class PusherServer {
         return (channel.indexOf('private-') === 0 || channel.indexOf('presence-') === 0)
     }
 
-    public static async addClientToChannel(socket: PusherSocket, app: Application, data: string): Promise<boolean> {
+    public static async addClientToChannel(socket: IPusherSocket, app: Application, data: string):
+        Promise<{success: boolean, payload: IChannelSubscribePayload }> {
         return new Promise(async (resolve, reject) => {
 
-            const payload = JSON.parse(data) as { channel: string, auth?: string, channel_data?: string }
-            let result = false
+            const payload = JSON.parse(data) as IChannelSubscribePayload
+            const result = {
+                success: false,
+                payload
+            } 
+
             let presenceData: IPresenceData = { user_id: socket.id, user_info: {} }
 
             if (this.channelNeedsAuthenticating(payload.channel)) {
@@ -77,7 +83,10 @@ export class PusherServer {
                             channel.name = payload.channel;
                             channel.status = Status.ACTIVE;
                             channel = await channelRepo.save(channel);
+
+                            Webhook.publishChannelOccupied(channel.name, app);
                         }
+                        
 
                         if (channel.status === Status.ACTIVE) {
                             //@todo check if channel limit has been reached
@@ -93,16 +102,18 @@ export class PusherServer {
 
                             socket.join(payload.channel)
                             socket._pusherChannels.set(payload.channel, client.id)
+                            socket._powwow.user_id = client.userId
 
                             socket.emit('pusher_internal:subscription_succeeded', JSON.stringify({ channel: payload.channel }))
 
-                            result = true;
+                            result.success = true;
                         }
                         if (result && this.isPresenceChannel(payload.channel)) {
                             socket.to(payload.channel).emit('pusher_internal:member_added', JSON.stringify({
                                 channel: payload.channel,
                                 data: presenceData
                             }));
+                            Webhook.publishChannelMemberAdded(payload.channel, presenceData.user_id as string, app)
                         }
 
                     } catch (error) {
@@ -111,12 +122,12 @@ export class PusherServer {
                     }
                 } else {
                     socket.emit('pusher_internal:subscription_failed', JSON.stringify({ channel: payload.channel }))
-                    result = false;
+                    result.success = false;
                 }
             } else {
                 socket.join(payload.channel)
                 socket._pusherChannels.set(payload.channel, '')
-                result = true;
+                result.success = true;
             }
 
             resolve(result)
@@ -127,12 +138,19 @@ export class PusherServer {
         return name.indexOf('presence-') === 0;
     }
 
-    public static toPusherSocket(socket: PusherSocket): PusherSocket {
+    public static isPrivateChannel(name: string): boolean {
+        return name.indexOf('private-') === 0;
+    }
+
+    public static toPusherSocket(socket: IPusherSocket): IPusherSocket {
         socket._pusherChannels = new Map<string, string>();
+        socket._powwow = {
+            user_id: ''
+        }
         return socket;
     }
 
-    public static removeClientFromChannel(socket: PusherSocket, channelName: string, channelClient?: ChannelClient): PusherSocket {
+    public static removeClientFromChannel(socket: IPusherSocket, channelName: string, app: Application, channelClient?: ChannelClient): IPusherSocket {
         (async () => {
             if (!channelClient) {
                 channelClient = await getRepository(ChannelClient).findOne({ where: { name: socket._pusherChannels.get(channelName) } });
@@ -145,6 +163,7 @@ export class PusherServer {
                         user_info: channelClient.info
                     }
                 }));
+                Webhook.publishChannelMemberRemoved(channelName, channelClient.userId, app)
             }
             socket.leave(channelName);
             getRepository(ChannelClient).delete(channelClient.id);
@@ -153,7 +172,7 @@ export class PusherServer {
         return socket
     }
 
-    public static cleanUp(socket: PusherSocket): PusherSocket {
+    public static cleanUp(socket: IPusherSocket, app: Application): IPusherSocket {
         const clientIds = []
         let entries = socket._pusherChannels.entries()
 
@@ -174,7 +193,7 @@ export class PusherServer {
             ; (async () => {
                 let clientData = await getRepository(ChannelClient).find({ where: { id: In(clientIds) }, relations: ['channel'] })
                 clientData.forEach((client) => {
-                    this.removeClientFromChannel(socket, client.channel.name, client)
+                    this.removeClientFromChannel(socket, client.channel.name, app, client)
                 })
             })();
         }
