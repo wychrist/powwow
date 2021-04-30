@@ -1,16 +1,14 @@
 import { getRepository } from "typeorm";
-import { NextFunction, Request, Response } from "express";
-import { Application } from '../entity/Application'
+import {  Request, Response } from "express";
 import { IChannelEventPayload, IChannelEventResponse } from '../type/Interfaces'
 import { Controler } from "./Controller";
-import { Server, Socket } from "socket.io";
+import { Server } from "socket.io";
 import { PusherApplication } from '../pusher/PusherApplication'
 import { createHmac, createHash } from 'crypto'
 import { Channel } from "../entity/Channel";
 import { ChannelClient } from "../entity/ChannelClient";
 
 export class ApplicationController extends Controler {
-    private applicationRepo = getRepository(Application)
     private io: Server;
     private apps: { [key: string]: PusherApplication };
 
