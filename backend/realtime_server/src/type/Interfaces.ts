@@ -28,7 +28,12 @@ export interface IPresenceData {
     user_info?: unknown
 }
 
-export interface PusherSocket extends Socket {
+export interface IPowwowSocket {
+    _powwow?: {
+        user_id?: string | number
+    }
+}
+export interface IPusherSocket extends Socket, IPowwowSocket {
     _pusherChannels?: Map<string, string>
 }
 
@@ -47,4 +52,18 @@ export interface IChannelEventPayload {
 
 export interface IChannelEventResponse {
 
+}
+
+export interface IChannelSubscribePayload {
+    channel: string,
+    auth?: string,
+    channel_data?: string
+}
+
+export interface IWebhookClientEvent {
+    channel: string,
+    event: string,
+    data: unknown,
+    socket_id: string,
+    user_id: string
 }
