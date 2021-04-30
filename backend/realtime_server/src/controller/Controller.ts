@@ -12,7 +12,7 @@ export class Controler {
     protected settingRepository = getRepository(Setting);
 
     protected getBearer(request: Request): string {
-        return request.headers.authorization.toString().replace('Bearer', '').trim();
+        return request.headers.authorization?.toString().replace('Bearer', '').trim();
     }
 
     protected ifBearer(request, callback: (token: string) => void): string {
