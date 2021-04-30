@@ -2,7 +2,8 @@
 import { Namespace, Socket } from "socket.io";
 import { Application } from "../entity/Application";
 import { PusherServer } from "./PusherServer";
-import { PusherSocket } from '../type/Interfaces'
+import { IPusherSocket } from '../type/Interfaces'
+import { Webhook } from "./Webhook";
 
 export class PusherApplication {
 
@@ -14,7 +15,7 @@ export class PusherApplication {
     this.app = app;
   }
 
-  authenticate(socket: PusherSocket) {
+  authenticate(socket: IPusherSocket) {
     console.log(`socket connected on ${this.app.name}`, socket.id)
 
     this.doConnectionAuth(socket); // wait for a specified timeout and see if the client has joined a private room
@@ -36,7 +37,7 @@ export class PusherApplication {
     console.log("we got a new connection: " + socket.id);
   }
 
-  private registerEventHandlers(socket: PusherSocket) {
+  private registerEventHandlers(socket: IPusherSocket) {
     // handle client disconnet event
     socket.on('disconnect', (reason) => {
       console.log('client disconnected', reason);
@@ -44,7 +45,7 @@ export class PusherApplication {
 
     // Handle client disconnecting event
     socket.on('disconnecting', (reason) => {
-      PusherServer.cleanUp(socket);
+      PusherServer.cleanUp(socket, this.app);
       console.log('client disconnecting', reason);
     });
 
@@ -56,15 +57,31 @@ export class PusherApplication {
 
     socket.on('pusher:unsubscribe', (data: string) => {
       const payload = JSON.parse(data) as { channel: string }
-      PusherServer.removeClientFromChannel(socket, payload.channel)
+      PusherServer.removeClientFromChannel(socket, payload.channel, this.app)
     })
 
     socket.on('pusher:subscribe', async (data: string) => {
-      let result = await PusherServer.addClientToChannel(socket, this.app, data)
-      if (result) {
-        // @todo log the user as connected
-      } else {
-        // @todo ...
+      const result = await PusherServer.addClientToChannel(socket, this.app, data);
+      const payload = result.payload;
+      if (result.success && (PusherServer.isPresenceChannel(payload.channel) || PusherServer.isPrivateChannel(payload.channel))) {
+        // @todo checks if app is allowing client to send messages/events
+        const allow = true;
+        if (allow) {
+          socket.onAny((eventName, eventData) => {
+            if (eventName.indexOf('client-') === 0) {
+              socket.to(payload.channel)
+                .emit(eventName, eventData)
+              const webhookPayload = {
+                channel: payload.channel,
+                event: eventName,
+                data: eventData,
+                socket_id: socket.id as string,
+                user_id: socket._powwow.user_id as string
+              };
+              Webhook.publishClientEvent(webhookPayload, this.app);
+            }
+          })
+        }
       }
     })
   }
@@ -77,7 +94,7 @@ export class PusherApplication {
    * 
    * @returns  {boolean}
    */
-  private hasJoinAuthChannel(socket: PusherSocket): boolean {
+  private hasJoinAuthChannel(socket: IPusherSocket): boolean {
     let valid = false;
     if (socket._pusherChannels.size === 0) {
       PusherServer.sendError(socket, PusherServer.errorCode[4009])
@@ -97,7 +114,7 @@ export class PusherApplication {
     return valid
   }
 
-  private doConnectionAuth(socket: PusherSocket) {
+  private doConnectionAuth(socket: IPusherSocket) {
     setTimeout(() => {
       if (!this.hasJoinAuthChannel(socket)) {
         PusherServer.sendError(socket, PusherServer.errorCode[4009])
