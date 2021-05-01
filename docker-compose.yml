@@ -11,8 +11,9 @@ services:
     tty: true
     hostname: workspace
     volumes:
-      - ./backend:/backend
-      - ./frontend:/frontend
+      - ./chat:/projects/chat
+      - ./crm:/projects/crm
+      - ./realtime:/projects/realtime
     networks:
       - webnetwork
 
@@ -133,8 +134,9 @@ services:
     build: 
       context: ./docker/nodejs
     volumes:
-      - ./realtime:/backend/realtime
-      - ./chat:/frontend/chat
+      - ./realtime:/projects/realtime
+      - ./chat:/projects/chat
+      - ./crm/api:/projects/api
     hostname: nodejs
     command: tail -F anything
     ports:
