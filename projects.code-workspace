@@ -1,13 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "backend"
+			"path": "chat"
 		},
 		{
-			"path": "frontend"
+			"path": "crm"
 		},
 		{
-			"path": "libs"
+			"path": "realtime"
 		}
 	]
 }
