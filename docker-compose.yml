@@ -90,6 +90,7 @@ services:
         - GROUP_NAME=${GROUP_NAME}
     volumes:
       - ./backend:/backend
+      - ./libs:/backend/libs
       - ./frontend:/frontend
     networks:
       - webnetwork
@@ -105,6 +106,7 @@ services:
         - GROUP_NAME=${GROUP_NAME}
     volumes:
       - ./backend:/backend
+      - ./libs:/backend/libs
       - ./frontend:/frontend
     networks:
       - webnetwork
