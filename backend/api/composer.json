@@ -16,6 +16,7 @@
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.9",
         "laravel/tinker": "^2.5",
+        "livewire/livewire": "^2.4",
         "nwidart/laravel-modules": "^8.2"
     },
     "require-dev": {
@@ -41,7 +42,8 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Modules\\": "Modules/"
+            "Modules\\": "Modules/",
+            "Powwow\\": "Powwow/src/"
         }
     },
     "autoload-dev": {
