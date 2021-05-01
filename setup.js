@@ -1,6 +1,6 @@
 const fs = require("fs");
 const https = require("https");
-const devtoolsDir = __dirname + "/backend/devtools";
+const devtoolsDir = __dirname + "/devtools";
 const file = fs.createWriteStream(`${devtoolsDir}/adminer/index.php`);
 const url = "https://www.adminer.org/latest-en.php"
 

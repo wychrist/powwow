@@ -37,8 +37,8 @@ services:
        - ${HTTP_PORT}:80
        - ${HTTPS_PORT}:443
      volumes:
-        - ./backend:/backend
-        - ./frontend:/frontend
+        - ./crm/api:/backend/api
+        - ./devtools/adminer:/backend/devtools/adminer
         - ./docker/nginx/sites:/etc/nginx/conf.d
      depends_on:
         - phpfpm
@@ -64,7 +64,7 @@ services:
       - webnetwork
     volumes:
      - ./docker/db/data:/var/lib/mysql
-     - ./projects:/projects
+     - ./crm:/crm
     hostname: mariadb
 
   postgres:
@@ -89,9 +89,8 @@ services:
         - USER_NAME=${USER_NAME}
         - GROUP_NAME=${GROUP_NAME}
     volumes:
-      - ./backend:/backend
-      - ./libs:/backend/libs
-      - ./frontend:/frontend
+      - ./crm/api:/backend/api
+      - ./devtools/adminer:/backend/devtools/adminer
     networks:
       - webnetwork
     hostname: phpfpm
@@ -105,9 +104,8 @@ services:
         - USER_NAME=${USER_NAME}
         - GROUP_NAME=${GROUP_NAME}
     volumes:
-      - ./backend:/backend
-      - ./libs:/backend/libs
-      - ./frontend:/frontend
+      - ./crm/api:/backend/api
+      - ./devtools/adminer:/backend/devtools/adminer
     networks:
       - webnetwork
     hostname: phpfpm8
@@ -116,8 +114,7 @@ services:
     build:
       context: ./docker/cron
     volumes:
-      - ./backend:/backend
-      - ./frontend:/frontend
+      - ./crm/api:/backend/api
     networks:
       - webnetwork
     hostname: cron
@@ -127,8 +124,7 @@ services:
     build:
       context: ./docker/supervisor
     volumes:
-      - ./backend:/backend
-      - ./frontend:/frontend
+      - ./crm/api:/backend/api
     networks:
       - webnetwork
     hostname: supervisor
@@ -137,8 +133,8 @@ services:
     build: 
       context: ./docker/nodejs
     volumes:
-      - ./backend:/backend
-      - ./frontend:/frontend
+      - ./realtime:/backend/realtime
+      - ./chat:/frontend/chat
     hostname: nodejs
     command: tail -F anything
     ports:
