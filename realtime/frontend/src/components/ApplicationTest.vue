@@ -45,7 +45,7 @@ export default defineComponent({
     const result = ref<string>('')
 
     const makeRequest = () => {
-      doPost(model.value, props.app, (response: string) => {
+      doPost(model.value, props.app as IApplication, (response: string) => {
         result.value  = response
       })
     }

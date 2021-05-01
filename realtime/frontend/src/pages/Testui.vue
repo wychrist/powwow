@@ -18,7 +18,7 @@ export default defineComponent({
   },
   setup() {
     const route = useRoute()
-    const app = ref<IApplication>(Model.getById(route.params.id as string))
+    const app = ref<IApplication>(Model.getById(route.params.id as string) as IApplication)
 
     return {
       app
