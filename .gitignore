@@ -41,5 +41,6 @@ docker/minio/data
 docker/mongo/data
 docker/postgres/data
 docker/redis/data
+docker/nginx/sites/*_name.conf
 backend/devtools
 projects
