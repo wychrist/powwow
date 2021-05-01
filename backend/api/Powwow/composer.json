@@ -1,0 +1,21 @@
+{
+    "name": "powwow/realtime",
+    "description": "Powwow real php application",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Jibao Mansaray",
+            "email": "jibaomansaray@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Powwow\\": "src/"
+       }
+    }
+}
