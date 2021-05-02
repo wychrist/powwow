@@ -1,4 +1,4 @@
-# Christian Powwow
+# Christian Contregate
 
 Collection of applications with some Christian specific features
 
