@@ -103,7 +103,8 @@ module.exports = configure(function (/* ctx */) {
       plugins: [
         'LoadingBar',
         'LocalStorage',
-        'SessionStorage'
+        'SessionStorage',
+        'Dialog'
       ]
     },
 
