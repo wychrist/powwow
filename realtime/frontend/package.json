@@ -1,8 +1,8 @@
 {
-  "name": "realtime_devtool",
+  "name": "wychrist_realtime_ui",
   "version": "0.0.1",
-  "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "description": "Wychrist realtime server Ui",
+  "productName": "Wychrist Realtime UI",
   "author": "Jibao Mansaray <jibaomansaray@gmail.com>",
   "private": true,
   "scripts": {

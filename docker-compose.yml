@@ -12,7 +12,7 @@ services:
     hostname: workspace
     volumes:
       - ./chat:/projects/chat
-      - ./crm:/projects/crm
+      - ./cms:/projects/cms
       - ./realtime:/projects/realtime
     networks:
       - webnetwork
@@ -38,7 +38,7 @@ services:
        - ${HTTP_PORT}:80
        - ${HTTPS_PORT}:443
      volumes:
-        - ./crm/api:/backend/api
+        - ./cms:/backend/cms
         - ./devtools/adminer:/backend/devtools/adminer
         - ./docker/nginx/sites:/etc/nginx/conf.d
      depends_on:
@@ -65,7 +65,7 @@ services:
       - webnetwork
     volumes:
      - ./docker/db/data:/var/lib/mysql
-     - ./crm:/crm
+     - ./cms:/cms
     hostname: mariadb
 
   postgres:
@@ -90,7 +90,7 @@ services:
         - USER_NAME=${USER_NAME}
         - GROUP_NAME=${GROUP_NAME}
     volumes:
-      - ./crm/api:/backend/api
+      - ./cms:/backend/cms
       - ./devtools/adminer:/backend/devtools/adminer
     networks:
       - webnetwork
@@ -105,7 +105,7 @@ services:
         - USER_NAME=${USER_NAME}
         - GROUP_NAME=${GROUP_NAME}
     volumes:
-      - ./crm/api:/backend/api
+      - ./cms:/backend/cms
       - ./devtools/adminer:/backend/devtools/adminer
     networks:
       - webnetwork
@@ -115,7 +115,7 @@ services:
     build:
       context: ./docker/cron
     volumes:
-      - ./crm/api:/backend/api
+      - ./cms:/backend/cms
     networks:
       - webnetwork
     hostname: cron
@@ -125,7 +125,7 @@ services:
     build:
       context: ./docker/supervisor
     volumes:
-      - ./crm/api:/backend/api
+      - ./cms:/backend/cms
     networks:
       - webnetwork
     hostname: supervisor
@@ -136,7 +136,7 @@ services:
     volumes:
       - ./realtime:/projects/realtime
       - ./chat:/projects/chat
-      - ./crm/api:/projects/api
+      - ./cms:/projects/cms
     hostname: nodejs
     command: tail -F anything
     ports:

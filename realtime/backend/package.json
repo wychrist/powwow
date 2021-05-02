@@ -1,7 +1,7 @@
 {
-   "name": "example",
+   "name": "wychrist_realtime",
    "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
+   "description": "Wychrist realtime server",
    "devDependencies": {
       "@types/bull": "^3.15.1",
       "@types/node": "^8.0.29",
