@@ -1,4 +1,4 @@
-# Christian Contregate
+# Christian Congregate
 
 Collection of applications with some Christian specific features
 
