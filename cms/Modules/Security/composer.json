@@ -1,0 +1,25 @@
+{
+    "name": "kpama/security",
+    "description": "",
+    "authors": [
+        {
+            "name": "Kpama Developers",
+            "email": "dev@kpama.com.au"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Modules\\Security\\Providers\\SecurityServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Security\\": ""
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "People",
+    "alias": "people",
+    "description": "Bulbul people module",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\People\\Providers\\PeopleServiceProvider",
+        "Modules\\People\\Providers\\EventServiceProvider",
+        "Modules\\People\\Providers\\PolicyServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

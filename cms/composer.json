@@ -13,6 +13,7 @@
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "joshbrw/laravel-module-installer": "^2.0",
+        "laravel/legacy-factories": "^1.0",
         "laravel/framework": "^8.12",
         "laravel/sanctum": "^2.9",
         "laravel/tinker": "^2.5",
@@ -44,7 +45,10 @@
             "Database\\Seeders\\": "database/seeders/",
             "Modules\\": "Modules/",
             "Powwow\\": "Powwow/src/"
-        }
+        },
+        "files": [
+            "app/functions.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

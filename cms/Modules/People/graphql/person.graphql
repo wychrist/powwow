@@ -1,0 +1,59 @@
+enum PERSON_ACCOUNT_STATUS {
+    active,
+    suspended
+}
+
+type Person @modelClass(class: "Modules\\People\\Entities\\Person") {
+    id: ID!,
+    firstname: String!,
+    middlename: String,
+    lastname: String!
+    date_of_birth: Date,
+    account_status: PERSON_ACCOUNT_STATUS!
+    user: User!
+    created_at: DateTime!
+    updated_at: DateTime
+}
+
+
+input NewPerson {
+    firstname: String!,
+    middlename: String,
+    lastname: String!,
+    user: NewUser!
+    date_of_birth: Date,
+    account_status: PERSON_ACCOUNT_STATUS
+}
+
+input UpdatePerson {
+    id: ID!
+    firstname: String,
+    middlename: String,
+    lastname: String,
+    user: UpdateUser
+    date_of_birth: Date,
+    account_status: PERSON_ACCOUNT_STATUS,
+    user: UpdateUser
+}
+
+
+extend type Query {
+    """Get people"""
+    people: [Person!]!  @paginate @can(ability: "viewAny"),
+    """
+     Get user by Id
+    """
+    person(id: ID @eq ): Person @find @can(ability: "view", find: "id")
+}
+
+extend type Mutation {
+    """Create a new person"""
+    createPerson(person: NewPerson @spread): Person @field(resolver: "\\Modules\\People\\Graphql\\Mutation\\PersonMutation@create"),
+    """Update an existing person"""
+    updatePerson(person: UpdatePerson @spread): Person @field(resolver: "\\Modules\\People\\Graphql\\Mutation\\PersonMutation@update"),
+    """Delete a person"""
+    deletePerson(id: ID! @spread): Person @field(resolver: "\\Modules\\People\\Graphql\\Mutation\\PersonMutation@delete"),
+    """Restore a deleted person"""
+    restorePerson(id: ID! @spread): Person @field(resolver: "\\Modules\\People\\Graphql\\Mutation\\PersonMutation@restore"),
+
+}
