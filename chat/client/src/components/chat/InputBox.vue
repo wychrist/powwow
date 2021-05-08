@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref, PropType } from 'vue'
 
 export default defineComponent({
   name: 'ChatInputBox',
@@ -58,35 +58,49 @@ export default defineComponent({
     disabled: {
       type: Boolean,
       default: false
+    },
+    msgLength: {
+      type: Number as PropType<number>,
+      default: 255
     }
   },
-  setup () {
-    let presses: { [key: string] : boolean } = {}
+  emits: [
+    'updateValue'
+  ],
+  setup (props, { emit }) {
+    const message = ref<string>('')
+    let presses: {[key: string]: boolean} =  {}
+
+    function resetKeyLog () {
+      presses = {}
+    }
+    function onKeyDown (event: KeyboardEvent) {
+      presses[event.key] = true;
+    }
+
+    function onKeyUp () {
+      const enteredKey = 'Enter'
+      const shiftKey = 'Shift';
+      if (presses[enteredKey] && !presses[shiftKey]) {
+        const messageToSend = message.value.trim()
+        message.value = ''
+        emit('updateValue', messageToSend)
+        resetKeyLog()
+      } else  {
+        const msg = message.value.trim()
+        if (msg.length > props.msgLength) {
+          message.value = msg.substring(0, props.msgLength)
+        }
+        resetKeyLog()
+      }
+    }
+
     return {
       presses,
-      message: ''
+      message,
+      onKeyDown,
+      onKeyUp
     };
-  },
-  methods: {
-    onKeyDown(event: KeyboardEvent) {
-      this.presses[event.code] = true;
-    },
-    onKeyUp() {
-      let enteredKey = '13';
-      let shiftKey = '16';
-
-      // Don't send textarea data if shift is down
-      if (this.presses[enteredKey] && !this.presses[shiftKey]) {
-        if (this.message.trim()) {
-          this.$emit('input', this.message);
-          this.message = '';
-        }
-      } else {
-        this.$emit('textcount', this.message.length);
-      }
-
-      this.presses = {}
-    }
   }
 })
 </script>
