@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Modules\People\Entities\Family;
 use Modules\People\Entities\FamilyMember;
 use Modules\People\Entities\FamilyRelationship;
+use Modules\People\Entities\Person;
 
 class PeopleServiceProvider extends ServiceProvider
 {
@@ -134,7 +135,8 @@ class PeopleServiceProvider extends ServiceProvider
         Relation::morphMap([
             $this->buildTypeName('family')  => Family::class,
             $this->buildTypeName('family_member') => FamilyMember::class,
-            $this->buildTypeName('family_relationship') => FamilyRelationship::class
+            $this->buildTypeName('family_relationship') => FamilyRelationship::class,
+            $this->buildTypeName('person') => Person::class
         ]);
     }
 
