@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\Relation;
 use Modules\Security\Entities\Dashboard;
 use Modules\Security\Entities\Permission;
 use Modules\Security\Entities\Role;
+use Illuminate\Contracts\Auth\Access\Gate;
 
 class SecurityServiceProvider extends ServiceProvider
 {
@@ -34,6 +35,7 @@ class SecurityServiceProvider extends ServiceProvider
         $this->registerFactories();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
         $this->registerPolymorphicTypes();
+        $this->registerPermissions();
     }
 
     /**
@@ -135,6 +137,15 @@ class SecurityServiceProvider extends ServiceProvider
             $this->buildTypeName('permission') => Permission::class,
             $this->buildTypeName('role') => Role::class
         ]);
+    }
+
+    private function registerPermissions()
+    {
+        $this->app->make(Gate::class)->before(function($user, $ability){
+
+        });
+
+
     }
 
     private function buildTypeName(string $name)

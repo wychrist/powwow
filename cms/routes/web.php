@@ -1,6 +1,10 @@
 <?php
 
+use App\Models\User;
+use App\Services\Easybuilder\Parser;
 use Illuminate\Support\Facades\Route;
+use Modules\People\Entities\Person;
+use Modules\People\Entities\PersonRelationship;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +20,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::get('test', function(){
+    $parser = new Parser();
+    return $parser->parse(Person::class)['relationships'];
+});
+
+require __DIR__.'/auth.php';

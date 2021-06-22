@@ -21,6 +21,8 @@ class EventServiceProvider extends ServiceProvider
             HandleSchemaString::class
         ],
         UserCreated::class  => [
+            UserCreatedHandler::class,
+            UserCreatedHandler::class,
             UserCreatedHandler::class
         ]
     ];
