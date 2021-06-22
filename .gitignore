@@ -1,47 +1,7 @@
-yarn-error.log
-.DS_Store
-.thumbs.db
-node_modules
-
-# Quasar core related directories
-.quasar
-frontend/src/dist
-backend/chat_server/build
-
-# Cordova related directories and files
-frontend/src/src-cordova/node_modules
-frontend/src/src-cordova/platforms
-frontend/src/src-cordova/plugins
-frontend/src/src-cordova/www
-
-# Capacitor related directories and files
-frontend/src/src-capacitor/www
-frontend/src/src-capacitor/node_modules
-
-# BEX related directories and files
-frontend/src/src-bex/www
-frontend/src/src-bex/js/core
-
-# Log files
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Editor directories and files
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
+.idea/
+.vscode/
+node_modules/
+build/
+tmp/
+temp/
 .env
-frontend/src/.env
-backend/src/.env
-docker/db/data
-docker/minio/data
-docker/mongo/data
-docker/postgres/data
-docker/redis/data
-docker/nginx/sites/*_name.conf
-backend/devtools
-devtools
-projects
