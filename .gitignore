@@ -5,3 +5,10 @@ build/
 tmp/
 temp/
 .env
+devtools/adminer
+docker/db/data
+docker/meilisearch
+docker/minio/data
+docker/mongo/data
+docker/redis/data
+docker/nginx/sites/*_name.conf
