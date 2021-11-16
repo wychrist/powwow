@@ -6,5 +6,8 @@ if(!defined('WYCHRIST_INIT')){
 return [
   'theme' => 'base',
   'menu' => 'menus.php',
-  'routes' => 'routes.php'
+  'routes' => 'routes.php',
+  'socials' => [
+    'facebook' => 'https://www.facebook.com/wyreemadcoc'
+  ]
 ];

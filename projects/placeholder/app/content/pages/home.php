@@ -3,4 +3,14 @@ if(!defined('WYCHRIST_INIT')){
   exit;
 }
 
-include_once theme_dir('base/layouts/main.php');
+$content = [
+    'title' => 'Wychrist',
+    'homepage_title' => 'Who we are?',
+    'our_description' => 'Wyreema Christian description here',
+    'images' => [
+      'first' => '',
+      'second' => ''
+    ]
+];
+
+serve_template('base/templates/home_template', $content);
