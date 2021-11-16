@@ -8,6 +8,8 @@ return [
   'menu' => 'menus.php',
   'routes' => 'routes.php',
   'socials' => [
-    'facebook' => 'https://www.facebook.com/wyreemadcoc'
+    'facebook' => env('FACEBOOK_LINK'),
+     'youtube' => env('YOUTUBE_LINK'),
+     'twitter' => env('TWITTER_LINK'),
   ]
 ];
