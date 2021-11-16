@@ -3,11 +3,12 @@
     outlined
     class="full-width"
     bg-color="white"
-    v-model="message"
+    v-model="msg"
+    maxlength="msgLength"
     placeholder="Your message"
     autogrow
     square
-    @keyup="onKeyUp"
+    @keyup="keyUp"
     @keydown="onKeyDown"
   >
     <template v-slot:prepend>
@@ -50,7 +51,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, PropType } from 'vue'
+import { defineComponent, PropType, ref } from 'vue'
+import { emits } from '../../composables/chat/InputBox'
 
 export default defineComponent({
   name: 'ChatInputBox',
@@ -65,41 +67,39 @@ export default defineComponent({
     }
   },
   emits: [
-    'updateValue'
+    ...emits
   ],
-  setup (props, { emit }) {
-    const message = ref<string>('')
-    let presses: {[key: string]: boolean} =  {}
+  setup (props, ctx) {
+    let presses: { [key: string]: boolean } = {}
+    const msg = ref<string>('hello word')
 
-    function resetKeyLog () {
-      presses = {}
+    setTimeout(() => {
+      msg.value = 'it is good that you are here'
+    }, 10000)
+
+    const keyUp =  () => {
+      const enteredKey = 'Enter'
+      const shiftKey = 'Shift';
+      if (presses[enteredKey] && !presses[shiftKey]) {
+        ctx.emit('updateValue',msg.value.trim())
+        msg.value = ''
+        presses = {}
+      } else  {
+        if (msg.value.length > props.msgLength) {
+          msg.value = msg.value.substring(0, props.msgLength)
+        }
+        presses = {}
+      }
     }
+
     function onKeyDown (event: KeyboardEvent) {
       presses[event.key] = true;
     }
 
-    function onKeyUp () {
-      const enteredKey = 'Enter'
-      const shiftKey = 'Shift';
-      if (presses[enteredKey] && !presses[shiftKey]) {
-        const messageToSend = message.value.trim()
-        message.value = ''
-        emit('updateValue', messageToSend)
-        resetKeyLog()
-      } else  {
-        const msg = message.value.trim()
-        if (msg.length > props.msgLength) {
-          message.value = msg.substring(0, props.msgLength)
-        }
-        resetKeyLog()
-      }
-    }
-
     return {
-      presses,
-      message,
+      msg,
       onKeyDown,
-      onKeyUp
+      keyUp
     };
   }
 })

@@ -4,10 +4,10 @@
 			"path": "chat"
 		},
 		{
-			"path": "crm"
+			"path": "realtime"
 		},
 		{
-			"path": "realtime"
+			"path": "congregate"
 		}
 	]
 }

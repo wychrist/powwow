@@ -1,4 +1,4 @@
-FROM php:7-fpm
+FROM php:8-fpm
 
 ARG GROUPID
 ARG USERID
@@ -16,7 +16,7 @@ RUN apt-get update && apt-get -y install curl vim zip git nodejs npm gnupg sendm
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y  yarn libxml2-dev zlib1g-dev libzip-dev
-RUN docker-php-ext-install pdo_mysql mysqli soap xml zip intl xmlrpc opcache pdo_pgsql
+RUN docker-php-ext-install pdo_mysql mysqli soap xml zip intl opcache pdo_pgsql
 
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \

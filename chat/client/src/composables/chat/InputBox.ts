@@ -1,6 +1,6 @@
-import { ref, SetupContext} from 'vue'
+import { ref, SetupContext } from 'vue'
 
-const message = ref<string>('')
+const refMessage = ref<string>('')
 
 let presses: { [key: string]: boolean } = {}
 
@@ -12,18 +12,18 @@ function onKeyDown (event: KeyboardEvent) {
 }
 
 function setupOnkeyUp(limit: number, ctx: SetupContext<string[]>): () => void {
-    return function onKeyUp () {
+    return () => {
       const enteredKey = 'Enter'
       const shiftKey = 'Shift';
       if (presses[enteredKey] && !presses[shiftKey]) {
-        const messageToSend = message.value.trim()
-        message.value = ''
+        const messageToSend = refMessage.value.trim()
+        refMessage.value = ''
         resetKeyLog()
         ctx.emit('updateValue', messageToSend)
       } else  {
-        const msg = message.value.trim()
+        const msg = refMessage.value.trim()
         if (msg.length > limit) {
-          message.value = msg.substring(0, limit)
+          refMessage.value = msg.substring(0, limit)
         }
         resetKeyLog()
       }
@@ -36,7 +36,7 @@ export const emits = [
 
 export function useInputBox(limit: number, ctx: SetupContext<string[]>) {
   return {
-    refMessage: message,
+    refMessage,
     onKeyUp: setupOnkeyUp(limit, ctx),
     onKeyDown
   }

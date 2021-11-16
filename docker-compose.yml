@@ -39,11 +39,11 @@ services:
        - ${HTTPS_PORT}:443
      volumes:
         - ./congregate:/backend/congregate
+        - ./wordpress:/backend/wordpress
         - ./devtools/adminer:/backend/devtools/adminer
         - ./docker/nginx/sites:/etc/nginx/conf.d
      depends_on:
         - phpfpm
-        - phpfpm8
         - redisdb
         - db
         - nodejs
@@ -104,25 +104,11 @@ services:
         - GROUP_NAME=${GROUP_NAME}
     volumes:
       - ./congregate:/backend/congregate
+      - ./wordpress:/backend/wordpress
       - ./devtools/adminer:/backend/devtools/adminer
     networks:
       - webnetwork
     hostname: phpfpm
-
-  phpfpm8:
-    build:
-      context: ./docker/phpfpm8
-      args:
-        - USERID=${USERID}
-        - GROUPID=${GROUPID}
-        - USER_NAME=${USER_NAME}
-        - GROUP_NAME=${GROUP_NAME}
-    volumes:
-      - ./congregate:/backend/congregate
-      - ./devtools/adminer:/backend/devtools/adminer
-    networks:
-      - webnetwork
-    hostname: phpfpm8
 
   cron:
     build:
@@ -153,8 +139,9 @@ services:
     hostname: nodejs
     command: tail -F anything
     ports:
-      - 8080:8080
+      - ${NODE_PORT}:8080
       - ${CP_REALTIME_PORT}:3000
+      - ${CP_CONGREGATE_PORT}:4000
     networks:
       - webnetwork
 
