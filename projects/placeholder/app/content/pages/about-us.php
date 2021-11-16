@@ -4,4 +4,7 @@ if(!defined('WYCHRIST_INIT')){
 }
 
 
-echo 'about us';
+$content = [
+  'title' => 'About us'
+];
+serve_template('templates/about_us_template', $content);

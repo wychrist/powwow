@@ -62,6 +62,9 @@
     </div>
     
     <div class="wrapper">
+        <?php if($this->section('content')):  ?>
+        <?=$this->section('content'); ?>
+        <?php else: ?>
         <div class="landing-header" style="background-image: url('/assets/paper_theme/paper_img/cat.jpg');">
             <div class="container">
                 <div class="motto">
@@ -166,6 +169,7 @@
                 </div>
             </div>
         </div>     
+        <?php endif; ?>
     </div>
     
     <footer class="footer-demo section-dark">
