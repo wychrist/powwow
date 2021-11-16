@@ -1,4 +1,4 @@
-<?php $this->layout('base/layouts/main') ?>
+<?php $this->layout('layouts/main') ?>
 
 <?php
   $facebook = $this->settings('socials.facebook');

@@ -3,6 +3,8 @@ if (!defined('WYCHRIST_INIT')) {
   exit;
 }
 
+use League\Plates\{Engine, Template\Theme};
+
 if (!function_exists('app_root_dir')) {
   function app_root_dir(string $append = ''): string
   {
@@ -91,10 +93,17 @@ if (!function_exists('theme_engine')) {
   {
     static $themeEngine;
     if (!$themeEngine) {
-      $themeEngine = new League\Plates\Engine(theme_dir());
-      $themeEngine->loadExtension(new League\Plates\Extension\Asset(public_dir()));
+
+      // $themeEngine = new League\Plates\Engine(theme_dir(settings('theme')));
+
+      $theme = settings('theme');
+      $themeEngine= Engine::fromTheme(Theme::hierarchy([
+            Theme::new(theme_dir('base'), 'default_base'), // parent
+            Theme::new(theme_dir($theme), $theme), // child
+      ]));
 
       // register extensions
+      $themeEngine->loadExtension(new League\Plates\Extension\Asset(public_dir()));
       $themeEngine->registerFunction('settings', 'settings');
     }
 

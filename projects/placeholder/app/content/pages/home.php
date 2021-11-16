@@ -13,4 +13,4 @@ $content = [
     ]
 ];
 
-serve_template('base/templates/home_template', $content);
+serve_template('templates/home_template', $content);

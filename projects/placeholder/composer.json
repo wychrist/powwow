@@ -1,5 +1,5 @@
 {
     "require": {
-        "league/plates": "^3.4"
+        "league/plates": "^3.0-dev"
     }
 }
