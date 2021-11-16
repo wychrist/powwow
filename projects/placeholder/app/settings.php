@@ -4,7 +4,7 @@ if(!defined('WYCHRIST_INIT')){
 }
 
 return [
-  'theme' => 'base',
+  'theme' => env('DEFAULT_THEME', 'base'),
   'menu' => 'menus.php',
   'routes' => 'routes.php',
   'socials' => [

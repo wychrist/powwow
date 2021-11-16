@@ -1,5 +1,6 @@
 {
     "require": {
-        "league/plates": "^3.0-dev"
+        "league/plates": "^3.0-dev",
+        "symfony/dotenv": "^5.3"
     }
 }

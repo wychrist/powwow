@@ -87,6 +87,28 @@ if (!function_exists('handle_route')) {
     }
   }
 }
+if (!function_exists('theme_engine')) {
+  function env(string $name, $default = null)
+  {
+    $value = $default;
+    if (array_key_exists($name, $_ENV)) {
+      $value = $_ENV[$name];
+      if ($value) {
+        $booleanValues = [
+          'true' => true,
+          'false' => false,
+          't' => true,
+          'f' => false,
+        ];
+        $temp = strtolower($value);
+        if (array_key_exists($temp, $booleanValues)) {
+          $value = $booleanValues[$temp];
+        }
+      }
+    }
+    return $value;
+  }
+}
 
 if (!function_exists('theme_engine')) {
   function theme_engine(string $template = '')
@@ -94,12 +116,10 @@ if (!function_exists('theme_engine')) {
     static $themeEngine;
     if (!$themeEngine) {
 
-      // $themeEngine = new League\Plates\Engine(theme_dir(settings('theme')));
-
       $theme = settings('theme');
-      $themeEngine= Engine::fromTheme(Theme::hierarchy([
-            Theme::new(theme_dir('base'), 'default_base'), // parent
-            Theme::new(theme_dir($theme), $theme), // child
+      $themeEngine = Engine::fromTheme(Theme::hierarchy([
+        Theme::new(theme_dir('base'), 'default_base'), // parent
+        Theme::new(theme_dir($theme), $theme), // child
       ]));
 
       // register extensions
