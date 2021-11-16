@@ -39,6 +39,7 @@ services:
        - ${HTTPS_PORT}:443
      volumes:
         - ./congregate:/backend/congregate
+        - ./projects/placeholder:/backend/placeholder
         - ./wordpress:/backend/wordpress
         - ./devtools/adminer:/backend/devtools/adminer
         - ./docker/nginx/sites:/etc/nginx/conf.d
@@ -104,6 +105,7 @@ services:
         - GROUP_NAME=${GROUP_NAME}
     volumes:
       - ./congregate:/backend/congregate
+      - ./projects/placeholder:/backend/placeholder
       - ./wordpress:/backend/wordpress
       - ./devtools/adminer:/backend/devtools/adminer
     networks:
