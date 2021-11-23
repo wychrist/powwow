@@ -7,6 +7,7 @@ class Page
   private array $attributes = [];
 
   public string $title = '';
+  public string $subtitle = '';
   public string $intro = '';
   public string $content = '';
   public string $image = '';
