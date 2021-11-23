@@ -1,4 +1,7 @@
 <?php
+
+use App\Cms\Page;
+
 if(!defined('WYCHRIST_INIT')){
   exit;
 }
@@ -10,7 +13,12 @@ $content = [
     'images' => [
       'first' => '',
       'second' => ''
-    ]
+    ],
 ];
 
-serve_template('templates/home_template', $content);
+
+$data = [
+   'page' => new Page($content)
+];
+
+serve_template('templates/home_template', $data);
