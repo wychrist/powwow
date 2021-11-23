@@ -7,9 +7,11 @@ if(!defined('WYCHRIST_INIT')){
 }
 
 $content = [
-    'title' => 'Wychrist',
-    'homepage_title' => 'Who we are?',
-    'our_description' => 'Wyreema Christian description here',
+    'title' => 'Wyreema Christians',
+    'subtitle' => 'Simply Christians',
+    'intro' => 'intro string',
+    'content' => 'content for body of page',
+    'image' => './assets/paper_theme_v2/img/header-samuel-mcgarrigle-GVRRtaLj3LU-unsplash.jpg',
     'images' => [
       'first' => '',
       'second' => ''
@@ -17,8 +19,11 @@ $content = [
 ];
 
 
+
+$page =  new Page($content);
+
 $data = [
-   'page' => new Page($content)
+   'page' => $page
 ];
 
 serve_template('templates/home_template', $data);

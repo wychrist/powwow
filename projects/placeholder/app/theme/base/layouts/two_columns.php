@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<head>
+<html lang="en">
 
-     <?php $this->insert('sections/header_css') ?>
+<head>
+     <?php $this->insert('sections/header_css', compact('page')) ?>
 </head>
+
 <body>
   <div style="background-color: blue;">
      <?php $this->insert('sections/header') ?>
@@ -17,6 +19,7 @@
   <div style="background-color: red;">
     <?=$this->section('content'); ?>
   </div>
+  
   <div style="background-color: pink;">
      <?php $this->insert('sections/footer') ?>
   </div>
