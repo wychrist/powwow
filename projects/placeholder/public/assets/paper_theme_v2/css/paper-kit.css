@@ -6647,7 +6647,7 @@ License - nucleoapp.com/license/
   background-color: #b2afab;
   background-position: center center;
   background-size: cover;
-  min-height: 75vh;
+  min-height: 80vh;
   max-height: 999px;
   overflow: hidden;
   position: relative;
@@ -6815,7 +6815,7 @@ License - nucleoapp.com/license/
 }
 
 .title-brand {
-  max-width: 730px;
+  max-width: 930px;
   margin: 0 auto;
   position: relative;
   text-align: center;
@@ -6836,8 +6836,8 @@ License - nucleoapp.com/license/
 }
 
 .presentation-title {
-  font-size: 10vw;
-  font-weight: 700;
+  font-size: 6vw;
+  font-weight: 600;
   margin: 0;
   color: #ffffff;
   background: #fbf8ec;
@@ -6850,8 +6850,19 @@ License - nucleoapp.com/license/
 }
 
 .presentation-subtitle {
-  font-size: 5vw;
+  font-size: 3vw;
   color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .presentation-title {
+    font-size: 4em;
+    font-weight: 800;
+  }
+  .presentation-subtitle {
+    font-size: 2em;
+    font-weight: 500;
+  }
 }
 
 .category-absolute {
@@ -6951,6 +6962,13 @@ License - nucleoapp.com/license/
 .section-gold {
   background-color: #caac90;
   color: #ffffff;
+}
+
+.section-gold a,
+.section-brown a,
+.section-light-blue a {
+  color: black;
+  font-weight: 400;
 }
 
 .section-brown {
@@ -7099,7 +7117,7 @@ License - nucleoapp.com/license/
 
 /*          Changes for small display      */
 
-@media (max-width: 767px) {
+@media (max-width: 991px) {
   #cd-vertical-nav {
     display: none !important;
   }
