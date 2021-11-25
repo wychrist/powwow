@@ -15,10 +15,10 @@ class Page
 
   public function __construct(array $attributes  = [])
   {
-    foreach($attributes as $name => $value) {
+    foreach ($attributes as $name => $value) {
       $this->{$name} = $value;
     }
-   // $this->attributes = $attributes; 
+    // $this->attributes = $attributes; 
   }
 
   public function __get($name)
@@ -28,11 +28,10 @@ class Page
 
   public function __set($name, $value)
   {
-    if(isset($this->{$name})) {
+    if (isset($this->{$name})) {
       $this->{$name} = $value;
     } else {
       $this->attributes[$name] = $value;
     }
   }
-
 }
