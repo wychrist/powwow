@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-default" color-on-scroll="200">
+<nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-info" color-on-scroll="200">
   <div class="container">
     <div class="navbar-translate">
       <a class="navbar-brand" href="./" rel="tooltip" title=<?= $page->title ?> data-placement="bottom" target="_blank">
