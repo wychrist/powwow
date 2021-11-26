@@ -67,6 +67,18 @@ if (!function_exists('settings')) {
   }
 }
 
+if (!function_exists('get_data')) {
+  function get_data(string $name = '')
+  {
+    if ($name) {
+      $data = include __DIR__ . '/content/data/' . $name . '.php';
+    } else {
+      $data = '';
+    }
+    return $data;
+  }
+}
+
 if (!function_exists('theme_dir')) {
   function theme_dir(string $append = ''): string
   {
@@ -125,6 +137,7 @@ if (!function_exists('theme_engine')) {
       // register extensions
       $themeEngine->loadExtension(new League\Plates\Extension\Asset(public_dir()));
       $themeEngine->registerFunction('settings', 'settings');
+      $themeEngine->registerFunction('get_data', 'get_data');
     }
 
     return $template ? $themeEngine->make($template) : $themeEngine;

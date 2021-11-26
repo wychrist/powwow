@@ -1,12 +1,16 @@
 <?php
 return [
- [
-'name' => 'Elder one',
-  'image' => 'path'
- ] ,
+  [
+    'name' => 'Bill Dusza',
+    'image' => './assets/img/bill.webp',
+    'bio' => 'A description about a human. They like to drink piña colada and walk in the rain.',
+    'office' => 'President',
+  ],
 
   [
-'name' => 'Elder two',
-  'image' => 'path'
- ] 
+    'name' => 'Kerron Martin',
+    'image' => './assets/img/kerron.webp',
+    'bio' => 'A description about a human. They like to drink piña colada and walk in the rain.',
+    'office' => '',
+  ],
 ];
