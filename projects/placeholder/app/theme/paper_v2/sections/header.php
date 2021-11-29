@@ -13,20 +13,15 @@
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav">
+        <?php
+          $menus = include content_dir('menus.php');
+        ?>
+        <?php foreach($menus as $aMenu) : ?>
         <li class="nav-item">
-          <a href="./" class="nav-link" rel="tooltip" title="Homepage" data-placement="bottom" target="_blank">
-            <p>Home</p>
+          <a href="<?=$aMenu->link ?>" class="nav-link" rel="tooltip" title="<?=$aMenu->label ?>" data-placement="bottom">
+            <p><?=$aMenu->label ?></p>
           </a>
-        </li>
-        <li class="nav-item">
-          <a href="./about-us" class="nav-link" rel="tooltip" title="About Us" data-placement="bottom" target="_blank">
-            <p>About Us</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./contact-us" class="nav-link" rel="tooltip" title="Contact Us" data-placement="bottom" target="_blank">
-            <p>Contact Us</p>
-          </a>
+        <?php endforeach; ?>
         </li>
         <?php if ($page->facebook) : ?>
           <li class="nav-item">
