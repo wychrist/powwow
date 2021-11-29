@@ -1,8 +1,6 @@
 <?php
 $maxColumns = 4;
-$elders = $this->get_data('list_of_elders');
-$numElders = sizeof($elders);
-
+$elders =  include_once content_dir('data/list_of_elders.php'); // this list is only used here
 ?>
 
 <div class="container">
@@ -13,19 +11,15 @@ $numElders = sizeof($elders);
         <div class="card card-profile">
           <div class="card-body">
             <div class="card-avatar">
-              <img src="<?= $elder['image'] ?>" alt="Photo of <?= $elder['name'] ?>">
+              <img src="<?= $elder->image ?>" alt="Photo of <?= $elder->name ?>">
             </div>
             <div class="card-body">
               <div class="author">
-                <h4 class="card-title"><?= $elder['name'] ?></h4>
-                <?php if ($elder['office']) : ?>
-                  <h6 class="card-category"><?= $elder['office'] ?></h6>
-                <?php else : ?>
-                  <h6 class="card-category">Elder</h6>
-                <?php endif; ?>
+                <h4 class="card-title"><?= $elder->name ?></h4>
+                  <h6 class="card-category"><?= $elder->office ?></h6>
               </div>
               <p class="card-description text-center">
-                <?= $elder['bio'] ?>
+                <?= $elder->bio ?>
               </p>
             </div>
           </div>
