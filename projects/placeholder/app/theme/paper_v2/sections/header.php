@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-info" color-on-scroll="200">
   <div class="container">
     <div class="navbar-translate">
-      <a class="navbar-brand" href="./" rel="tooltip" title=<?= $page->title ?> data-placement="bottom" target="_blank">
+      <a class="navbar-brand" href="/" rel="tooltip" title=<?= $page->title ?> data-placement="bottom">
         <?= $page->title ?>
       </a>
       <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,20 +13,15 @@
     </div>
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav">
+        <?php
+          $menus = include content_dir('menus.php');
+        ?>
+        <?php foreach($menus as $aMenu) : ?>
         <li class="nav-item">
-          <a href="./" class="nav-link" rel="tooltip" title="Homepage" data-placement="bottom" target="_blank">
-            <p>Home</p>
+          <a href="<?=$aMenu->link ?>" class="nav-link" rel="tooltip" title="<?=$aMenu->label ?>" data-placement="bottom">
+            <p><?=$aMenu->label ?></p>
           </a>
-        </li>
-        <li class="nav-item">
-          <a href="./about-us" class="nav-link" rel="tooltip" title="About Us" data-placement="bottom" target="_blank">
-            <p>About Us</p>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="./contact-us" class="nav-link" rel="tooltip" title="Contact Us" data-placement="bottom" target="_blank">
-            <p>Contact Us</p>
-          </a>
+        <?php endforeach; ?>
         </li>
         <?php if ($page->facebook) : ?>
           <li class="nav-item">
