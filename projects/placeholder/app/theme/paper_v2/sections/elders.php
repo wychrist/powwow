@@ -4,7 +4,7 @@ $elders =  include_once content_dir('data/list_of_elders.php'); // this list is 
 ?>
 
 <div class="container">
-  <h1 class="text-center">Elders</h1>
+  <h1 class="text-center title">Elders</h1>
   <div class="row">
     <?php foreach ($elders as $elder) : ?>
       <div class="col-md-6">
@@ -16,7 +16,7 @@ $elders =  include_once content_dir('data/list_of_elders.php'); // this list is 
             <div class="card-body">
               <div class="author">
                 <h4 class="card-title"><?= $elder->name ?></h4>
-                  <h6 class="card-category"><?= $elder->office ?></h6>
+                <h6 class="card-category"><?= $elder->office ?></h6>
               </div>
               <p class="card-description text-center">
                 <?= $elder->bio ?>

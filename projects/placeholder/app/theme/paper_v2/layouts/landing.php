@@ -1,22 +1,17 @@
 <!--
 =========================================================
- Paper Kit 2 - v2.2.0
+* Paper Kit Pro - v2.3.1
 =========================================================
 
- Product Page: https://www.creative-tim.com/product/paper-kit-2
- Copyright 2019 Creative Tim (https://www.creative-tim.com)
- Licensed under MIT (https://github.com/creativetimofficial/paper-kit-2/blob/master/LICENSE.md)
+* Product Page: https://www.creative-tim.com/product/paper-kit-2-pro
+* Copyright 2020 Creative Tim (https://www.creative-tim.com)
 
- Coded by Creative Tim
+Coded by www.creative-tim.com
 
-=========================================================
+ =========================================================
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
-
-<?php
-$page->elder_section = render_template('fragment/elders');
-?>
-
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -84,12 +79,24 @@ $page->elder_section = render_template('fragment/elders');
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
     <script src="./assets/paper_theme_v2/js/plugins/nouislider.min.js" type="text/javascript"></script>
     <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-    <script src="./assets/paper_theme_v2/js/plugins/moment.min.js"></script>
-    <script src="./assets/paper_theme_v2/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="./assets/paper_theme_v2/js/plugins/moment.min.js"></script><!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
+    <script src="./assets/paper_theme_v2/js/plugins/bootstrap-tagsinput.js"></script>
+    <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
+    <script src="./assets/paper_theme_v2/js/plugins/bootstrap-selectpicker.js" type="text/javascript"></script>
+    <!--	Plugin for Datetimepicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
+    <script src="./assets/paper_theme_v2/js/plugins/bootstrap-datetimepicker.js" type="text/javascript"></script>
+    <!--  Plugin for presentation page - isometric cards  -->
+    <script src="./assets/paper_theme_v2/js/plugins/presentation-page/main.js"></script>
+    <!--  Vertical nav - dots -->
+    <script src="./assets/paper_theme_v2/demo//vertical-nav.js" type="text/javascript"></script>
+    <!--  Photoswipe files -->
+    <script src="./assets/paper_theme_v2/js/plugins/photo_swipe/photoswipe.min.js"></script>
+    <script src="./assets/paper_theme_v2/js/plugins/photo_swipe/photoswipe-ui-default.min.js"></script>
+    <script src="./assets/paper_theme_v2/js/plugins/photo_swipe/init-gallery.js"></script>
+    <!--  for Jasny fileupload -->
+    <script src="./assets/paper_theme_v2/js/plugins/jasny-bootstrap.min.js"></script>
     <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-    <script src="./assets/paper_theme_v2/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
-    <!--  Google Maps Plugin    -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <script src="./assets/paper_theme_v2/js/paper-kit.js?v=2.3.1" type="text/javascript"></script>
     <script>
       $(document).ready(function() {
 
@@ -107,6 +114,10 @@ $page->elder_section = render_template('fragment/elders');
               close: 'fa fa-remove'
             }
           });
+        }
+
+        if (window_width >= 768) {
+          $(window).on('scroll', pk.checkScrollForPresentationPage);
         }
 
         function scrollToDownload() {
