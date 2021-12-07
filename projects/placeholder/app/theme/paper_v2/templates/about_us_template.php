@@ -9,7 +9,34 @@ $this->layout('layouts/landing', compact('page')) ?>
 
 
 <?php $this->start('section1'); ?>
-<div class="container">
+<?php if (isset($section1)) : ?>
+  <div class="container">
+    <h1><?= $section1->title ?></h1>
+    <?php if ($section1->children): ?>
+      <?php foreach ($section1->children as $index => $child) :  ?>
+        <?php if ($index && $index % 2 != 0) :  ?>
+          <div class="row">
+            <img class="col-md-6" style="padding: 15 px;" src="<?=$child->image ?>" alt="Worship at Wyreema Hall">
+            <div class="col-md-6">
+              <p><?= $child->content ?></p>
+            </div>
+          </div>
+        <?php else : ?>
+          <div class="row">
+            <div class="col-md-6">
+              <p><?= $child->content ?></p>
+            </div>
+            <img class="col-md-6" style="padding: 15 px;" src="<?=$child->image ?>" alt="Worship at Wyreema Hall">
+          </div>
+
+        <?php endif; ?>
+
+      <?php endforeach  ?>
+  </div>
+<?php endif ?>
+
+<?php endif;  ?>
+<!-- <div class="container">
   <h1>Who we are</h1>
   <div class="row">
     <img class="col-md-6" style="padding: 15 px;" src="./assets/img/worship_hall_1.webp" alt="Worship at Wyreema Hall">
@@ -25,7 +52,7 @@ $this->layout('layouts/landing', compact('page')) ?>
       <img class="col-md-6" style="padding: 15 px;" src="./assets/img/worship_hall_2.webp" alt="Worship at Wyreema Hall">
     </div>
   </div>
-</div>
+</div> -->
 <?php $this->stop(); ?>
 
 <?php
