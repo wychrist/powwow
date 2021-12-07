@@ -14,21 +14,40 @@ $this->layout('layouts/landing', compact('page'))
 
 
 <?php $this->start('section1'); ?>
-<?php $this->insert('sections/block_alternating', ['content' => $community_involvement]);
-?>
-<div class="container">
-  <h1 class='title'>Who we are</h1>
-  <div class="card card-plain card-blog">
-    <div class="row">
-      <div class="col-md-6">
-        <img class="card card-image" src="./assets/img/worship_hall_1.webp" alt="Worship at Wyreema Hall">
-      </div>
-      <div class="col-md-6">
-        <div class='card-body'>
-          <p class='card-description'> We are a non-denomination christian church that meets at a Wyreema Community Hall every Sunday morning for worship and Thursday night for bible study. Our Sunday worship is a capella Church of Christ style.
-          </p>
-        </div>
-      </div>
+<?php if (isset($section1)) : ?>
+  <div class="container">
+    <h1><?= $section1->title ?></h1>
+    <?php if ($section1->children) : ?>
+      <?php foreach ($section1->children as $index => $child) :  ?>
+        <?php if ($index && $index % 2 != 0) :  ?>
+          <div class="row">
+            <img class="col-md-6" style="padding: 15 px;" src="<?= $child->image ?>" alt="Worship at Wyreema Hall">
+            <div class="col-md-6">
+              <p><?= $child->content ?></p>
+            </div>
+          </div>
+        <?php else : ?>
+          <div class="row">
+            <div class="col-md-6">
+              <p><?= $child->content ?></p>
+            </div>
+            <img class="col-md-6" style="padding: 15 px;" src="<?= $child->image ?>" alt="Worship at Wyreema Hall">
+          </div>
+
+        <?php endif; ?>
+
+      <?php endforeach  ?>
+  </div>
+<?php endif ?>
+
+<?php endif;  ?>
+<!-- <div class="container">
+  <h1>Who we are</h1>
+  <div class="row">
+    <img class="col-md-6" style="padding: 15 px;" src="./assets/img/worship_hall_1.webp" alt="Worship at Wyreema Hall">
+    <div class="col-md-6">
+      <p> We are a non-denomination christian church that meets at a Wyreema Community Hall every Sunday morning for worship and Thursday night for bible study. Our Sunday worship is a capella Church of Christ style.
+      </p>
     </div>
   </div>
   <div class="card card-plain card-blog">
@@ -44,7 +63,7 @@ $this->layout('layouts/landing', compact('page'))
       </div>
     </div>
   </div>
-</div>
+</div> -->
 <?php $this->stop(); ?>
 
 <?php

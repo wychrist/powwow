@@ -12,6 +12,8 @@ class Page
   public string $content = '';
   public string $image = '';
   public array $images = [];
+  public string $type = '';
+  private ?Page $parent = null;
 
   public function __construct(array $attributes  = [])
   {
