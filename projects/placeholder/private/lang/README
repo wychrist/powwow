@@ -1,0 +1,3 @@
+- Directory created for a locale should be created as language -> country
+- General translation that is not specific to a country should be place in the language file eg: "en.php" or "en.json" for English
+- Translation for a particular country should be place in a file that is named by the language follow by the country Abbrivation eg: "en_US.php" or "en_US.json" for english United States

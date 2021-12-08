@@ -1,9 +1,10 @@
+#!/usr/bin/env php
 <?php
 
 /**
  * Project composer's vendor directory
  */
-define('FLUID_VENDOR_DIR', dirname(__DIR__) . '/private/vendor');
+define('FLUID_VENDOR_DIR', dirname(__FILE__) . '/private/vendor');
 
 $composerFile = FLUID_VENDOR_DIR . '/autoload.php';
 
@@ -14,4 +15,4 @@ if (file_exists($composerFile)) {
     die();
 }
 
-app()->handle(false);
+app()->handle();

@@ -1,0 +1,56 @@
+{
+    "name": "fluid/app",
+    "type": "project",
+    "description": "Pama  Application",
+    "keywords": [
+        "pama application"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jibao Mansaray",
+            "email": "jibaomansaray@gmail.com"
+        }
+    ],
+    "config": {
+        "vendor-dir": "private/vendor",
+        "sort-packages": true,
+        "optimize-autoloader": true,
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "filp/whoops": "dev-master",
+        "maximebf/debugbar": "dev-master",
+        "symfony/var-dumper": "^4",
+        "psy/psysh": "dev-main"
+    },
+    "require": {
+        "fluid/framework": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../fluid_dev/*"
+        },
+        {
+            "type": "path",
+            "url": "../fluid_dev/*/*/*"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "private/constants.php",
+            "private/init.php"
+        ],
+        "psr-4": {
+            "App\\": "private/app/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "\\Fluid\\Composer\\Script::doAutoloadDump"
+        ]
+    }
+}

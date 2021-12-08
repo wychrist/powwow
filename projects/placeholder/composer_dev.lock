@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4172ef2f5779345f07a0b4a0b22e6493",
+    "content-hash": "3f824d37e6d20d10c172571dca91764e",
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
@@ -1009,16 +1009,10 @@
         {
             "name": "fluid/framework",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/kpama/fluidframework.git",
-                "reference": "b01a4919173163889d283a5d2899a0291087d690"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/kpama/fluidframework/zipball/b01a4919173163889d283a5d2899a0291087d690",
-                "reference": "b01a4919173163889d283a5d2899a0291087d690",
-                "shasum": ""
+                "type": "path",
+                "url": "../fluid_dev/fluidframework",
+                "reference": "2d81dad356db3fa48d36e54faa2e2fd561b2e022"
             },
             "require": {
                 "doctrine/orm": "^2.10",
@@ -1058,7 +1052,6 @@
                 "phpunit/phpunit": "^9.5",
                 "symfony/var-dumper": "^4"
             },
-            "default-branch": true,
             "type": "project",
             "extra": {
                 "fluid": {
@@ -1100,11 +1093,9 @@
             "keywords": [
                 "fluid,library,framework"
             ],
-            "support": {
-                "source": "https://github.com/kpama/fluidframework/tree/master",
-                "issues": "https://github.com/kpama/fluidframework/issues"
-            },
-            "time": "2021-12-08T04:38:47+00:00"
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "graham-campbell/result-type",
@@ -1277,71 +1268,6 @@
                 "source": "https://github.com/ircmaxell/password_compat/tree/master"
             },
             "time": "2017-03-20T21:17:32+00:00"
-        },
-        {
-            "name": "league/plates",
-            "version": "v3.x-dev",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/thephpleague/plates.git",
-                "reference": "9a55e710574e38106bde23fa16489a2ef6eabf16"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/plates/zipball/9a55e710574e38106bde23fa16489a2ef6eabf16",
-                "reference": "9a55e710574e38106bde23fa16489a2ef6eabf16",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.0|^8.0"
-            },
-            "require-dev": {
-                "mikey179/vfsstream": "^1.6",
-                "phpunit/phpunit": "^9.5",
-                "squizlabs/php_codesniffer": "^3.5"
-            },
-            "default-branch": true,
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "League\\Plates\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jonathan Reinink",
-                    "email": "jonathan@reinink.ca",
-                    "role": "Developer"
-                },
-                {
-                    "name": "RJ Garcia",
-                    "email": "ragboyjr@icloud.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Plates, the native PHP template system that's fast, easy to use and easy to extend.",
-            "homepage": "https://platesphp.com",
-            "keywords": [
-                "league",
-                "package",
-                "templates",
-                "templating",
-                "views"
-            ],
-            "support": {
-                "issues": "https://github.com/thephpleague/plates/issues",
-                "source": "https://github.com/thephpleague/plates/tree/v3"
-            },
-            "time": "2021-07-28T23:59:37+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -6190,7 +6116,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "fluid/framework": 20,
-        "league/plates": 20,
         "filp/whoops": 20,
         "maximebf/debugbar": 20,
         "psy/psysh": 20
@@ -6199,5 +6124,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
