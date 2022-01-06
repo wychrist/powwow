@@ -166,8 +166,8 @@ services:
   mail:
     image: mailhog/mailhog
     ports:
-      - ${MAILHOG_PORT}:1025
-      - ${MAILHOG_UI}:8025
+      - ${MAILHOG_PORT:-1025}:1025
+      - ${MAILHOG_UI:-8025}:8025
     networks:
       - webnetwork
     hostname: mailhog
