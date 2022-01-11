@@ -14,29 +14,29 @@
     <div class="collapse navbar-collapse justify-content-end" id="navigation">
       <ul class="navbar-nav">
         <?php
-          $menus = include content_dir('menus.php');
+        $menus = include content_dir('menus.php');
         ?>
-        <?php foreach($menus as $aMenu) : ?>
-        <li class="nav-item">
-          <a href="<?=$aMenu->link ?>" class="nav-link" rel="tooltip" title="<?=$aMenu->label ?>" data-placement="bottom">
-            <p><?=$aMenu->label ?></p>
-          </a>
-        <?php endforeach; ?>
-        </li>
-        <?php if ($page->facebook) : ?>
+        <?php foreach ($menus as $aMenu) : ?>
           <li class="nav-item">
-            <a href="<?= $page->facebook ?>" class="btn btn-facebook-bg facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
-              <i class="fa fa-facebook-square"></i>
+            <a href="<?= $aMenu->link ?>" class="nav-link" rel="tooltip" title="<?= $aMenu->label ?>" data-placement="bottom">
+              <p><?= $aMenu->label ?></p>
             </a>
+          <?php endforeach; ?>
           </li>
-        <?php endif; ?>
-        <?php if ($page->twitter) : ?>
-          <li class="nav-item">
-            <a href="<?= $page->twitter ?>" class="btn btn-twitter-bg twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
-              <i class="fa fa-twitter"></i>
-            </a>
-          </li>
-        <?php endif; ?>
+          <?php if ($page->facebook) : ?>
+            <li class="nav-item">
+              <a href="<?= $page->facebook ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+          <?php endif; ?>
+          <?php if ($page->twitter) : ?>
+            <li class="nav-item">
+              <a href="<?= $page->twitter ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
+                <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+          <?php endif; ?>
       </ul>
     </div>
   </div>

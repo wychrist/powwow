@@ -23,21 +23,21 @@
       <ul>
         <?php if ($page->facebook) : ?>
           <li class="nav-item">
-            <a href="<?= $page->facebook ?>" class="btn btn-facebook-bg facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
+            <a href="<?= $page->facebook ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
               <i class="fa fa-facebook-square"></i> Facebook
             </a>
           </li>
         <?php endif; ?>
         <?php if ($page->twitter) : ?>
           <li class="nav-item">
-            <a href="<?= $page->twitter ?>" class="btn btn-twitter-bg twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
+            <a href="<?= $page->twitter ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
               <i class="fa fa-twitter"></i> Twitter
             </a>
           </li>
         <?php endif; ?>
         <?php if ($page->github) : ?>
           <li>
-            <a href="<?= $page->github ?>" class="btn btn-github-bg btn-github sharrre btn-round" rel="tooltip" title="Star on Github">
+            <a href="<?= $page->github ?>" class="btn btn-github btn-github sharrre btn-round" rel="tooltip" title="Star on Github">
               <i class="fa fa-github"></i> Github
             </a>
           </li>

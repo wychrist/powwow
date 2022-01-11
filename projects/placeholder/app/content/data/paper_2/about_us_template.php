@@ -17,8 +17,8 @@ $content = [
 $page = new Page($content);
 
 $whoWeAre = new Page(['title' => 'Who we are']);
-$whoWeArePage1Content = ['content' => 'Who we are section, page 1', 'image' => './assets/img/worship_hall_1.webp'];
-$whoWeArePage2Content = ['content' => 'Who we are section, page 2', 'image' => './assets/img/worship_hall_2.webp'];
+$whoWeArePage1Content = ['content' => 'Who we are section, page 1. A paragraph of a nice size. Some more content in the same paragraph. More sentences with expanding stories, lots of detail and descriptive words. Some more content in the same paragraph. More sentences with expanding stories, lots of detail and descriptive words.', 'image' => './assets/img/worship_hall_1.webp'];
+$whoWeArePage2Content = ['content' => 'Who we are section, page 2. A paragraph of a nice size. Some more content in the same paragraph. More sentences with expanding stories, lots of detail and descriptive words.', 'image' => './assets/img/worship_hall_2.webp'];
 
 $whoWeAre->children = [
   new Page($whoWeArePage1Content),
