@@ -1,4 +1,3 @@
-
 <!--
 =========================================================
  Paper Kit 2 - v2.2.0
@@ -21,8 +20,8 @@ The above copyright notice and this permission notice shall be included in all c
 
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="./assets/paper_theme_v2/img//apple-icon.png">
-  <link rel="icon" type="image/png" href="./assets/paper_theme_v2/img//favicon.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/paper_theme_v2/img//apple-icon.png">
+  <link rel="icon" type="image/png" href="/assets/paper_theme_v2/img//favicon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
     Paper Kit by Creative Tim
@@ -89,26 +88,26 @@ The above copyright notice and this permission notice shall be included in all c
     </div>
   </nav>
   <!-- End Navbar -->
-  <div class="page-header section-dark" style="background-image: url('./assets/paper_theme_v2/img/antoine-barres.jpg')">
+  <div class="page-header section-dark" style="background-image: url('/assets/paper_theme_v2/img/antoine-barres.jpg')">
     <div class="filter"></div>
     <div class="content-center">
       <div class="container">
         <div class="title-brand">
           <h1 class="presentation-title">Paper Kit 2</h1>
           <div class="fog-low">
-            <img src="./assets/paper_theme_v2/img/fog-low.png" alt="">
+            <img src="/assets/paper_theme_v2/img/fog-low.png" alt="">
           </div>
           <div class="fog-low right">
-            <img src="./assets/paper_theme_v2/img/fog-low.png" alt="">
+            <img src="/assets/paper_theme_v2/img/fog-low.png" alt="">
           </div>
         </div>
         <h2 class="presentation-subtitle text-center">Make your mark with a Free Bootstrap 4 UI Kit! </h2>
       </div>
     </div>
-    <div class="moving-clouds" style="background-image: url('./assets/paper_theme_v2/img/clouds.png'); "></div>
+    <div class="moving-clouds" style="background-image: url('/assets/paper_theme_v2/img/clouds.png'); "></div>
     <h6 class="category category-absolute">Designed and coded by
       <a href="https://www.creative-tim.com" target="_blank">
-        <img src="./assets/paper_theme_v2/img/creative-tim-white-slim2.png" class="creative-tim-logo">
+        <img src="/assets/paper_theme_v2/img/creative-tim-white-slim2.png" class="creative-tim-logo">
       </a>
     </h6>
   </div>
@@ -121,7 +120,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div id="buttons">
           <div class="title">
             <h3>Buttons
-              <br/>
+              <br />
               <small>Pick your style</small>
             </h3>
           </div>
@@ -162,7 +161,7 @@ The above copyright notice and this permission notice shall be included in all c
               <button type="button" class="btn btn-outline-neutral btn-round">Neutral</button>
             </div>
           </div>
-          <br/>
+          <br />
           <div class="row">
             <div class="col-md-8">
               <button type="button" class="btn btn-default btn-round">Default</button>
@@ -218,7 +217,7 @@ The above copyright notice and this permission notice shall be included in all c
             </div>
           </div>
         </div>
-        <br/>
+        <br />
         <div class="row">
           <div class="col-sm-6 col-lg-3">
             <div class="title">
@@ -287,7 +286,7 @@ The above copyright notice and this permission notice shall be included in all c
                 <input type="checkbox" data-toggle="switch" checked="" data-on-color="primary" data-off-color="primary">
                 <span class="toggle"></span>
               </label>
-              <br/>
+              <br />
               <label>
                 <input type="checkbox" data-toggle="switch" data-off-color="primary" data-on-color="primary">
                 <span class="toggle"></span>
@@ -310,7 +309,7 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="title">
           <h3>Menu</h3>
         </div>
-        <br/>
+        <br />
         <div class="row">
           <div class="col-md-6">
             <nav class="navbar navbar-expand-lg bg-primary">
@@ -385,7 +384,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </div>
       <div id="navbar">
-        <div class="navigation-example" style="background-image: url('./assets/paper_theme_v2/img/ilya-yakover.jpg');">
+        <div class="navigation-example" style="background-image: url('/assets/paper_theme_v2/img/ilya-yakover.jpg');">
           <nav class="navbar navbar-expand-lg bg-primary">
             <div class="container">
               <a class="navbar-brand" href="#">Primary Color</a>
@@ -755,7 +754,7 @@ The above copyright notice and this permission notice shall be included in all c
             <span class="note">Quote</span>
             <blockquote class="blockquote">
               <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam.</p>
-              <br/>
+              <br />
               <footer class="blockquote-footer">Someone famous in
                 <cite title="source Title">Source Title</cite>
               </footer>
@@ -788,13 +787,13 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="typography-line">
             <h2>
               <span class="note">Small tag</span>Header with small subtitle
-              <br/>
+              <br />
               <small>".small" is a tag for the headers</small>
             </h2>
           </div>
         </div>
       </div>
-      <br/>
+      <br />
       <div id="images">
         <div class="container">
           <div class="title">
@@ -803,22 +802,22 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="row">
             <div class="col-sm-6 col-md-3">
               <h4 class="images-title">Rounded Image</h4>
-              <img src="./assets/paper_theme_v2/img/uriel-soberanes.jpg" class="img-rounded img-responsive" alt="Rounded Image">
+              <img src="/assets/paper_theme_v2/img/uriel-soberanes.jpg" class="img-rounded img-responsive" alt="Rounded Image">
               <div class="img-details">
                 <div class="author">
-                  <img src="./assets/paper_theme_v2/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                  <img src="/assets/paper_theme_v2/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                 </div>
                 <p>Sonia Green </p>
               </div>
             </div>
             <div class="col-sm-3 col-md-2 mr-auto ml-auto">
               <h4 class="images-title">Circle Image</h4>
-              <img src="./assets/paper_theme_v2/img/faces/kaci-baum-2.jpg" class="img-circle img-no-padding img-responsive" alt="Rounded Image">
+              <img src="/assets/paper_theme_v2/img/faces/kaci-baum-2.jpg" class="img-circle img-no-padding img-responsive" alt="Rounded Image">
               <p class="text-center">Brigitte Bardot</p>
             </div>
             <div class="col-sm-3 col-md-2 mr-auto">
               <h4 class="images-title">Thumbnail</h4>
-              <img src="./assets/paper_theme_v2/img/faces/erik-lucatero-2.jpg" class="img-thumbnail img-responsive" alt="Rounded Image">
+              <img src="/assets/paper_theme_v2/img/faces/erik-lucatero-2.jpg" class="img-thumbnail img-responsive" alt="Rounded Image">
               <p class="text-center">John Keynes</p>
             </div>
           </div>
@@ -921,19 +920,19 @@ The above copyright notice and this permission notice shall be included in all c
                 </ol>
                 <div class="carousel-inner" role="listbox">
                   <div class="carousel-item active">
-                    <img class="d-block img-fluid" src="./assets/paper_theme_v2/img/soroush-karimi.jpg" alt="First slide">
+                    <img class="d-block img-fluid" src="/assets/paper_theme_v2/img/soroush-karimi.jpg" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
                       <p>Somewhere</p>
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block img-fluid" src="./assets/paper_theme_v2/img/federico-beccari.jpg" alt="Second slide">
+                    <img class="d-block img-fluid" src="/assets/paper_theme_v2/img/federico-beccari.jpg" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
                       <p>Somewhere else</p>
                     </div>
                   </div>
                   <div class="carousel-item">
-                    <img class="d-block img-fluid" src="./assets/paper_theme_v2/img/joshua-stannard.jpg" alt="Third slide">
+                    <img class="d-block img-fluid" src="/assets/paper_theme_v2/img/joshua-stannard.jpg" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
                       <p>Here it is</p>
                     </div>
@@ -958,11 +957,11 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="row">
           <div class="col-lg-6 col-md-12">
             <h2 class="title">Nucleo Icons</h2>
-            <br/>
+            <br />
             <p class="description">
               Paper Kit comes with 100 custom icons made by our friends from NucleoApp. The official package contains over 2.100 thin icons which are looking great in combination with Paper Kit Make sure you check all of them and use those that you like the most.
             </p>
-            <br/>
+            <br />
             <a href="nucleo-icons.html" class="btn btn-danger btn-round" target="_blank">View Demo Icons</a>
             <a href="https://nucleoapp.com/?ref=1712" class="btn btn-outline-danger btn-round" target="_blank">View All Icons</a>
           </div>
@@ -998,7 +997,7 @@ The above copyright notice and this permission notice shall be included in all c
         </div>
       </div>
     </div>
-    <div class="section section-image section-login" style="background-image: url('./assets/paper_theme_v2/img/login-image.jpg');">
+    <div class="section section-image section-login" style="background-image: url('/assets/paper_theme_v2/img/login-image.jpg');">
       <div class="container">
         <div class="row">
           <div class="col-lg-4 col-md-6 mx-auto">
@@ -1052,13 +1051,13 @@ The above copyright notice and this permission notice shall be included in all c
         <div class="row example-page">
           <div class="col-md-6 text-center">
             <a href="examples/landing.html" target="_blank">
-              <img src="./assets/paper_theme_v2/img/examples/landing-page.png" alt="Rounded Image" class="img-rounded img-responsive" style="width: 100%">
+              <img src="/assets/paper_theme_v2/img/examples/landing-page.png" alt="Rounded Image" class="img-rounded img-responsive" style="width: 100%">
               <a href="./examples/landing-page.html" class="btn btn-outline-neutral btn-round" target="_blank">Landing Page</a>
             </a>
           </div>
           <div class="col-md-6 text-center">
             <a href="examples/profile.html" target="_blank">
-              <img src="./assets/paper_theme_v2/img/examples/profile-page.png" alt="Rounded Image" class="img-rounded img-responsive" style="width: 100%">
+              <img src="/assets/paper_theme_v2/img/examples/profile-page.png" alt="Rounded Image" class="img-rounded img-responsive" style="width: 100%">
               <a href="./examples/profile-page.html" class="btn btn-outline-neutral btn-round" target="_blank">Profile Page</a>
             </a>
           </div>
@@ -1080,7 +1079,8 @@ The above copyright notice and this permission notice shall be included in all c
           <div class="col-md-8 ml-auto mr-auto">
             <h2 class="title">Want more?</h2>
             <p class="description">We've just launched
-              <a href="http://demos.creative-tim.com/paper-kit-2-pro/presentation.html?ref=utp-pk2-demos" class="text-danger" target="_blank">Paper Kit 2 PRO</a>. It has a huge number of components, sections and example pages.</p>
+              <a href="http://demos.creative-tim.com/paper-kit-2-pro/presentation.html?ref=utp-pk2-demos" class="text-danger" target="_blank">Paper Kit 2 PRO</a>. It has a huge number of components, sections and example pages.
+            </p>
           </div>
           <div class="col-sm-5 ml-auto mr-auto">
             <a href="https://www.creative-tim.com/product/paper-kit-2-pro?ref=utp-pk-demos" class="btn btn-info btn-round" target="_blank">
@@ -1137,18 +1137,18 @@ The above copyright notice and this permission notice shall be included in all c
       </div>
     </footer>
     <!--   Core JS Files   -->
-    <script src="./assets/paper_theme_v2/js/core/jquery.min.js" type="text/javascript"></script>
-    <script src="./assets/paper_theme_v2/js/core/popper.min.js" type="text/javascript"></script>
-    <script src="./assets/paper_theme_v2/js/core/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/paper_theme_v2/js/core/jquery.min.js" type="text/javascript"></script>
+    <script src="/assets/paper_theme_v2/js/core/popper.min.js" type="text/javascript"></script>
+    <script src="/assets/paper_theme_v2/js/core/bootstrap.min.js" type="text/javascript"></script>
     <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-    <script src="./assets/paper_theme_v2/js/plugins/bootstrap-switch.js"></script>
+    <script src="/assets/paper_theme_v2/js/plugins/bootstrap-switch.js"></script>
     <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-    <script src="./assets/paper_theme_v2/js/plugins/nouislider.min.js" type="text/javascript"></script>
+    <script src="/assets/paper_theme_v2/js/plugins/nouislider.min.js" type="text/javascript"></script>
     <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-    <script src="./assets/paper_theme_v2/js/plugins/moment.min.js"></script>
-    <script src="./assets/paper_theme_v2/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+    <script src="/assets/paper_theme_v2/js/plugins/moment.min.js"></script>
+    <script src="/assets/paper_theme_v2/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
     <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-    <script src="./assets/paper_theme_v2/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
+    <script src="/assets/paper_theme_v2/js/paper-kit.js?v=2.2.0" type="text/javascript"></script>
     <!--  Google Maps Plugin    -->
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <script>

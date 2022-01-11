@@ -15,7 +15,7 @@ class IndexController extends Controller
             'subtitle' => 'Simply Christians - with a very long subtitle, does it look silly',
             'intro' => 'intro string',
             'content' => 'content for body of page',
-            'image' => './assets/img/church.jpg',
+            'image' => '/assets/img/church.jpg',
             'images' => [
                 'first' => '',
                 'second' => ''
