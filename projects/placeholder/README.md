@@ -5,7 +5,7 @@ Placeholder is the public facing website for your organisation or Church.
 ## Developing setup
  - Make sure your docker environment is up and running `docker-compose up -d`
  - ssh into the database container: `docker-compose exec db bash`
- - login to mariadb: `msyql -uroot -p[your root password default is dbpassword]`
+ - login to mariadb: `mysql -uroot -p[your root password default is dbpassword]`
  - create a database call **placeholder**: `create database placeholder`
  - ssh into the php container: `docker-compose exec phpfpm bash`
  - cd into the placeholder folder: `cd placeholder`
