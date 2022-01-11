@@ -11,6 +11,7 @@ Placeholder is the public facing website for your organisation or Church.
  - cd into the placeholder folder: `cd placeholder`
  - cp .env.example to .env: `cp .env.example .env`
  - run composer install or update: `composer install` or `composer upgrade`
+ - generate secret key: `php artisan key:generate`
  - migrate your database: `php artisan migrate`
  - seed the database: `php artisan db:seed`
  - exit the php container and ssh into **nodejs** container: `docker-compose exec nodejs bash`
