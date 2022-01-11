@@ -10682,6 +10682,10 @@ video {
   border-radius: 12px 12px 0 0;
 }
 
+.card-profile .card-body {
+  padding-top: 1.25rem !important;
+}
+
 .card-profile .card-body .card-title {
   margin-top: 5px !important;
 }
@@ -16571,3 +16575,13 @@ License - nucleoapp.com/license/
 /* all icon font classes list here */
 
 /*# sourceMappingURL=kit-pro.css.map */
+
+.card-body:not(.card) {
+  padding-top: 0px;
+  margin-top: 0px;
+}
+
+.card-body:not(.card) > .card-description:first-child {
+  padding-top: 0px;
+  margin-top: 0px;
+}
