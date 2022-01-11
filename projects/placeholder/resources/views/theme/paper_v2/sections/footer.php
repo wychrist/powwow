@@ -46,7 +46,7 @@
     </nav>
     <div class="credits ml-auto">
       <span class="copyright">
-        © 2021, made with <i class="fa fa-heart heart"></i> by Christopher & Jibao Mansaray.
+        © 2021, made with <i class="fa fa-heart heart"></i> by Christopher Kelly & Jibao Mansaray.
       </span>
     </div>
   </div>
