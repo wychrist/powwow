@@ -137,6 +137,7 @@ services:
       - ./projects/realtime:/projects/realtime
       - ./projects/chat:/projects/chat
       - ./projects/congregate:/projects/congregate
+      - ./projects/placeholder:/projects/placholder
     hostname: nodejs
     command: tail -F anything
     ports:
