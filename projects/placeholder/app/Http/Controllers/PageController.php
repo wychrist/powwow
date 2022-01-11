@@ -27,7 +27,7 @@ class PageController extends Controller
         $whoWeAreChildren = $data['whoWeAre']->children;
 
         // we are overriding the content for the first page in section 1
-        $whoWeAreChildren[0]->content = 'We are working hard in wyreema and we are loving it';
+        // $whoWeAreChildren[0]->content = 'We are working hard in wyreema and we are loving it';
 
         $data['whoWeAre']->children = $whoWeAreChildren;
 
