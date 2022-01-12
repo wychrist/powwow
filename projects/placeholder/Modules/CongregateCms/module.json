@@ -1,0 +1,13 @@
+{
+    "name": "CongregateCms",
+    "alias": "congregatecms",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateCms\\Providers\\CongregateCmsServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
