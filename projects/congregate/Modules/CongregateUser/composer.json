@@ -1,10 +1,10 @@
 {
-    "name": "nwidart/congregateuser",
-    "description": "",
+    "name": "wychrist/congregateuser",
+    "description": "Congregate User's permission and role management module",
     "authors": [
         {
-            "name": "Nicolas Widart",
-            "email": "n.widart@gmail.com"
+            "name": "Congregate Developers",
+            "email": "developers@wychrist.org.au"
         }
     ],
     "extra": {
