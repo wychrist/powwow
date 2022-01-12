@@ -5,7 +5,7 @@
 set -e
 set -x
 
-CURRENT_BRANCH="0.1"
+CURRENT_BRANCH="main"
 
 function split()
 {
@@ -21,7 +21,7 @@ function remote()
 git pull origin $CURRENT_BRANCH
 
 # register remote
-remote congregage_user git@github.com:wychrist/congregate_user.git
+remote congregate_user git@github.com:wychrist/congregate_user.git
 
 
 # call split
