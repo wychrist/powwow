@@ -1,0 +1,13 @@
+{
+    "name": "CongregateUser",
+    "alias": "congregateuser",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateUser\\Providers\\CongregateUserServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
