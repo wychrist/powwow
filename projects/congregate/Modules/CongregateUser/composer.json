@@ -19,5 +19,8 @@
         "psr-4": {
             "Modules\\CongregateUser\\": ""
         }
+    },
+    "suggest": {
+        "laravel/fortify": "If this is the 'host' application"
     }
 }
