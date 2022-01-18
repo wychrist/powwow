@@ -22,7 +22,9 @@ git pull origin $CURRENT_BRANCH
 
 # register remote
 remote congregate_user git@github.com:wychrist/congregate_user.git
+remote congregate_cms git@github.com:wychrist/congregate_cms.git
 
 
 # call split
 split 'projects/congregate/Modules/CongregateUser' congregate_user
+split 'projects/placeholder/Modules/CongregateCms' congregate_cms
