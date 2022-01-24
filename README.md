@@ -8,6 +8,8 @@ Collection of applications with some Christian specific features
  - Social Network
  - Church Management system
 
+## Prerequisites
+You need to have node, yarn, and docker installed.
 
 ## Getting started
 
