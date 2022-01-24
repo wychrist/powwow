@@ -7,3 +7,8 @@ Collection of applications with some Christian specific features
  - Micro blogging
  - Social Network
  - Church Management system
+
+
+## Getting started
+
+Run `yarn && yarn setup`
