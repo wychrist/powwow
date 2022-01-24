@@ -1,3 +1,5 @@
 {
-    "CongregateUser": true
+    "CongregateUser": true,
+    "CongregateContract": true,
+    "CongregateHeadless": true
 }

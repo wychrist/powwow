@@ -21,10 +21,16 @@ function remote()
 git pull origin $CURRENT_BRANCH
 
 # register remote
-remote congregate_user git@github.com:wychrist/congregate_user.git
+remote congregate_contract git@github.com:wychrist/congregate_contract.git
 remote congregate_cms git@github.com:wychrist/congregate_cms.git
+remote congregate_headless git@github.com:wychrist/congregate_headless.git
+remote congregate_theme git@github.com:wychrist/congregate_theme.git
+remote congregate_user git@github.com:wychrist/congregate_user.git
 
 
 # call split
-split 'projects/congregate/Modules/CongregateUser' congregate_user
+split 'projects/placeholder/Modules/CongregateContract' congregate_contract
 split 'projects/placeholder/Modules/CongregateCms' congregate_cms
+split 'projects/congregate/Modules/CongregateHeadless' congregate_headless
+split 'projects/placeholder/Modules/CongregateTheme' congregate_theme
+split 'projects/congregate/Modules/CongregateUser' congregate_user
