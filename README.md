@@ -12,3 +12,5 @@ Collection of applications with some Christian specific features
 ## Getting started
 
 Run `yarn && yarn setup`
+
+Bring up docker environment `docker-compose up -d`
