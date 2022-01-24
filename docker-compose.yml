@@ -65,7 +65,7 @@ services:
     ports:
      - ${MEILI_PORT:-7700}:7700
     hostname: meilisearch
-         
+
   db:
     build:
       context: ./docker/db
@@ -131,13 +131,13 @@ services:
     hostname: supervisor
 
   nodejs:
-    build: 
+    build:
       context: ./docker/nodejs
     volumes:
       - ./projects/realtime:/projects/realtime
       - ./projects/chat:/projects/chat
       - ./projects/congregate:/projects/congregate
-      - ./projects/placeholder:/projects/placholder
+      - ./projects/placeholder:/projects/placeholder
     hostname: nodejs
     command: tail -F anything
     ports:
@@ -148,7 +148,7 @@ services:
       - webnetwork
 
   mongo:
-    build: 
+    build:
        context: ./docker/mongo
     restart: always
     environment:
@@ -172,15 +172,15 @@ services:
     networks:
       - webnetwork
     hostname: mailhog
-  
+
   minio:
     build:
       context: './docker/minio'
-    volumes: 
+    volumes:
       - ./docker/minio/data:/data
     ports:
       - ${MINIO_PORT}:9000
-    environment: 
+    environment:
       MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY:-minio}
       MINIO_SECRET_KEY: ${MINIO_SECRET_KEY:-minio123}
     networks:
