@@ -1,0 +1,13 @@
+{
+    "name": "CongregateContract",
+    "alias": "congregatecontract",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateContract\\Providers\\CongregateContractServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

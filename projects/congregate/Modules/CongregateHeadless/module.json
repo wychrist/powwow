@@ -1,0 +1,13 @@
+{
+    "name": "CongregateHeadless",
+    "alias": "congregateheadless",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateHeadless\\Providers\\CongregateHeadlessServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

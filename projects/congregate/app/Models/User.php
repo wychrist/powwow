@@ -41,4 +41,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $user->createToken(env('APP_NAME', 'default'));
+        });
+    }
 }

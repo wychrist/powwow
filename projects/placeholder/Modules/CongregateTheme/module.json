@@ -1,0 +1,13 @@
+{
+    "name": "CongregateTheme",
+    "alias": "congregatetheme",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateTheme\\Providers\\CongregateThemeServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
