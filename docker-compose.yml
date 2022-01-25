@@ -1,4 +1,4 @@
-version: "3"
+version: "3.8"
 services:
   workspace:
     build:
@@ -195,4 +195,5 @@ services:
 
 networks:
   webnetwork:
+    name: ${NETWORK_NAME:-congregate_dev}
     driver: bridge
