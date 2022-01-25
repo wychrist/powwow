@@ -29,7 +29,7 @@ remote congregate_user git@github.com:wychrist/congregate_user.git
 
 
 # call split
-split 'projects/placeholder/Modules/CongregateContract' congregate_contract
+split 'projects/congregate/Modules/CongregateContract' congregate_contract
 split 'projects/placeholder/Modules/CongregateCms' congregate_cms
 split 'projects/congregate/Modules/CongregateHeadless' congregate_headless
 split 'projects/placeholder/Modules/CongregateTheme' congregate_theme
