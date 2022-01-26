@@ -34,3 +34,7 @@ split 'projects/placeholder/Modules/CongregateCms' congregate_cms
 split 'projects/congregate/Modules/CongregateHeadless' congregate_headless
 split 'projects/placeholder/Modules/CongregateTheme' congregate_theme
 split 'projects/congregate/Modules/CongregateUser' congregate_user
+
+
+#deploy docks
+git push -f git@github.com:wychrist/congregate_user.git master:gh-pages
