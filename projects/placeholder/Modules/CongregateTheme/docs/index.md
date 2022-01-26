@@ -1,1 +1,1 @@
-# Congregate User Module
+# Congregate Theme Module
