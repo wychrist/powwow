@@ -37,4 +37,4 @@ split 'projects/congregate/Modules/CongregateUser' congregate_user
 
 
 #deploy docks
-git push -f git@github.com:wychrist/congregate_user.git master:gh-pages
+git push -f git@github.com:wychrist/congregate_user.git main:gh-pages
