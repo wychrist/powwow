@@ -13,7 +13,7 @@ class ThemeProvider extends ServiceProvider
      */
     public function register()
     {
-        include_once base_path('functions.php');
+        // include_once base_path('functions.php');
     }
 
     /**
