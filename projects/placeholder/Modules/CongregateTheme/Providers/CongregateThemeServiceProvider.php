@@ -4,6 +4,7 @@ namespace Modules\CongregateTheme\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Support\Facades\Config;
 
 class CongregateThemeServiceProvider extends ServiceProvider
 {
@@ -37,6 +38,7 @@ class CongregateThemeServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        require_once dirname(__DIR__) .'/helpers.php';
         $this->app->register(RouteServiceProvider::class);
     }
 
