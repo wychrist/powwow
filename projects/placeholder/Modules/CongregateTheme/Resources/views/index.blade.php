@@ -1,4 +1,4 @@
-@extends('congregatetheme::layouts.master')
+@extends('theme::layouts.two_columns_right')
 
 @section('content')
     <h1>Hello World</h1>
