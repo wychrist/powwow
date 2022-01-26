@@ -11,7 +11,13 @@ class PageController extends Controller
         $content = '';
         if ($id == '5' || $id == 'about-us') {
             $content = $this->getAboutusPage();
+        } else {
+            $path = content_dir("data/pages/{$id}.php");
+            if(file_exists($path)) {
+                $content = include $path;
+            }
         }
+
 
 
         return $content;
