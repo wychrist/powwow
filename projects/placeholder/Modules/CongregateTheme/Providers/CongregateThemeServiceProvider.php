@@ -73,6 +73,48 @@ class CongregateThemeServiceProvider extends ServiceProvider
         ], ['views', $this->moduleNameLower . '-module-views']);
 
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
+
+        // theme setup
+        $themeBasePath = module_path($this->moduleName, 'Resources/views/themes/base');
+        $currentTheme = Config::get('congregatetheme.theme_directory') .'/'. Config::get('congregatetheme.theme');
+
+        // the base theme
+        $this->loadViewsFrom([
+            $themeBasePath
+        ],'base_theme');
+
+        // the current active theme
+        $this->loadViewsFrom([
+            $currentTheme,
+            $themeBasePath
+        ],'theme');
+
+        // the current active theme's layouts
+        $this->loadViewsFrom([
+            $currentTheme .'/layouts',
+            $themeBasePath .'/layouts'
+        ],'theme_layout');
+
+        // the current active theme's templates
+        $this->loadViewsFrom([
+            $currentTheme .'/templates',
+            $themeBasePath .'/templates'
+        ],'theme_template');
+
+        // the current active theme's sections
+        $this->loadViewsFrom([
+            $currentTheme .'/sections',
+            $themeBasePath .'/sections'
+        ],'theme_section');
+
+        // the current active theme's fragments
+        $this->loadViewsFrom([
+            $currentTheme .'/fragments',
+            $themeBasePath .'/fragments'
+        ],'theme_fragments');
+
+        // @todo register component aganist the base theme
+
     }
 
     /**
