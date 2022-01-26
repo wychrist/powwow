@@ -38,6 +38,6 @@ class PageController extends Controller
         $data['whoWeAre']->children = $whoWeAreChildren;
 
 
-        return render_template('templates/about_us_template', $data);
+        return render_template('about_us', $data)->render();
     }
 }
