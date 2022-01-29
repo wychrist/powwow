@@ -22,7 +22,6 @@
               <p><?= $aMenu->label ?></p>
             </a>
           <?php endforeach; ?>
-          <pre><?= print_r($page) ?></pre>
           </li>
           <?php if ($page->facebook) : ?>
             <li class="nav-item">
