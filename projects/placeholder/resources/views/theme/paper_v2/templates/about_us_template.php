@@ -1,15 +1,11 @@
 <?php
-// Data
-$page->facebook = $this->settings('socials.facebook');
-$page->google = $this->settings('socials.google');
-$page->twitter = $this->settings('socials.twitter');
-$page->github = $this->settings('socials.github');
-$page->email = $this->settings('socials.email');
+$page->facebook = $this->settings('app.socials.facebook');
+$page->google = $this->settings('app.socials.google');
+$page->twitter = $this->settings('app.socials.twitter');
+$page->github = $this->settings('app.socials.github');
+$page->email = $this->settings('app.socials.email');
 
-// Layout
-$this->layout('layouts/landing', compact('page'))
-
-?>
+$this->layout('layouts/landing', compact('page')) ?>
 
 
 <?php $this->start('section1'); ?>
