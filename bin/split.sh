@@ -26,6 +26,7 @@ remote congregate_cms git@github.com:wychrist/congregate_cms.git
 remote congregate_headless git@github.com:wychrist/congregate_headless.git
 remote congregate_theme git@github.com:wychrist/congregate_theme.git
 remote congregate_user git@github.com:wychrist/congregate_user.git
+remote congreate_setting git@github.com:wychrist/congregate_setting.git
 
 
 # call split
@@ -34,3 +35,4 @@ split 'projects/placeholder/Modules/CongregateCms' congregate_cms
 split 'projects/congregate/Modules/CongregateHeadless' congregate_headless
 split 'projects/placeholder/Modules/CongregateTheme' congregate_theme
 split 'projects/congregate/Modules/CongregateUser' congregate_user
+split 'projects/placeholder/Modules/CongregateSetting' congregate_setting
