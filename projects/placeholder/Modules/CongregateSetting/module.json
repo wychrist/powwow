@@ -1,0 +1,13 @@
+{
+    "name": "CongregateSetting",
+    "alias": "congregatesetting",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateSetting\\Providers\\CongregateSettingServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
