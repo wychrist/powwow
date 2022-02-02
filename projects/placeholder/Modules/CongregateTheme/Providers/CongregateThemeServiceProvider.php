@@ -38,7 +38,7 @@ class CongregateThemeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        require_once dirname(__DIR__) .'/helpers.php';
+        require_once dirname(__DIR__) .'/theme_helpers.php';
         $this->app->register(RouteServiceProvider::class);
     }
 
