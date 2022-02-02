@@ -4,9 +4,7 @@
     "description": "",
     "keywords": [],
     "priority": 0,
-    "providers": [
-        "Modules\\CongregateContract\\Providers\\CongregateContractServiceProvider"
-    ],
+    "providers": [],
     "aliases": {},
     "files": [],
     "requires": []
