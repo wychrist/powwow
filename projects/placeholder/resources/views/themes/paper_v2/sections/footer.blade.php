@@ -1,5 +1,5 @@
 <div class="container">
-  <?php if ($page->email) : ?>
+  <?php if (settings('app.contact.email')) : ?>
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
@@ -10,9 +10,9 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <a href="mailto:<?= $page->email ?>">
+        <a href="mailto:<?= settings('app.contact.email') ?>">
           <h3 class="text-center">
-            <?= $page->email ?></h3>
+            <?= settings('app.contact.email') ?></h3>
         </a>
       </div>
       <div class="col-md-3"></div>
@@ -21,23 +21,23 @@
   <div class="row">
     <nav class="footer-nav">
       <ul>
-        <?php if ($page->facebook) : ?>
+        <?php if (settings('app.socials.facebook')) : ?>
           <li class="nav-item">
-            <a href="<?= $page->facebook ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
+            <a href="<?= settings('app.socials.facebook') ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
               <i class="fa fa-facebook-square"></i> Facebook
             </a>
           </li>
         <?php endif; ?>
-        <?php if ($page->twitter) : ?>
+        <?php if (settings('app.socials.twitter')) : ?>
           <li class="nav-item">
-            <a href="<?= $page->twitter ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
+            <a href="<?= settings('app.socials.twitter') ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
               <i class="fa fa-twitter"></i> Twitter
             </a>
           </li>
         <?php endif; ?>
-        <?php if ($page->github) : ?>
+        <?php if (settings('app.socials.github')) : ?>
           <li>
-            <a href="<?= $page->github ?>" class="btn btn-github btn-github sharrre btn-round" rel="tooltip" title="Star on Github">
+            <a href="<?= settings('app.socials.github') ?>" class="btn btn-github btn-github sharrre btn-round" rel="tooltip" title="Star on Github">
               <i class="fa fa-github"></i> Github
             </a>
           </li>

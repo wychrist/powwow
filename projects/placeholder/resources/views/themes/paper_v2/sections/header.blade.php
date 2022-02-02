@@ -23,16 +23,16 @@
             </a>
           <?php endforeach; ?>
           </li>
-          <?php if ($page->facebook) : ?>
+          <?php if (settings('app.socials.facebook')) : ?>
             <li class="nav-item">
-              <a href="<?= $page->facebook ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
+              <a href="<?= settings('app.socials.facebook') ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
                 <i class="fa fa-facebook-square"></i>
               </a>
             </li>
           <?php endif; ?>
-          <?php if ($page->twitter) : ?>
+          <?php if (settings('app.socials.twitter')) : ?>
             <li class="nav-item">
-              <a href="<?= $page->twitter ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
+              <a href="<?= settings('app.socials.twitter') ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
                 <i class="fa fa-twitter"></i>
               </a>
             </li>
