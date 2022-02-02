@@ -2,7 +2,7 @@
     "private": true,
     "scripts": {
         "dev": "npm run development",
-         "docs:dev": "vitepress dev docs",
+        "docs:dev": "vitepress dev docs",
         "docs:build": "vitepress build docs",
         "docs:serve": "vitepress serve docs",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
