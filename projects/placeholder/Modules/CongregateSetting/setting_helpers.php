@@ -53,7 +53,7 @@ if (!function_exists('set_settings')) {
         foreach ($keyValue as $name => $value) {
             $pieces = explode('.', $name);
             if (count($pieces) >= 2) {
-                $setting = Setting::withTrashed()->where([
+                $setting = Setting::where([
                     'module' => $pieces[0],
                     'name' => $pieces[1]
                 ])->firstOrNew([
