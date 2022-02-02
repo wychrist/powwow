@@ -24,6 +24,7 @@ class CongregateSettingServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
         $this->registerTranslations();
         $this->registerConfig();
         $this->registerViews();
@@ -37,6 +38,7 @@ class CongregateSettingServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        require_once dirname(__DIR__) .'/setting_helpers.php';
         $this->app->register(RouteServiceProvider::class);
     }
 
