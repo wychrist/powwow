@@ -37,12 +37,6 @@ class PageController extends Controller
 
         //$data['whoWeAre']->children = $whoWeAreChildren;
 
-        $page->facebook = settings('app.socials.facebook');
-        $page->google = settings('app.socials.google');
-        $page->twitter = settings('app.socials.twitter');
-        $page->github = settings('app.socials.github');
-        $page->email = settings('app.socials.email');
-
         return render_template('about_us', $data)->render();
     }
 }
