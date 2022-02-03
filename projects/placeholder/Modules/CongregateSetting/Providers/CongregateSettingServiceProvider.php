@@ -4,6 +4,8 @@ namespace Modules\CongregateSetting\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\CongregateContract\Setting\SettingInterface;
+use Modules\CongregateSetting\Setting;
 
 class CongregateSettingServiceProvider extends ServiceProvider
 {
@@ -40,6 +42,9 @@ class CongregateSettingServiceProvider extends ServiceProvider
     {
         require_once dirname(__DIR__) .'/setting_helpers.php';
         $this->app->register(RouteServiceProvider::class);
+        $this->app->singleton(SettingInterface::class, function() {
+             return new Setting();
+        });
     }
 
     /**
