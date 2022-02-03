@@ -210,10 +210,10 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'nwidart',
+        'vendor' => 'wychrist',
         'author' => [
-            'name' => 'Nicolas Widart',
-            'email' => 'n.widart@gmail.com',
+            'name' => 'Wychrist Developers',
+            'email' => 'developers@wychrist.org.au',
         ],
     ],
 
