@@ -1,5 +1,7 @@
 <?php
 
+namespace Modules\CongregateSetting;
+
 use Illuminate\Support\Facades\Cache;
 use Modules\CongregateSetting\Entities\Setting;
 
