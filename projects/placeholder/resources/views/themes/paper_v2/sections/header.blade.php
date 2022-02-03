@@ -1,4 +1,7 @@
 <!-- Navbar -->
+<?php
+   $setting = app('Modules\CongregateContract\Setting\SettingInterface');
+?>
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-info" color-on-scroll="200">
   <div class="container">
     <div class="navbar-translate">
@@ -23,16 +26,16 @@
             </a>
           <?php endforeach; ?>
           </li>
-          <?php if (settings('app.socials.facebook')) : ?>
+          <?php if ($setting->get('app.socials.facebook')) : ?>
             <li class="nav-item">
-              <a href="<?= settings('app.socials.facebook') ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
+              <a href="<?= $setting->get('app.socials.facebook') ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
                 <i class="fa fa-facebook-square"></i>
               </a>
             </li>
           <?php endif; ?>
-          <?php if (settings('app.socials.twitter')) : ?>
+          <?php if ($setting->get('app.socials.twitter')) : ?>
             <li class="nav-item">
-              <a href="<?= settings('app.socials.twitter') ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
+              <a href="<?= $setting->get('app.socials.twitter') ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
                 <i class="fa fa-twitter"></i>
               </a>
             </li>
