@@ -1,5 +1,8 @@
+<?php
+   $setting = app('Modules\CongregateContract\Setting\SettingInterface');
+?>
 <div class="container">
-  <?php if (settings('app.contact.email')) : ?>
+  <?php if ($setting->get('app.contact.email')) : ?>
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
@@ -10,9 +13,9 @@
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <a href="mailto:<?= settings('app.contact.email') ?>">
+        <a href="mailto:<?= $setting->get('app.contact.email') ?>">
           <h3 class="text-center">
-            <?= settings('app.contact.email') ?></h3>
+            <?= $setting->get('app.contact.email') ?></h3>
         </a>
       </div>
       <div class="col-md-3"></div>
@@ -21,23 +24,23 @@
   <div class="row">
     <nav class="footer-nav">
       <ul>
-        <?php if (settings('app.socials.facebook')) : ?>
+        <?php if ($setting->get('app.socials.facebook')) : ?>
           <li class="nav-item">
-            <a href="<?= settings('app.socials.facebook') ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
+            <a href="<?= $setting->get('app.socials.facebook') ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
               <i class="fa fa-facebook-square"></i> Facebook
             </a>
           </li>
         <?php endif; ?>
-        <?php if (settings('app.socials.twitter')) : ?>
+        <?php if ($setting->get('app.socials.twitter')) : ?>
           <li class="nav-item">
-            <a href="<?= settings('app.socials.twitter') ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
+            <a href="<?= $setting->get('app.socials.twitter') ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
               <i class="fa fa-twitter"></i> Twitter
             </a>
           </li>
         <?php endif; ?>
-        <?php if (settings('app.socials.github')) : ?>
+        <?php if ($setting->get('app.socials.github')) : ?>
           <li>
-            <a href="<?= settings('app.socials.github') ?>" class="btn btn-github btn-github sharrre btn-round" rel="tooltip" title="Star on Github">
+            <a href="<?= $setting->get('app.socials.github') ?>" class="btn btn-github btn-github sharrre btn-round" rel="tooltip" title="Star on Github">
               <i class="fa fa-github"></i> Github
             </a>
           </li>
