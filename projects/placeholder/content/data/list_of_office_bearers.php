@@ -17,7 +17,7 @@ $people = [
     'office' => 'Treasure',
   ],
   [
-    'name' => 'Unknown',
+    'name' => 'Chris',
     'image' => '/assets/img/kerron.webp',
     'bio' => 'A description about a human. They like to drink piña colada and walk in the rain.',
     'office' => 'Secretary',

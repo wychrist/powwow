@@ -16590,3 +16590,21 @@ License - nucleoapp.com/license/
     padding-top: 0px;
     margin-top: 5px;
 }
+
+.footer-black-left-col {
+    border-right: 1px solid #343a40;
+}
+
+.footer-black-right-col {
+    border-left: 1px solid #343a40;
+}
+
+.footer-black .nav-link {
+    color: #ddd;
+}
+
+.footer-black .nav-link:active,
+.footer-black .nav-link:hover,
+.footer-black .nav-link:focus {
+    color: #fff;
+}

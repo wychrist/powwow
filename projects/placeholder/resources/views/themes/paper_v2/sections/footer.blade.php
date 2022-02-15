@@ -1,24 +1,40 @@
 <?php
-   $setting = app('Modules\CongregateContract\Setting\SettingInterface');
+$setting = app('Modules\CongregateContract\Setting\SettingInterface');
 ?>
 <div class="container">
   <?php if ($setting->get('app.contact.email')) : ?>
     <div class="row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
-        <h2 class="text-center">Contact Us:</h2>
+      <div class="col-md-3">
+        <h3 class="text-center">Contact Us</h3>
       </div>
-      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h3 class="text-center">Contact Us</h3>
+      </div>
+      <div class="col-md-3">
+        <h3 class="text-center">Legal</h3>
+      </div>
     </div>
     <div class="row">
-      <div class="col-md-3"></div>
+      <div class="col-md-3 footer-black-left-col"></div>
       <div class="col-md-6">
         <a href="mailto:<?= $setting->get('app.contact.email') ?>">
           <h3 class="text-center">
             <?= $setting->get('app.contact.email') ?></h3>
         </a>
       </div>
-      <div class="col-md-3"></div>
+      <div class="col-md-3 footer-black-right-col">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/charity">Charity Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/legal">Legal Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/pages/incorporation">Incorporation Details</a>
+          </li>
+        </ul>
+      </div>
     </div>
   <?php endif; ?>
   <div class="row">
