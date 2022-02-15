@@ -4,7 +4,7 @@ namespace App\Cms;
 
 class Page
 {
-  private array $attributes = [];
+  protected array $attributes = [];
 
   public string $title = '';
   public string $subtitle = '';
@@ -20,7 +20,7 @@ class Page
     foreach ($attributes as $name => $value) {
       $this->{$name} = $value;
     }
-    // $this->attributes = $attributes; 
+    $this->attributes = $attributes;
   }
 
   public function __get($name)
