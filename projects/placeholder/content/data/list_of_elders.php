@@ -7,7 +7,7 @@ $elders = [
     'name' => 'Bill Dusza',
     'image' => '/assets/img/bill.webp',
     'bio' => 'A description about a human. They like to drink piña colada and walk in the rain.',
-    'office' => 'President',
+    'office' => 'Elder, President',
   ],
 
   [
@@ -18,7 +18,7 @@ $elders = [
   ],
 ];
 
-foreach($elders as $index => $data) {
+foreach ($elders as $index => $data) {
   $elders[$index] = new Elder($data);
 }
 return $elders;

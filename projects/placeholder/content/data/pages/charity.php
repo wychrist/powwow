@@ -4,8 +4,8 @@ use App\Cms\Page;
 
 $page = new Page();
 
-$page->title = "Page 1";
-$page->content = "This is page one content";
+$page->title = "Charity Details";
+$page->content = "Our Mission";
 
 
 
