@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\View;
+use Modules\CongregateContract\Setting\SettingInterface;
 
 if (!function_exists('app_root_dir')) {
     function app_root_dir(string $append = ''): string
@@ -57,6 +58,10 @@ if (!function_exists('render_template')) {
         if(isset($data['content'])) {
             View::share('content', $data['content']);
         }
+        if(!isset($data['setting'])) {
+            View::share('setting', app(SettingInterface::class));
+        }
+
         return view("theme_template::{$template}", $data);
     }
 }
