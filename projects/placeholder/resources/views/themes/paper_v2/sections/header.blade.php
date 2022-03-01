@@ -1,12 +1,12 @@
 <!-- Navbar -->
 <?php
-   $setting = app('Modules\CongregateContract\Setting\SettingInterface');
+$setting = app('Modules\CongregateContract\Setting\SettingInterface');
 ?>
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-info" color-on-scroll="200">
   <div class="container">
     <div class="navbar-translate">
-      <a class="navbar-brand" href="/" rel="tooltip" title="{{ $page->title }}" data-placement="bottom">
-        {{ $page->title }}
+      <a class="navbar-brand" href="/" rel="tooltip" title="{{ $setting->get('app.name') }}" data-placement="bottom">
+        {{ $setting->get('app.name') }}
       </a>
       <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-bar bar1"></span>
@@ -28,15 +28,29 @@
           </li>
           <?php if ($setting->get('app.socials.facebook')) : ?>
             <li class="nav-item">
-              <a href="<?= $setting->get('app.socials.facebook') ?>" class="btn btn-facebook facebook-sharrre btn-round" rel="tooltip" title="Like us on Facebook!">
+              <a href="<?= $setting->get('app.socials.facebook') ?>" class="btn btn-facebook btn-round" rel="tooltip" title="Like us on Facebook!">
                 <i class="fa fa-facebook-square"></i>
+              </a>
+            </li>
+          <?php endif; ?>
+          <?php if ($setting->get('app.socials.youtube')) : ?>
+            <li class="nav-item">
+              <a href="<?= $setting->get('app.socials.youtube') ?>" class="btn btn-youtube btn-round" rel="tooltip" title="Youtube">
+                <i class="fa fa-youtube"></i>
               </a>
             </li>
           <?php endif; ?>
           <?php if ($setting->get('app.socials.twitter')) : ?>
             <li class="nav-item">
-              <a href="<?= $setting->get('app.socials.twitter') ?>" class="btn btn-twitter twitter-sharrre btn-round" rel="tooltip" title="Tweet!">
+              <a href="<?= $setting->get('app.socials.twitter') ?>" class="btn btn-twitter btn-round" rel="tooltip" title="Tweet!">
                 <i class="fa fa-twitter"></i>
+              </a>
+            </li>
+          <?php endif; ?>
+          <?php if ($setting->get('app.socials.instagram')) : ?>
+            <li class="nav-item">
+              <a href="<?= $setting->get('app.socials.instagram') ?>" class="btn btn-instagram btn-round" rel="tooltip" title="Instagram">
+                <i class="fa fa-instagram"></i>
               </a>
             </li>
           <?php endif; ?>

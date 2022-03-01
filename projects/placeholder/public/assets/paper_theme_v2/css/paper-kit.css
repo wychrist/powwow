@@ -10163,7 +10163,7 @@ video {
     margin-top: 10px;
 }
 
-.card[data-background="image"]:after {
+.card[data-background="image"]::after {
     position: absolute;
     z-index: 1;
     width: 100%;
@@ -10174,6 +10174,13 @@ video {
     content: "";
     background-color: rgba(0, 0, 0, 0.56);
     border-radius: 12px;
+    transition-property: "background-color";
+    transition-duration: 0.3s;
+}
+
+.card[data-background="image"]:hover:after {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .card[data-background="image"] .card-category {
@@ -13725,11 +13732,6 @@ body {
     color: #ffffff;
 }
 
-.section-brown {
-    background-color: #a59e94;
-    color: #ffffff;
-}
-
 .section-light-blue {
     background-color: #51cbce;
     color: #ffffff;
@@ -13758,7 +13760,10 @@ body {
 .section-gold .card-plain .card-title,
 .section-dark .title,
 .section-dark .info-title,
-.section-dark .card-plain .card-title {
+.section-dark .card-plain .card-title,
+.section-brown .title,
+.section-brown .info-title,
+.section-brown .card-plain .card-title {
     color: #ffffff !important;
 }
 
@@ -13773,14 +13778,19 @@ body {
 .section-dark .category,
 .section-dark .description,
 .section-dark .card-plain .card-description,
-.section-dark .card-plain .card-category {
-    color: rgba(255, 255, 255, 0.7);
+.section-dark .card-plain .card-category,
+.section-brown .category,
+.section-brown .description,
+.section-brown .card-plain .card-description,
+.section-brown .card-plain .card-category {
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .section-image hr,
 .section-gold hr,
-.section-dark hr {
-    border-color: rgba(255, 255, 255, 0.19);
+.section-dark hr,
+.section-brown hr {
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .page-header .title,
@@ -13894,7 +13904,7 @@ body {
 }
 
 .section-brown {
-    background-color: #a59e94;
+    background-color: #43392c;
     color: #ffffff;
 }
 
@@ -16607,4 +16617,17 @@ License - nucleoapp.com/license/
 .footer-black .nav-link:hover,
 .footer-black .nav-link:focus {
     color: #fff;
+}
+
+p,
+.navbar,
+.brand,
+a,
+.td-name,
+td,
+button,
+input,
+select,
+textarea {
+    font-weight: 400;
 }

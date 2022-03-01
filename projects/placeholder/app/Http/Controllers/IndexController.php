@@ -11,10 +11,10 @@ class IndexController extends Controller
     public function indexAction()
     {
         $content = [
-            'title' => 'Wyreema Christians',
-            'subtitle' => 'Simply Christians - with a very long subtitle, does it look silly',
+            'title' => 'Wyreema Christians Inc.',
+            'subtitle' => 'Simply Christians meeting and worshipping in Wyreema',
             'intro' => 'intro string',
-            'content' => 'content for body of page',
+            'content' => '',
             'image' => '/assets/img/church.jpg',
             'images' => [
                 'first' => '',

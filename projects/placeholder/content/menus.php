@@ -18,21 +18,6 @@ $menuItemsData = [
     'link' => '/spiritual',
     'children' => []
   ],
-  'charity' => [
-    'label' => 'Charity Details',
-    'link' => '/charity',
-    'children' => []
-  ],
-  'incorporation' => [
-    'label' => 'Incorporation Details',
-    'link' => '/incorporation',
-    'children' => []
-  ],
-  'legal' => [
-    'label' => 'Legal Details',
-    'link' => '/legal',
-    'children' => []
-  ],
   'contact-us' => [
     'label' => 'Contact Us',
     'link' => '/contact-us',
