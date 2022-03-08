@@ -6980,7 +6980,7 @@ textarea.form-control {
     margin: 0px 0px;
     text-transform: uppercase;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 14px;
     line-height: 1.5em;
     padding: 15px 0;
 }
@@ -16619,6 +16619,10 @@ License - nucleoapp.com/license/
     color: #fff;
 }
 
+.bg-dark {
+    background-color: #151f20 !important;
+}
+
 p,
 .navbar,
 .brand,
@@ -16630,4 +16634,37 @@ input,
 select,
 textarea {
     font-weight: 400;
+}
+
+li.nav-item {
+    margin-bottom: auto;
+    margin-top: auto;
+}
+
+.navbar-buffer-item {
+    width: 5vw;
+    -ms-flex: 0 0 5vw;
+    flex: 0 0 5vw;
+    max-width: 5vw;
+}
+
+.navbar-buffer {
+    -ms-flex: 0 0 5%;
+    flex: 0 0 5%;
+    max-width: 5%;
+}
+
+.navbar-buffer-centre {
+    -ms-flex: 0 0 90%;
+    flex: 0 0 90%;
+    max-width: 90%;
+}
+
+.navbar .navbar-brand {
+    font-size: 20px;
+    padding-left: 5vw;
+}
+
+.navbar .navbar-nav .nav-item .nav-link p {
+    font-size: 16px;
 }

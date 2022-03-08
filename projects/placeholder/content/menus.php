@@ -13,11 +13,6 @@ $menuItemsData = [
     'link' => '/pages/about-us',
     'children' => []
   ],
-  'spiritual' => [
-    'label' => 'Spiritual',
-    'link' => '/spiritual',
-    'children' => []
-  ],
   'contact-us' => [
     'label' => 'Contact Us',
     'link' => '/contact-us',
