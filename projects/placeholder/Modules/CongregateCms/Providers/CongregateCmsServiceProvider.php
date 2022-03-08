@@ -28,6 +28,7 @@ class CongregateCmsServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        $this->app->register(RouteServiceProvider::class);
     }
 
     /**
@@ -37,7 +38,7 @@ class CongregateCmsServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->register(RouteServiceProvider::class);
+        // $this->app->register(RouteServiceProvider::class);
     }
 
     /**

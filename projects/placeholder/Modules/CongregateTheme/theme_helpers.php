@@ -52,19 +52,35 @@ if (!function_exists('theme_dir')) {
     }
 }
 
-if (!function_exists('render_template')) {
-    function render_template(string $template, array $data = [])
-    {
+if(!function_exists('inject_template_data')) {
+    function inject_template_data($data) {
         if(isset($data['content'])) {
             View::share('content', $data['content']);
         }
+
         if(!isset($data['setting'])) {
             View::share('setting', app(SettingInterface::class));
         }
 
-        return view("theme_template::{$template}", $data);
+        return $data;
     }
 }
+
+if (!function_exists('render_template')) {
+    function render_template(string $template, array $data = [])
+    {
+        $data = inject_template_data($data);
+        return view("theme_template::{$template}", $data)->render();
+    }
+}
+
+if(!function_exists('custom_template')) {
+    function custom_template(string $template, array $data = []) {
+        $data = inject_template_data($data);
+        return view($template, $data)->render();
+    }
+}
+
 if (!function_exists('serve_template')) {
     function serve_template(string $template, array $data = [])
     {
