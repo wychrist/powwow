@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'site_name' => env('SITE_NAME', 'Site Name'),
     'theme' => env('DEFAULT_THEME', 'base'),
     'socials' => [
         'facebook' => env('FACEBOOK_LINK'),

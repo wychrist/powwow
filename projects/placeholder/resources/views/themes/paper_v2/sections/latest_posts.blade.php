@@ -1,8 +1,8 @@
 <div class="container">
   <h1 class="title">The Latest</h1>
   <p></p>
-  <div class="row">
-    <div class="col-md-4">
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+    <div class="col">
       <div class="card" data-background="image" style="background-image: url('/assets/img/aaron-burden-9zsHNt5OpqE-unsplash.jpg')">
         <div class="card-body">
           <h6 class="card-category">Sunday Worship 13/02/22</h6>
@@ -15,7 +15,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col">
       <div class="card" data-background="image" style="background-image: url('/assets/img/aaron-burden-9zsHNt5OpqE-unsplash.jpg')">
         <div class="card-body">
           <h6 class="card-category">Sunday Worship 20/02/22</h6>
@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4">
+    <div class="col">
       <div class="card" data-background="image" style="background-image: url('/assets/img/aaron-burden-9zsHNt5OpqE-unsplash.jpg')">
         <div class="card-body">
           <h6 class="card-category">Sunday Worship 27/02/22</h6>

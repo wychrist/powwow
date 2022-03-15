@@ -18,9 +18,6 @@ Coded by www.creative-tim.com
 
 <head>
   @include('theme_section::header_css')
-  <!-- CSS Just for demo purpose, don't include it in your project
-  <link href="/assets/paper_theme_v2/demo/demo.css" rel="stylesheet" />
-  -->
 </head>
 
 <body class="index-page sidebar-collapse">

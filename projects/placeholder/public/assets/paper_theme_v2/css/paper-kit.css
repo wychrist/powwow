@@ -3156,7 +3156,7 @@ textarea {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
     font-family: "Montserrat", "Helvetica", Arial, sans-serif;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 h1,
@@ -3172,43 +3172,43 @@ h4,
 
 h1,
 .h1 {
-    font-size: 3.6em;
+    font-size: 4rem;
 }
 
 h2,
 .h2 {
-    font-size: 2.8em;
+    font-size: 3rem;
 }
 
 h3,
 .h3 {
-    font-size: 1.825em;
+    font-size: 2rem;
     line-height: 1.4;
     margin: 20px 0 0px;
 }
 
 h4,
 .h4 {
-    font-size: 1.6em;
+    font-size: 1.825rem;
     line-height: 1.2em;
 }
 
 h5,
 .h5 {
-    font-size: 1.35em;
+    font-size: 1.5rem;
     line-height: 1.4em;
 }
 
 h6,
 .h6 {
-    font-size: 0.9em;
+    font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;
     line-height: 1.5em;
 }
 
 p {
-    font-size: 15px;
+    font-size: 1.3rem;
     line-height: 1.5em;
     margin-bottom: 5px;
 }
@@ -3391,12 +3391,12 @@ body {
 }
 
 a {
-    color: #51bcda;
+    color: #fff5c6;
 }
 
 a:hover,
 a:focus {
-    color: #2ba9cd;
+    color: #be972a;
     text-decoration: none;
 }
 
@@ -10053,7 +10053,7 @@ video {
 }
 
 .card h6 {
-    font-size: 12px;
+    font-size: 1rem;
     margin: 0;
 }
 
@@ -16632,8 +16632,10 @@ td,
 button,
 input,
 select,
-textarea {
+textarea,
+.btn {
     font-weight: 400;
+    font-size: 1.3rem;
 }
 
 li.nav-item {
@@ -16644,18 +16646,21 @@ li.nav-item {
 .navbar-buffer-item {
     width: 5vw;
     -ms-flex: 0 0 5vw;
+    -webkit-flex: 0 0 5vw;
     flex: 0 0 5vw;
     max-width: 5vw;
 }
 
 .navbar-buffer {
     -ms-flex: 0 0 5%;
+    -webkit-flex: 0 0 5%;
     flex: 0 0 5%;
     max-width: 5%;
 }
 
 .navbar-buffer-centre {
     -ms-flex: 0 0 90%;
+    -webkit-flex: 0 0 90%;
     flex: 0 0 90%;
     max-width: 90%;
 }
@@ -16667,4 +16672,65 @@ li.nav-item {
 
 .navbar .navbar-nav .nav-item .nav-link p {
     font-size: 16px;
+}
+
+.no-margin,
+.button-flex-box a.no-margin.btn {
+    margin: 0px;
+}
+
+.button-flex-box {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-size: 1.5rem;
+}
+
+.footer-socials {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-nav-item {
+    padding: 0.5rem 1rem;
+}
+
+.navbar .btn i {
+    font-size: 22px;
+    position: relative;
+    top: 3px;
+}
+
+.btn-just-icon {
+    border-radius: 3rem;
+    height: 3rem;
+    width: 3rem;
+    min-width: 3rem;
+    padding: 8px;
+}
+
+.btn-just-icon i {
+    padding: 2px 0px;
+    font-size: 22px;
+    position: relative;
+    top: 3px;
+}
+
+.fa {
+    width: 30px;
+    text-align: center;
+}
+
+.footer-socials-icon {
+    border-radius: 3.5rem;
+    height: 3.5rem;
+    width: 3.5rem;
+    min-width: 3.5rem;
+}
+
+.footer-socials-icon i {
+    font-size: 28px;
+    position: relative;
+    top: 0.3rem;
+    left: -0.4rem;
 }
