@@ -12,7 +12,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
       </div>
       <div class="row">
 
-        <div class="col-lg-3 footer-black-left-col px-sm-4">
+        <div class="col-lg-4 footer-black-left-col px-sm-4">
           <h2 class="text-center no-margin">Contact Us</h2>
           <div class="row ">
             <div class="col">
@@ -61,13 +61,13 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
             </div>
           </div>
         </div>
-        <div class="col-lg-6 px-sm-4">
+        <div class="col-lg-4 px-sm-4">
           <h2 class="text-center no-margin">Come for a visit</h2>
           <p class="footer-nav-item text-center">9:30 am Sundays at the Wyreema Community Hall</p>
           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d949.6407255835479!2d151.85567642799563!3d-27.656602834335718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b964f902b9e70fb%3A0x6005a22abcb17bc4!2sWyreema%20Hall!5e0!3m2!1sen!2sau!4v1637761022483!5m2!1sen!2sau" height="450" style="border:0; width:100%;" class="footer-nav-item" allowfullscreen="" loading="lazy">
           </iframe>
         </div>
-        <div class="col-lg-3 footer-black-right-col px-sm-4">
+        <div class="col-lg-4 footer-black-right-col px-sm-4">
           <h2 class="text-center no-margin">Legal</h2>
           <ul class="nav flex-column">
             <li class="nav-item">
