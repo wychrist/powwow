@@ -5,7 +5,6 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
 <div class="row">
   <div class="navbar-buffer"></div>
   <div class="navbar-buffer-centre">
-    <?php if ($setting->get('app.contact.email')) : ?>
       <div class=" row">
         <div class="col-12" style="height: 50px;">
         </div>
@@ -17,8 +16,8 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
           <div class="row ">
             <div class="col">
               <div class="footer-nav-item text-center">
-                <a class="nav-link" href=" mailto:<?= $setting->get('app.contact.email') ?>">
-                  <?= $setting->get('app.contact.email') ?>
+                <a class="nav-link" href="mailto:<?= $setting->get('app.contact.email', '#') ?>">
+                  <?= $setting->get('app.contact.email','coming soon') ?>
                 </a>
               </div>
               <div class="row row-cols-2">
@@ -80,7 +79,6 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
         </div>
       </div>
 
-    <?php endif; ?>
     <div class="row">
 
       <div class="credits ml-auto">
