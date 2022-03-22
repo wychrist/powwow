@@ -87,7 +87,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
 
       <div class="credits ml-auto">
         <span class="copyright">
-          &copy; 2022, made by C. Kelly & J. Mansaray.
+          &copy; <?=date('Y') ?>, made by C. Kelly & J. Mansaray.
         </span>
       </div>
     </div>
