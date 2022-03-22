@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>About Us</h1>
+  <h1 class="title">About Us</h1>
   <div class="card card-plain card-blog">
     <div class="row">
       <div class="col-md-6 flex-column d-flex">

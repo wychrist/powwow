@@ -6,7 +6,7 @@
         <div class="card card-plain card-blog">
           <div class="row">
             <div class="col-md-6">
-              <img class="card card-image" style="padding: 15 px;" src="<?= $child->image ?>" alt="Worship at Wyreema Hall">
+              <img class="card card-image" style="padding: 15 px;" src="<?= $child->image ?>" alt="<?= $page->title ?>">
             </div>
             <div class="col-md-6">
               <div class='card-body'>
@@ -30,7 +30,7 @@
               </div>
             </div>
             <div class="col-md-6">
-              <img class="card card-image" style="padding: 15 px;" src="<?= $child->image ?>" alt="Worship at Wyreema Hall">
+              <img class="card card-image" style="padding: 15 px;" src="<?= $child->image ?>" alt="<?= $page->title ?>">
             </div>
           </div>
         </div>

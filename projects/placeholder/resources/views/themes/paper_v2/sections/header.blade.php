@@ -4,7 +4,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
 ?>
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-dark" color-on-scroll="120">
   <div class="navbar-translate">
-    <a class="navbar-brand" href="/" rel="tooltip" title="{{ $setting->get('app.name') }}" data-placement="bottom">
+    <a class="navbar-brand" href="/" rel="tooltip" title="{{ $setting->get('app.site_name') }}" data-placement="bottom" alt="{{ $setting->get('app.site_name') }}">
       {{ $setting->get('app.site_name') }}
     </a>
     <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
