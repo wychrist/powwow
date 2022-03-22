@@ -20,7 +20,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
                 <i class="fa fa-envelope" aria-hidden="true"></i> Contact Us
               </a>
             </div>
-            <form class="footer-nav-item">
+            <form class="footer-nav-item" method="POST">
               <div class="input-group">
                 <label for="subscribe_email" style="font-weight: 400; font-size: 1.2rem;">Subscribe:</label>
               </div>
@@ -30,7 +30,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
                     <i class="fa fa-envelope-o"></i>
                   </span>
                 </div>
-                <input style="height:auto;" type="email" placeholder="john.doe@example.com" class="form-control" id="subscribe_email">
+                <input style="height:auto;" required type="email" placeholder="john.doe@example.com" class="form-control" id="subscribe_email">
                 <div class="input-group-append">
                   <button class="btn btn-danger btn-round"><i class="fa fa-newspaper-o" aria-hidden="true" alt="Subscribe Button"></i></button>
                 </div>
