@@ -3177,19 +3177,19 @@ h1,
 
 h2,
 .h2 {
-    font-size: 3rem;
+    font-size: 3.3rem;
 }
 
 h3,
 .h3 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     line-height: 1.4;
     margin: 20px 0 0px;
 }
 
 h4,
 .h4 {
-    font-size: 1.825rem;
+    font-size: 2rem;
     line-height: 1.2em;
 }
 
@@ -3274,7 +3274,7 @@ h3 .small {
 .footer-big h4 a,
 .media .media-heading,
 .media .media-heading a {
-    color: #111111;
+    color: #444;
     text-decoration: none;
 }
 
@@ -9813,7 +9813,7 @@ video {
 }
 
 .card .card-description {
-    color: #111111;
+    color: #555;
     margin-bottom: 5px;
     margin-top: 15px;
 }
@@ -16609,7 +16609,7 @@ License - nucleoapp.com/license/
 
 @media (max-width: 1199px) {
     .footer-black-right-col {
-        border-top: 1px solid #343a40;
+        border-top: 2px solid #343a40;
     }
 }
 
@@ -16741,8 +16741,13 @@ li.nav-item {
 
 .footer h3 {
     font-size: 2.5rem;
+    border-bottom: 2px solid #33333333;
 }
 
 .section {
     padding: 40px 0px;
+}
+
+body {
+    color: #555;
 }

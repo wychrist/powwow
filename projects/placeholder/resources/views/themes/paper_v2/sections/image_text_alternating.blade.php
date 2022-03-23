@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="title"><?= $page->title ?></h1>
+  <h2 class="title"><?= $page->title ?></h2>
   <?php if ($page->children) : ?>
     <?php foreach ($page->children as $index => $child) :  ?>
       <?php if ($index == 0) :  ?>
@@ -11,7 +11,7 @@
             <div class="col-md-6">
               <div class='card-body'>
                 <?php if ($child->title) : ?>
-                  <h2 class='card-title'><?= $child->title ?></h2>
+                  <h3 class='card-title'><?= $child->title ?></h3>
                 <?php endif; ?>
                 <p class='card-description'><?= $child->content ?></p>
               </div>
@@ -24,7 +24,7 @@
             <div class="col-md-6">
               <div class='card-body'>
                 <?php if ($child->title) : ?>
-                  <h2 class='card-title'><?= $child->title ?></h2>
+                  <h3 class='card-title'><?= $child->title ?></h3>
                 <?php endif; ?>
                 <p class='card-description'><?= $child->content ?></p>
               </div>
