@@ -16601,12 +16601,16 @@ License - nucleoapp.com/license/
     margin-top: 5px;
 }
 
-.footer-black-left-col {
-    border-right: 1px solid #343a40;
+@media (min-width: 1200px) {
+    .footer-black-right-col {
+        border-left: 1px solid #343a40;
+    }
 }
 
-.footer-black-right-col {
-    border-left: 1px solid #343a40;
+@media (max-width: 1199px) {
+    .footer-black-right-col {
+        border-top: 1px solid #343a40;
+    }
 }
 
 .footer-black .nav-link {
@@ -16652,17 +16656,17 @@ li.nav-item {
 }
 
 .navbar-buffer {
-    -ms-flex: 0 0 8.33%;
-    -webkit-flex: 0 0 8.33%;
-    flex: 0 0 8.33%;
-    max-width: 8.33%;
+    -ms-flex: 0 0 5%;
+    -webkit-flex: 0 0 5%;
+    flex: 0 0 5%;
+    max-width: 5%;
 }
 
 .navbar-buffer-centre {
-    -ms-flex: 0 0 83.33%;
-    -webkit-flex: 0 0 83.33%;
-    flex: 0 0 83.33%;
-    max-width: 83.33%;
+    -ms-flex: 0 0 90%;
+    -webkit-flex: 0 0 90%;
+    flex: 0 0 90%;
+    max-width: 90%;
 }
 
 .navbar .navbar-brand {
@@ -16733,4 +16737,12 @@ li.nav-item {
     position: relative;
     top: 0.3rem;
     left: -0.4rem;
+}
+
+.footer h3 {
+    font-size: 2.5rem;
+}
+
+.section {
+    padding: 40px 0px;
 }

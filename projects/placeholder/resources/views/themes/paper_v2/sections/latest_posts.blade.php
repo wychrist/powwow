@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="title">The Latest</h1>
+  <h2 class="title">The Latest</h2>
   <p></p>
   <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
     <div class="col">
