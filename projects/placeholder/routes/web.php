@@ -25,6 +25,9 @@ Route::get('/', [IndexController::class, 'indexAction'])->name('index');
 Route::get('/contact-us', [ContactController::class, 'indexAction'])->name('contact_us_form');
 Route::post('/contact-us', [ContactController::class, 'handleAction'])->name('contact_us_submitted');
 
+// newsletter
+Route::post('/newsletter-do-subscribe', [NewsletterController::class, 'handleAction'])->name('newsletter_subscribe');
+
 Route::get('/menu', function() {
     $menu = require_once(app_root_dir('content/data/menus/home_menu.php'));
     return $menu->toArray();
