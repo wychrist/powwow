@@ -14,6 +14,7 @@ return [
         'email'   => env('EMAIL_ADDRESS'),
         'phone'   => env('PHONE_NUMBER'),
     ],
+    'logo' => 'logo.png',
     /*
     |--------------------------------------------------------------------------
     | Application Name
