@@ -14,4 +14,4 @@ docker/redis/data
 docker/postgres/data
 docker/nginx/sites/*_name.conf
 wordpress
-vendor/
+app/vendor
