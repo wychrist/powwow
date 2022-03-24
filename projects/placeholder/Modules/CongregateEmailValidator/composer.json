@@ -1,0 +1,23 @@
+{
+    "name": "wychrist/congregateemailvalidator",
+    "description": "",
+    "authors": [
+        {
+            "name": "Wychrist Developers",
+            "email": "developer@wychrist.org.au"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\CongregateEmailValidator\\": ""
+        }
+    }
+}
