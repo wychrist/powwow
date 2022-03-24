@@ -1,11 +1,8 @@
 <?php
 
-use App\Entity\Menu;
-use App\Entity\MenuItem;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
 
 /*
