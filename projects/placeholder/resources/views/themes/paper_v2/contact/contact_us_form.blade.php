@@ -1,15 +1,29 @@
 @extends('theme_layout::landing')
 
+<?php
+    $flash = app('Modules\CongregateContract\Theme\FlashMessageInterface');
+    $success = $flash->getSuccess();
+    /*$confirmMessage = $flash->get('contact_us_form_confirm');
+
+    if($confirmMessage) {
+        dump($confirmMessage);
+    } */
+?>
+
 @section('section3')
 <div class="container">
+
+   @if($success)
     <div class="row">
-        @isset($success)
         <div class="col">
             <div class="card card-profile">
                 <div class="card-body">
                     <div class="author">
                         <h2 class="card-title">Thank You for your Request</h2>
                         <h6 class="card-category">cat</h6>
+                        <b>
+                            <?php dump($success) ?>
+                        </b>
                     </div>
                     <p class="card-description text-center">
                         Please verify your email address within the next 24 hours so your message can be directed to the correct person.
@@ -17,7 +31,7 @@
                 </div>
             </div>
         </div>
-        @endisset
+        @endif
 
         @empty($success)
         <div class="col">
