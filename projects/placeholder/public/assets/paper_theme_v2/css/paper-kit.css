@@ -16635,6 +16635,7 @@ a,
 td,
 button,
 input,
+label,
 select,
 textarea,
 .btn {
@@ -16750,4 +16751,25 @@ li.nav-item {
 
 body {
     color: #555;
+}
+
+.contact-form-label {
+    font-weight: 600;
+    font-size: 1.8rem;
+}
+
+.form-control {
+    font-weight: 400;
+    font-size: 1.3rem;
+    border-radius: 20px;
+}
+
+.form-left-pill {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.form-right-pill {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
