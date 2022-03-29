@@ -14,7 +14,7 @@ class ContactController extends Controller
 
     public function indexAction(FlashMessageInterface $flash)
     {
-        $flash->success('My test message', ['one' => ';ere']);
+       // $flash->success('My test message', ['one' => ';ere']);
         $page = new Page();
         $page->title="Contact Us";
 
