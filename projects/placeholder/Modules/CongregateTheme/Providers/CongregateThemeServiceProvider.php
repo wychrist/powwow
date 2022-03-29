@@ -98,7 +98,8 @@ class CongregateThemeServiceProvider extends ServiceProvider
         // the current active theme's templates
         $this->loadViewsFrom([
             $currentTheme .'/templates',
-            $themeBasePath .'/templates'
+            $themeBasePath .'/templates',
+            resource_path('views')
         ],'theme_template');
 
         // the current active theme's sections
