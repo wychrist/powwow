@@ -11,12 +11,13 @@ use Illuminate\Http\Request;
 class ContactController extends Controller
 {
 
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $request->session()->reflash();
         $page = new Page();
         $page->title="Contact Us";
 
-        return render_template('contact_us', compact('page'));
+       return view('contact.contact_us_form', compact('page'));
     }
 
     /**
