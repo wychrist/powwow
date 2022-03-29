@@ -34,5 +34,7 @@ interface FlashMessageInterface
 
     public function has(string $type): bool;
 
+    public function set(string $type, string $message, array $context = []): void;
+
     public function get(string $type): array | null;
 }
