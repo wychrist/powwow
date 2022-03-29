@@ -1,11 +1,8 @@
 <?php
 
-use App\Entity\Menu;
-use App\Entity\MenuItem;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
-use App\Http\Controllers\PageController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +21,9 @@ Route::get('/', [IndexController::class, 'indexAction'])->name('index');
 // contact us
 Route::get('/contact-us', [ContactController::class, 'indexAction'])->name('contact_us_form');
 Route::post('/contact-us', [ContactController::class, 'handleAction'])->name('contact_us_submitted');
+
+// newsletter
+Route::post('/newsletter-do-subscribe', [NewsletterController::class, 'handleAction'])->name('newsletter_subscribe');
 
 Route::get('/menu', function() {
     $menu = require_once(app_root_dir('content/data/menus/home_menu.php'));

@@ -1,0 +1,13 @@
+{
+    "name": "CongregateEmailValidator",
+    "alias": "congregateemailvalidator",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateEmailValidator\\Providers\\CongregateEmailValidatorServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,5 +1,7 @@
 {
     "CongregateCms": true,
     "CongregateTheme": true,
-    "CongregateSetting": true
+    "CongregateSetting": true,
+    "CongregateEav": true,
+    "CongregateEmailValidator": true
 }
