@@ -21,7 +21,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
               </a>
             </div>
             <form class="footer-nav-item" method="POST" action="{{ route('newsletter_subscribe') }}">
-                @csrf
+              @csrf
               <div class="input-group">
                 <label for="subscribe_email" style="font-weight: 400; font-size: 1.2rem;">Subscribe:</label>
               </div>
@@ -31,7 +31,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
                     <i class="fa fa-envelope-o"></i>
                   </span>
                 </div>
-                <input style="height:auto;" required type="email" name="email" placeholder="john.doe@example.com" class="form-control" id="subscribe_email">
+                <input style="height:auto; font-size: unset;" required type="email" name="email" placeholder="john.doe@example.com" class="form-control" id="subscribe_email">
                 <div class="input-group-append">
                   <button class="btn btn-danger btn-round"><i class="fa fa-newspaper-o" aria-hidden="true" alt="Subscribe Button"></i></button>
                 </div>
