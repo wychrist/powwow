@@ -7,13 +7,14 @@ use App\Actions\OnlineContact\HandleNewContact;
 use App\Actions\OnlineContact\SendContactValidationEmail;
 use App\Cms\Page;
 use Illuminate\Http\Request;
+use Modules\CongregateContract\Theme\FlashMessageInterface;
 
 class ContactController extends Controller
 {
 
-    public function indexAction(Request $request)
+    public function indexAction(FlashMessageInterface $flash)
     {
-        $request->session()->reflash();
+        $flash->success('My test message', ['one' => ';ere']);
         $page = new Page();
         $page->title="Contact Us";
 
@@ -23,7 +24,7 @@ class ContactController extends Controller
     /**
      * Handles posted data
      */
-    public function handleAction(Request $request, HandleNewContact $handleNewContact, SendContactValidationEmail $sendEmail)
+    public function handleAction(Request $request, HandleNewContact $handleNewContact, SendContactValidationEmail $sendEmail, FlashMessageInterface $flash)
     {
         $data = $request->post();
 
@@ -39,7 +40,10 @@ class ContactController extends Controller
             ];
         }
 
-        return back()->with('success', $message);
+        $flash->success($message, $data);
+        // $flash->set('contact_us_form_confirm', 'Contact for submitted successfully', $data);
+
+        return back();
     }
 
 }
