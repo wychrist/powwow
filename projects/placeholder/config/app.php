@@ -15,6 +15,11 @@ return [
         'phone'   => env('PHONE_NUMBER'),
     ],
     'logo' => 'logo.png',
+
+    /**
+     * Send an email to the secretary for a new online contact
+     */
+    'send_new_contact_to_secretary' => false,
     /*
     |--------------------------------------------------------------------------
     | Application Name

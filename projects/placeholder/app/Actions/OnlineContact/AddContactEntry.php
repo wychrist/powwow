@@ -2,7 +2,9 @@
 
 namespace App\Actions\OnlineContact;
 
+use App\Mail\OnlineContact\SendEmailToSecretary;
 use App\Models\OnlineContact;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -59,8 +61,13 @@ class AddContactEntry
             'data' => $data
         ]);
 
-        // @todo send email to secretary !?!?!
-
+        if (config()->get('app.send_new_contact_to_secretary', false)) {
+            Mail::to($email)->queue(new SendEmailToSecretary([
+                'email' => $email,
+                'type' => $type,
+                'data' => $data
+            ]));
+        }
 
         return $model;
     }
