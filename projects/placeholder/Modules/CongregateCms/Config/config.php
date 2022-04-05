@@ -55,6 +55,6 @@ return [
      * ------------------------------------------------------
      *
      */
-    'page_default_template' => env('CON_CMS_POST_DEFAULT_TEMPLATE', 'congregatecms::templates/page_default'),
+    'page_default_template' => env('CON_CMS_PAGE_DEFAULT_TEMPLATE', 'congregatecms::templates/page_default'),
 
 ];
