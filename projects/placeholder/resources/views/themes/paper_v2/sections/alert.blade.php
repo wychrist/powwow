@@ -21,47 +21,28 @@ if ($flash->hasError()) {
 ?>
 
 @if(isset($flash_class99))
-<div class="alert {{$flash_class}} alert-dismissible fade show" role="alert">
-  <strong>{{$flash_type}}</strong> {{$flash_notification['message']}}
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
-
-@endif
-
-
-<div onload="open_alert_model()" class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="false">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="false">
   <div class="modal-dialog modal-register">
-    <div class="modal-content">
+    <div class="modal-content alert {{$flash_class}}">
       <div class="modal-header no-border-header text-center">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h6 class="text-muted">Welcome</h6>
-        <h3 class="modal-title text-center">Paper Kit</h3>
+        <h3 class="modal-title text-center">{{$flash_type}}</h3>
         <p>Log in to your account</p>
       </div>
       <div class="modal-body">
-        <div class="form-group">
-          <label>Email</label>
-          <input type="text" value="" placeholder="Email" class="form-control" />
-        </div>
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" value="" placeholder="Password" class="form-control" />
-        </div>
-        <button class="btn btn-block btn-round"> Log in</button>
-      </div>
-      <div class="modal-footer no-border-footer">
-        <span class="text-muted  text-center">Looking <a href="javascript:;">create an account</a> ?</span>
+        {{$flash_notification['message']}}
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  function open_alert_model() {
-    $('#loginModal').modal('show');
-  }
+  if (document.readyState) {
+    window.addEventListener('load', function() {
+      $('#loginModal').modal('show');
+    })
+  };
 </script>
+@endif
