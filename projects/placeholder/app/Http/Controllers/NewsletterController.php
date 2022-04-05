@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Actions\Newsletter\HandleNewSubscription;
 use App\Actions\Newsletter\SendSubscriptionValidationEmail;
 use Illuminate\Http\Request;
+use Modules\CongregateContract\Theme\FlashMessageInterface;
 
 class NewsletterController extends Controller
 {
@@ -12,7 +13,7 @@ class NewsletterController extends Controller
     /**
      * Handle posted data
      */
-    public function handleAction(Request $request, HandleNewSubscription $handler, SendSubscriptionValidationEmail $sendEmail)
+    public function handleAction(Request $request, HandleNewSubscription $handler, SendSubscriptionValidationEmail $sendEmail, FlashMessageInterface $flash)
     {
         $data = $request->post();
 
@@ -32,6 +33,7 @@ class NewsletterController extends Controller
             ];
         }
 
+        $flash->success($message);
         return back()->with('success', $message);
     }
 }
