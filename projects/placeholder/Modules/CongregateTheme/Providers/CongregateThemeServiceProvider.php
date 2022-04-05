@@ -5,6 +5,12 @@ namespace Modules\CongregateTheme\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\Config;
+use Modules\CongregateTheme\Console\InstallTheme;
+use Modules\CongregateTheme\Console\ListThemes;
+use Modules\CongregateTheme\Console\NewTheme;
+use Modules\CongregateTheme\Console\UninstallTheme;
+use Modules\CongregateContract\Theme\FlashMessageInterface;
+use Modules\CongregateTheme\Services\FlashMessage;
 
 class CongregateThemeServiceProvider extends ServiceProvider
 {
@@ -40,6 +46,7 @@ class CongregateThemeServiceProvider extends ServiceProvider
     {
         require_once dirname(__DIR__) .'/theme_helpers.php';
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(FlashMessageInterface::class, FlashMessage::class);
     }
 
     /**
@@ -114,7 +121,9 @@ class CongregateThemeServiceProvider extends ServiceProvider
             $themeBasePath .'/fragments'
         ],'theme_fragments');
 
-        // @todo register component aganist the base theme
+
+       //  dd(Config::get('view.paths'));
+        // @todo register component against the base theme
 
     }
 
