@@ -9,4 +9,4 @@ $page->content = "Our Mission";
 
 
 
-return $page->content;
+return $page;
