@@ -15,6 +15,7 @@
 <!-- CSS Files -->
 <link href="/assets/paper_theme_v2/css/bootstrap.min.css" rel="stylesheet" />
 <link href="/assets/paper_theme_v2/css/paper-kit.css?v=2.2.0" rel="stylesheet" />
+<link href="/assets/paper_theme_v2/css/style.css?v=0.0.1" rel="stylesheet" />
 
 @stack('css')
 @stack('header_js')
