@@ -111,6 +111,7 @@ class CongregateEmailValidatorServiceProvider extends ServiceProvider
                 $paths[] = $path . '/modules/' . $this->moduleNameLower;
             }
         }
+
         return $paths;
     }
 
