@@ -29,7 +29,7 @@ Coded by www.creative-tim.com
 
     @hasSection('content')
     <div class='section section-nude container'>
-      @yield('content')
+       @yield('content')
     </div>
     @endif
 

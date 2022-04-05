@@ -91,13 +91,18 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
         </a>
       </div>
       <div class="col-xl-3 footer-black-right-col px-sm-4">
+        <?php
+            // @todo source this from settings or somewhere !?!?!
+            $legalUrl = \Modules\CongregateCms\Services\Url::page('legal');
+            $incUrl = \Modules\CongregateCms\Services\Url::page('incorporation');
+        ?>
         <h3 class="text-center no-margin">Legal</h3>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link" href="/pages/legal">Legal Details</a>
+            <a class="nav-link" href="{{ $legalUrl }}">Legal Details</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/pages/incorporation">Incorporation Details</a>
+            <a class="nav-link" href="{{ $incUrl }}">Incorporation Details</a>
           </li>
         </ul>
       </div>
