@@ -9,4 +9,4 @@ $page->content = "Certificate of Incorporation, Office Bearers, Constitution, Co
 
 
 
-return $page->content;
+return $page;
