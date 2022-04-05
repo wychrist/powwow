@@ -11,6 +11,8 @@ class ValidatorController extends Controller
 {
     public function validateAction(string $token)
     {
-        return EmailValidator::validate($token);
+        EmailValidator::validate($token);
+
+        return view('congregateemailvalidator::validation_result');
     }
 }
