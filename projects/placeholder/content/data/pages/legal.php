@@ -9,4 +9,4 @@ $page->content = "Safe Churches, Polices, Procedures, Contract Persons";
 
 
 
-return $page->content;
+return $page;
