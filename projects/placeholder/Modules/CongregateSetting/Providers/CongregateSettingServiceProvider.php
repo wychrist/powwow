@@ -4,6 +4,7 @@ namespace Modules\CongregateSetting\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Illuminate\Support\Facades\View;
 use Modules\CongregateContract\Setting\SettingInterface;
 use Modules\CongregateSetting\Setting;
 
@@ -31,6 +32,8 @@ class CongregateSettingServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+
+        View::share('setting', app(SettingInterface::class));
     }
 
     /**
