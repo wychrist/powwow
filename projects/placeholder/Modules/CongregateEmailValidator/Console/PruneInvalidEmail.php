@@ -3,6 +3,8 @@
 namespace Modules\CongregateEmailValidator\Console;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Date;
+use Modules\CongregateEmailValidator\Entities\EmailPending;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
@@ -39,7 +41,11 @@ class PruneInvalidEmail extends Command
      */
     public function handle()
     {
+        $date = Date::now();
+        $date->addDays(2);
 
+        $total = EmailPending::whereDay('expire_at', '<', $date)->count();
+        dump($total);
         return 0;
     }
 
