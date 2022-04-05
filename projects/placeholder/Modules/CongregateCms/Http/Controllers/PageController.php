@@ -12,19 +12,23 @@ class PageController extends Controller
     public function indexAction(string|int $id)
     {
         // @todo We need to implement this asap!!!
-        $content = '';
         if ($id == '5' || $id == 'about-us') {
-            $content = $this->getAboutusPage();
+            return  $this->getAboutusPage();
         } else {
             $path = content_dir("data/pages/{$id}.php");
             if (file_exists($path)) {
-                $content = include $path;
+                $page = include $path;
             }
         }
 
+        if($page) {
+            $template = config()->get('congregatecms.page_default_template', 'one_column');
+            $template = $page->template ? $page->template : $template; // @todo refactor this code. we need a post setting !?!?!
+            return custom_template($template, ['page' => $page]);
+        } else {
+            abort(404);
+        }
 
-
-        return $content;
     }
 
 
