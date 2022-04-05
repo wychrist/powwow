@@ -131,6 +131,7 @@ services:
         - GROUP_NAME=${GROUP_NAME}
     volumes:
       - ./projects/congregate:/backend/congregate
+      - ./projects/placeholder:/backend/placeholder
     networks:
       - webnetwork
     hostname: supervisor
