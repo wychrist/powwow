@@ -44,8 +44,7 @@ class PruneInvalidEmail extends Command
         $date = Date::now();
         $date->addDays(2);
 
-        $total = EmailPending::whereDay('expire_at', '<', $date)->count();
-        dump($total);
+        EmailPending::whereDay('expire_at', '>', $date)->delete();
         return 0;
     }
 
