@@ -1,6 +1,7 @@
 <?php
 
 use App\Entity\MenuItem;
+use Modules\CongregateCms\Services\Url;
 
 $menuItemsData = [
   'home' => [
@@ -10,7 +11,7 @@ $menuItemsData = [
   ],
   'about-us' => [
     'label' => 'About Us',
-    'link' => '/pages/about-us',
+    'link' => Url::page('about-us'),
     'children' => []
   ],
   'contact-us' => [
