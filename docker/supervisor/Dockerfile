@@ -47,11 +47,6 @@ RUN apt-get install -y supervisor
 ADD config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ADD test.sh /test.sh
-ADD placholder.sh /placholder.sh
-
 RUN chmod +x /test.sh
-RUN chmod +x /placholder.sh
 
 CMD ["/usr/bin/supervisord"]
-
-USER ${USERID}
