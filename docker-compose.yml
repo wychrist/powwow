@@ -124,6 +124,11 @@ services:
   supervisor:
     build:
       context: ./docker/supervisor
+      args:
+        - USERID=${USERID}
+        - GROUPID=${GROUPID}
+        - USER_NAME=${USER_NAME}
+        - GROUP_NAME=${GROUP_NAME}
     volumes:
       - ./projects/congregate:/backend/congregate
     networks:
