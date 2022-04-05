@@ -1,0 +1,15 @@
+<?php
+
+return [
+    'name' => '{{name}}',
+    'label' => '{{label}}',
+    'description' => '{{name}} description',
+    'version' => 0.1,
+    'settings' => [
+        // specific settings and default value for {{name}}
+    ],
+    'hooks' => [
+        'install' => __DIR__ .'/hooks/install.php',
+        'upgrade' => __DIR__ .'/hooks/upgrade.php'
+    ]
+];

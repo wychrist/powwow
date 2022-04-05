@@ -55,11 +55,11 @@ if (!function_exists('theme_dir')) {
 if(!function_exists('inject_template_data')) {
     function inject_template_data($data) {
         if(isset($data['content'])) {
-            View::share('content', $data['content']);
+            // View::share('content', $data['content']);
         }
 
         if(!isset($data['setting'])) {
-            View::share('setting', app(SettingInterface::class));
+            // View::share('setting', app(SettingInterface::class));
         }
 
         return $data;

@@ -5,6 +5,7 @@ namespace Modules\CongregateTheme\Providers;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
 use Modules\CongregateTheme\Console\InstallTheme;
 use Modules\CongregateTheme\Console\ListThemes;
 use Modules\CongregateTheme\Console\NewTheme;
@@ -35,6 +36,9 @@ class CongregateThemeServiceProvider extends ServiceProvider
         $this->registerConfig();
         $this->registerViews();
         $this->loadMigrationsFrom(module_path($this->moduleName, 'Database/Migrations'));
+        $this->registerCommands();
+
+        View::share('flash_message', app(FlashMessageInterface::class));
     }
 
     /**
@@ -162,5 +166,15 @@ class CongregateThemeServiceProvider extends ServiceProvider
             }
         }
         return $paths;
+    }
+
+    private function registerCommands()
+    {
+        $this->commands([
+            InstallTheme::class,
+            ListThemes::class,
+            NewTheme::class,
+            UninstallTheme::class
+        ]);
     }
 }

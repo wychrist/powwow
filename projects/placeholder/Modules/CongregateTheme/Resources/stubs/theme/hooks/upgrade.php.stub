@@ -1,0 +1,9 @@
+<?php
+// upgrade script for {{name}}
+
+function upgrade_{{name}}() {
+    // logic here
+}
+
+
+upgrade_{{name}}();

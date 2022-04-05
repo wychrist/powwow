@@ -99,7 +99,8 @@ class FlashMessage implements FlashMessageInterface
 
     public function get(string $type): array | null
     {
-        return $this->session->get(self::PREFIX . $type);
+        $data = $this->session->get(self::PREFIX . $type);
+        return $data;
     }
     public function set(string $type, string $message, array $context = []): void
     {
@@ -108,6 +109,6 @@ class FlashMessage implements FlashMessageInterface
 
     protected function doFlashing(string $type, string $message, array $context = []): void
     {
-        $this->session->flash(self::PREFIX . $type, ['message' => $message, 'context' => $context]);
+        $this->session->now(self::PREFIX . $type, ['message' => $message, 'context' => $context]);
     }
 }

@@ -1,11 +1,17 @@
 @extends('base_theme::layouts.main')
 
 @section('body')
-    <div class="">
-        <div class="">
+    <div>
+        <div>
             @yield('left', '@section("left")')
         </div>
-        <div class="">
+        <div>
+            @sectionMissing('flash_message')
+                @include("theme::fragments.flash_message.index")
+            @else
+                @yield('flash_message')
+            @endif
+
             @yield('content', '@section("content")')
         </div>
     </div>
