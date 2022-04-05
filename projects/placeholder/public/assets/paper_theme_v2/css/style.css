@@ -1,3 +1,34 @@
 /*
  * Customize css goes here
 */
+
+.contact-us-textarea {
+    border-bottom-right-radius: 0px;
+}
+
+.contact-us-button-footer {
+    width: fit-content;
+}
+
+.footer-subscribe-label {
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+
+.footer-subscribe-field {
+    height: auto;
+    font-size: unset;
+}
+
+.input-prepend-for-icon {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.footer-map-image {
+    width: 100%;
+}
+
+.footer-map-attribution {
+    font-size: 0.8rem;
+}

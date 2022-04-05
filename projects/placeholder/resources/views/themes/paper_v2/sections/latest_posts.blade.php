@@ -8,7 +8,7 @@
           <h6 class="card-category">Sunday Worship 13/02/22</h6>
           <p class="card-description">A lesson title/description</p>
           <div class="card-footer">
-            <a href="javascript:;" class="btn btn-danger btn-round card-link">
+            <a href="/posts/" class="btn btn-danger btn-round card-link">
               <i class="fa fa-book" aria-hidden="true"></i> Read Article
             </a>
           </div>
@@ -21,7 +21,7 @@
           <h6 class="card-category">Sunday Worship 20/02/22</h6>
           <p class="card-description">A Different lesson title/description</p>
           <div class="card-footer">
-            <a href="javascript:;" class="btn btn-danger btn-round card-link">
+            <a href="/posts/" class="btn btn-danger btn-round card-link">
               <i class="fa fa-book" aria-hidden="true"></i> Read Article
             </a>
           </div>
@@ -34,7 +34,7 @@
           <h6 class="card-category">Sunday Worship 27/02/22</h6>
           <p class="card-description">A very very long and interesting lesson title/description</p>
           <div class="card-footer">
-            <a href="javascript:;" class="btn btn-danger btn-round card-link">
+            <a href="/posts/" class="btn btn-danger btn-round card-link">
               <i class="fa fa-book" aria-hidden="true"></i> Read Article
             </a>
           </div>

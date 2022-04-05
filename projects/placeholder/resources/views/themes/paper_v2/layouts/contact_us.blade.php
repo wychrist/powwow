@@ -23,49 +23,12 @@ Coded by www.creative-tim.com
 <body class="index-page sidebar-collapse">
 
   @include('theme_section::header')
-  @include('theme_section::title_image')
-  @include('theme_section::alert')
+
   <div class="main wrapper">
-
-    @hasSection('content')
-    <div class='section section-nude container'>
-      @yield('content')
-    </div>
-    @endif
-
-    @hasSection('section1')
-    <div class='section section-nude'>
-      @yield('section1')
-    </div>
-    @endif
-
-    @hasSection('section2')
+    @include('theme_section::alert')
+    @hasSection('contact_form')
     <div class='section section-brown'>
-      @yield('section2')
-    </div>
-    @endif
-
-    @hasSection('section3')
-    <div class='section section-gray'>
-      @yield('section3')
-    </div>
-    @endif
-
-    @hasSection('section4')
-    <div class='section section-brown'>
-      @yield('section4')
-    </div>
-    @endif
-
-    @hasSection('section5')
-    <div class='section section-gold'>
-      @yield('section5')
-    </div>
-    @endif
-
-    @hasSection('section6')
-    <div class='section section-dark-blue'>
-      @yield('section6')
+      @yield('contact_form')
     </div>
     @endif
 

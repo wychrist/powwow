@@ -2,6 +2,7 @@
 <?php
 $setting = app('Modules\CongregateContract\Setting\SettingInterface');
 ?>
+
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent bg-dark" color-on-scroll="120">
   <div class="navbar-translate">
     <a class="navbar-brand" href="/" rel="tooltip" title="{{ $setting->get('app.site_name') }}" data-placement="bottom" alt="{{ $setting->get('app.site_name') }}">
@@ -60,14 +61,3 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
   </div>
 </nav>
 <!-- End Navbar -->
-<div class=" page-header section-dark" style="background-image: url(<?= $page->image ?>)">
-  <div class="filter"></div>
-  <div class="content-center">
-    <div class="container">
-      <div class="title-brand">
-        <h1 class="presentation-title">{{ $page->title }}</h1>
-      </div>
-      <h2 class="presentation-subtitle text-center">{{ $page->subtitle }}</h2>
-    </div>
-  </div>
-</div>

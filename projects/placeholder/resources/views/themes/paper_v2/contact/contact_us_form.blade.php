@@ -1,41 +1,42 @@
-@extends('theme_layout::landing')
+@extends('theme_layout::contact_us')
 
 <?php
-    $flash = app('Modules\CongregateContract\Theme\FlashMessageInterface');
-    $success = $flash->getSuccess();
-    /*$confirmMessage = $flash->get('contact_us_form_confirm');
+$flash = app('Modules\CongregateContract\Theme\FlashMessageInterface');
+/*$confirmMessage = $flash->get('contact_us_form_confirm');
 
     if($confirmMessage) {
         dump($confirmMessage);
     } */
 ?>
 
-@section('section3')
+@section('contact_form')
 <div class="container">
-
-   @if($success)
+    <div class="contact-us-gap"></div>
     <div class="row">
-        <div class="col">
-            <div class="card card-profile">
-                <div class="card-body">
-                    <div class="author">
-                        <h2 class="card-title">Thank You for your Request</h2>
-                        <h6 class="card-category">cat</h6>
-                        <b>
-                            <?php dump($success) ?>
-                        </b>
-                    </div>
-                    <p class="card-description text-center">
-                        Please verify your email address within the next 24 hours so your message can be directed to the correct person.
-                    </p>
-                </div>
-            </div>
-        </div>
-        @endif
 
-        @empty($success)
+        @if($flash->hasSuccess())
+        <?php $success = $flash->getSuccess(); ?>
+        <div class="col contact-us-success">
+            <h1 class="text-center title">
+                Thank You {{$success['context']['data']['first_name']}} for your Submission
+            </h1>
+            <h3 class="text-center">Your {{$success['context']['type']}} request is being processed.</h3>
+            <p class="card-description text-center">
+                Please verify your email address within the next 24 hours so your message can be directed to the correct person. Otherwise your message will be rejected.
+            </p>
+            <p class='button-flex-box'>
+                <a class="no-margin btn btn-danger btn-move-right btn-round" href="/">
+                    Home
+                    <i class="nc-icon nc-minimal-right"></i>
+                </a>
+            </p>
+        </div>
+
+        @else
         <div class="col">
-            <h2 class="text-center no-margin"></h2>
+            <h1 class="text-center title">
+                Contact Us
+            </h1>
             <form method="post">
                 @csrf
                 <div class="form-row">
@@ -94,14 +95,15 @@
                 </div>
                 <div class="form-group">
                     <label for="contact_message" class="contact-form-label">Message:</label>
-                    <textarea name="data[message]" placeholder="Message ..." class="form-control" style="border-bottom-right-radius: 0px;" id="contact_message"></textarea>
+                    <textarea name="data[message]" placeholder="Message ..." class="form-control contact-us-textarea" id="contact_message"></textarea>
                 </div>
-                <div class="form-group">
-                    <button type="submit" value="Submit" class="btn btn-danger btn-round">Submit</button>
+                <div class="form-group button-flex-box">
+                    <button type="submit" value="Submit" class="btn btn-danger btn-round btn-move-right">Submit</button>
                 </div>
             </form>
         </div>
-        @endempty
+        @endif
+
     </div>
 </div>
 @endsection

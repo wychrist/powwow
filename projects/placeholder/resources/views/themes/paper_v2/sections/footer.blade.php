@@ -6,7 +6,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
   <div class="navbar-buffer"></div>
   <div class="navbar-buffer-centre">
     <div class="row">
-      <div class="col-12" style="height: 40px;">
+      <div class="col-12 footer-top">
       </div>
     </div>
     <div class="row row-cols-1 row-cols-xl-4">
@@ -16,22 +16,22 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
         <div class="row ">
           <div class="col">
             <div class="footer-nav-item footer-socials">
-              <a href="/contact-us" class="btn btn-danger btn-round nav-link" style="width: fit-content;">
+              <a href="/contact-us" class="btn btn-danger btn-round nav-link contact-us-button-footer">
                 <i class="fa fa-envelope" aria-hidden="true"></i> Contact Us
               </a>
             </div>
             <form class="footer-nav-item" method="POST" action="{{ route('newsletter_subscribe') }}">
               @csrf
               <div class="input-group">
-                <label for="subscribe_email" style="font-weight: 400; font-size: 1.2rem;">Subscribe:</label>
+                <label for="subscribe_email" class="footer-subscribe-label">Subscribe:</label>
               </div>
               <div class="input-group">
                 <div class="input-group-prepend">
-                  <span class="input-group-text" style="border-top-left-radius: 30px; border-bottom-left-radius: 30px;">
+                  <span class="input-group-text input-prepend-for-icon">
                     <i class="fa fa-envelope-o"></i>
                   </span>
                 </div>
-                <input style="height:auto; font-size: unset;" required type="email" name="email" placeholder="john.doe@example.com" class="form-control" id="subscribe_email">
+                <input required type="email" name="email" placeholder="john.doe@example.com" class="form-control footer-subscribe-field" id="subscribe_email">
                 <div class="input-group-append">
                   <button class="btn btn-danger btn-round"><i class="fa fa-newspaper-o" aria-hidden="true" alt="Subscribe Button"></i></button>
                 </div>
@@ -85,9 +85,9 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
         <h3 class="text-center no-margin">Get Directions</h3>
         <a class="" href="https://goo.gl/maps/EgBaegpyNs71vFzm8" rel="tooltip" target="_blank">
           <p class="nav-link text-center">Click below for Google Maps.</p>
-          <img class="card-image" style="width: 100%" src="/assets/paper_theme_v2/img/wyreema-community-hall-small.webp" alt="Wyreema Community Hall">
-          <img class="card-image" style="width: 100%" src="/assets/paper_theme_v2/img/google-map-hall.webp" alt="Google Map Wyreema Community Hall">
-          <p class="nav-link" style="font-size: 0.8rem;">Map data: Google, &copy;2022</p>
+          <img class="card-image footer-map-image" src="/assets/paper_theme_v2/img/wyreema-community-hall-small.webp" alt="Wyreema Community Hall">
+          <img class="card-image footer-map-image" src="/assets/paper_theme_v2/img/google-map-hall.webp" alt="Google Map Wyreema Community Hall">
+          <p class="nav-link footer-map-attribution">Map data: Google, &copy;2022</p>
         </a>
       </div>
       <div class="col-xl-3 footer-black-right-col px-sm-4">

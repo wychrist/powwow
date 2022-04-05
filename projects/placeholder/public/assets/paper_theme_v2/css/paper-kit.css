@@ -16696,6 +16696,10 @@ li.nav-item {
     justify-content: center;
 }
 
+.footer-top {
+    height: 40px;
+}
+
 .footer-nav-item {
     padding: 0.5rem 1rem;
 }
@@ -16754,7 +16758,7 @@ body {
 }
 
 .contact-form-label {
-    font-weight: 600;
+    font-weight: 400;
     font-size: 1.8rem;
 }
 
@@ -16772,4 +16776,14 @@ body {
 .form-right-pill {
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+}
+
+.contact-us-gap {
+    height: 80px;
+}
+
+.contact-us-success {
+    background-color: #00813980;
+    border-radius: 20px;
+    padding: 20px;
 }
