@@ -20,7 +20,7 @@ if ($flash->hasError()) {
 }
 ?>
 
-@if(isset($flash_class99))
+@if(isset($flash_class))
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="false">
   <div class="modal-dialog modal-register">
     <div class="modal-content alert {{$flash_class}}">
@@ -34,6 +34,14 @@ if ($flash->hasError()) {
       <div class="modal-body">
         {{$flash_notification['message']}}
       </div>
+      @isset ($flash_notification['context'])
+      <div class="modal-footer">
+        @foreach ($flash_notification['context'] as $context)
+        {{$context}}
+        </hr>
+        @endforeach
+      </div>
+      @endisset
     </div>
   </div>
 </div>
