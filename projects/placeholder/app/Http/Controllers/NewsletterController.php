@@ -34,6 +34,6 @@ class NewsletterController extends Controller
         }
 
         $flash->success($message);
-        return back()->with('success', $message);
+        return back();
     }
 }
