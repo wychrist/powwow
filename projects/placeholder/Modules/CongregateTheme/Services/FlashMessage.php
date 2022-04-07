@@ -109,6 +109,6 @@ class FlashMessage implements FlashMessageInterface
 
     protected function doFlashing(string $type, string $message, array $context = []): void
     {
-        $this->session->now(self::PREFIX . $type, ['message' => $message, 'context' => $context]);
+        $this->session->flash(self::PREFIX . $type, ['message' => $message, 'context' => $context]);
     }
 }
