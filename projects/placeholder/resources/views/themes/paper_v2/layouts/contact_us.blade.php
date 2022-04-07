@@ -25,7 +25,6 @@ Coded by www.creative-tim.com
   @include('theme_section::header')
 
   <div class="main wrapper">
-    @include('theme_section::alert')
     @hasSection('contact_form')
     <div class='section section-brown'>
       @yield('contact_form')
