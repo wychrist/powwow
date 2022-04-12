@@ -1,9 +1,11 @@
 <?php
 
+use App\Cms\Page;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
+use Modules\CongregateContract\Theme\FlashMessageInterface;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +30,12 @@ Route::post('/newsletter-do-subscribe', [NewsletterController::class, 'handleAct
 Route::get('/menu', function() {
     $menu = require_once(app_root_dir('content/data/menus/home_menu.php'));
     return $menu->toArray();
+});
+
+
+Route::get('test', function(FlashMessageInterface $flash){
+    $flash->information("This is a success message");
+    return view('fake', [
+        'page' => new Page()
+    ]);
 });

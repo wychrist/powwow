@@ -9,7 +9,8 @@
     ],
     "extra": {
         "laravel": {
-            "providers": [],
+            "providers": [
+            ],
             "aliases": {
 
             }
