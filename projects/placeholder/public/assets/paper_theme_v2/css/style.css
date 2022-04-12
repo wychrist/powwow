@@ -32,3 +32,18 @@
 .footer-map-attribution {
     font-size: 0.8rem;
 }
+
+.modal-body {
+    color: unset;
+    padding: 10px;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+.modal-title {
+    font-size: 3rem;
+}
+
+.btn-modal {
+    border-color: #00000044;
+}
