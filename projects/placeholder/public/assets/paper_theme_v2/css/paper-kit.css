@@ -16789,7 +16789,9 @@ body {
 }
 
 .contact-us-success {
-    background-color: #00813980;
+    background-color: #51a351;
     border-radius: 20px;
     padding: 20px;
+    color: #fff;
 }
+
