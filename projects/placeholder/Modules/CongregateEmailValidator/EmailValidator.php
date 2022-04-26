@@ -9,23 +9,24 @@ use Modules\CongregateEmailValidator\Entities\EmailPending;
 
 class EmailValidator
 {
-    public static function enter(string $email, array $callback, array $payload = []): array
+    public static function enter(string $email, array $callback, array $payload = []): ValidatorResult
     {
         $model = EmailPending::where([
             'email' => $email,
-        ])->firstOrNew();
+        ])->first();
+        $alreadyExist = false;
 
-        if (!$model->id) {
+        if ($model && $model->id && $model->callback[0] == $callback[0]) {
+            $alreadyExist = true;
+        } else {
+            $model = new EmailPending();
             $model->email = $email;
             $model->callback = $callback;
             $model->payload = $payload;
             $model->save();
         }
 
-        return [
-            'token' => $model->token,
-            'url' => route('congregateemailvalidator.validate', ['token' => $model->token])
-        ];
+        return new ValidatorResult($model->token, $alreadyExist, route('congregateemailvalidator.validate', ['token' => $model->token]));
     }
 
     public static function validate(string $token): bool
@@ -37,7 +38,7 @@ class EmailValidator
 
         if ($model) {
             try {
-                App::call($model->callback, ['payload' => array_merge($model->payload,['email' => $model->email])]);;
+                App::call($model->callback, ['payload' => array_merge($model->payload, ['email' => $model->email])]);;
                 $model->delete();
                 return true;
             } catch (\Exception $e) {
