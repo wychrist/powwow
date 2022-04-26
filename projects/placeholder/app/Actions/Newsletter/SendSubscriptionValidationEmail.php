@@ -6,17 +6,22 @@ use App\Mail\Newsletter\ValidateEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Modules\CongregateEmailValidator\EmailValidator;
+use Modules\CongregateEmailValidator\ValidatorResult;
 
 class SendSubscriptionValidationEmail
 {
 
-    public function __invoke(array $validationResult, array $data)
+    public function __invoke(ValidatorResult $validationResult, array $data)
     {
-       ['email' => $email] = Validator::make($data, [
+        ['email' => $email] = Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255'],
         ])->validate();
 
-        Mail::to($email)->queue(new ValidateEmail(array_merge($data, $validationResult)));
+        if (!$validationResult->alreadyExist()) {
+            Mail::to($email)->queue(new ValidateEmail(array_merge($data, [
+                'url' => $validationResult->getUrl(),
+                'token' => $validationResult->getToken()
+            ])));
+        }
     }
-
 }

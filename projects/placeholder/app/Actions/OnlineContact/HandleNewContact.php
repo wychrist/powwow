@@ -4,6 +4,7 @@ namespace App\Actions\OnlineContact;
 
 use Illuminate\Support\Facades\Validator;
 use Modules\CongregateEmailValidator\EmailValidator;
+use Modules\CongregateEmailValidator\ValidatorResult;
 
 /**
  * Handles a new contact request
@@ -23,7 +24,7 @@ class HandleNewContact
      *
      * @return array ['token' => string , 'url' => string ]
      */
-    public function __invoke(array $payload): array
+    public function __invoke(array $payload): ValidatorResult
     {
         $data = Validator::make($payload, [
                 'email' => ['required', 'string', 'email', 'max:255'],
