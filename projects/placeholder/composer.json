@@ -13,7 +13,8 @@
         "laravel/tinker": "^2.5",
         "league/plates": "^3.5",
         "nwidart/laravel-modules": "^9.0",
-        "wychrist/congregatecontract": "dev-main"
+        "wychrist/congregatecontract": "dev-main",
+        "kpama/easybuilder": "dev-main"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -65,9 +66,17 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "replace": {
+         "kpama/easybuilder": "self.version",
+         "wychrist/congregatecontract": "self.version"
+    },
     "repositories": [
         {
             "url": "git@github.com:wychrist/congregate_contract.git",
+            "type": "vcs"
+        },
+        {
+            "url": "git@github.com:kpama/easybuilder.git",
             "type": "vcs"
         }
     ]
