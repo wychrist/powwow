@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 use Illuminate\Http\Request;
+use Kpama\Easybuilder\Lib\Api\RouteBuilder;
+use Modules\CongregateSetting\Entities\Setting;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +19,9 @@ use Illuminate\Http\Request;
 
 Route::middleware('auth:api')->get('/congregatesetting', function (Request $request) {
     return $request->user();
+});
+
+
+RouteBuilder::generate(model: Setting::class, slug: 'congregate-settings', forEachRoute: function($route) {
+    $route->prefix('v1');
 });

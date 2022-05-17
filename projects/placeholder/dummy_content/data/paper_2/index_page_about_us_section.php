@@ -1,10 +1,3 @@
-<?php
- $content = include(content_dir('data/paper_2/index_page_about_us_section.php'));
-?>
-
-@if ($content)
-    {!! $content !!}
-@else
 <div class="container">
   <h2 class="title">About Us</h2>
   <div class="card card-plain card-blog">
@@ -26,4 +19,3 @@
     </div>
   </div>
 </div>
-@endif

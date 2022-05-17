@@ -20,7 +20,7 @@ if (!function_exists('public_dir')) {
 if (!function_exists('content_dir')) {
     function content_dir(string $append = ''): string
     {
-        return app_root_dir('content/' . $append);
+        return app_root_dir('storage/app/content/' . $append);
     }
 }
 

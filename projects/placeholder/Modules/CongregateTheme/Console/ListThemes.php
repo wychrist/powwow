@@ -39,8 +39,17 @@ class ListThemes extends Command
      */
     public function handle()
     {
-        echo "works!\r\n";
-        //
+        $lockFile = file_get_contents(base_path('composer.lock'));
+        $lockArray = json_decode($lockFile, true);
+        $themes = [];
+
+        foreach($lockArray['packages'] as $package) {
+            if(isset($package['extra']) && isset($package['extra']['congregatetheme'])) {
+                $themes = array_merge($themes, $package['extra']['congregatetheme']);
+            }
+        }
+
+        dd($themes);
         return 0;
     }
 

@@ -13,6 +13,8 @@ use Modules\CongregateTheme\Console\UninstallTheme;
 use Modules\CongregateContract\Theme\FlashMessageInterface;
 use Modules\CongregateTheme\Services\FlashMessage;
 
+use function Modules\CongregateSetting\settings;
+
 class CongregateThemeServiceProvider extends ServiceProvider
 {
     /**
@@ -63,6 +65,7 @@ class CongregateThemeServiceProvider extends ServiceProvider
         $this->publishes([
             module_path($this->moduleName, 'Config/config.php') => config_path($this->moduleNameLower . '.php'),
         ], 'config');
+
         $this->mergeConfigFrom(
             module_path($this->moduleName, 'Config/config.php'), $this->moduleNameLower
         );
@@ -87,7 +90,7 @@ class CongregateThemeServiceProvider extends ServiceProvider
 
         // theme setup
         $themeBasePath = module_path($this->moduleName, 'Resources/views/themes/base');
-        $currentTheme = Config::get('congregatetheme.theme_directory') .'/'. Config::get('congregatetheme.theme');
+        $currentTheme = Config::get('congregatetheme.theme_directory') .'/'. (settings('app.theme', Config::get('congregatetheme.theme')));
 
         // the base theme
         $this->loadViewsFrom([
