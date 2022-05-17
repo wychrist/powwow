@@ -66,10 +66,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "replace": {
-         "kpama/easybuilder": "self.version",
-         "wychrist/congregatecontract": "self.version"
-    },
     "repositories": [
         {
             "url": "git@github.com:wychrist/congregate_contract.git",
