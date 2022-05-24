@@ -14,6 +14,7 @@ services:
       - ./projects/chat:/projects/chat
       - ./projects/congregate:/projects/congregate
       - ./projects/realtime:/projects/realtime
+      - ./projects/personal:/projects/personal
     networks:
       - webnetwork
   redisdb:
@@ -41,6 +42,7 @@ services:
         - ./projects/placeholder:/backend/placeholder
         - ./wordpress:/backend/wordpress
         - ./devtools/adminer:/backend/devtools/adminer
+        - ./projects/personal:/backend/personal
         - ./docker/nginx/sites:/etc/nginx/conf.d
      depends_on:
         - phpfpm
@@ -107,6 +109,7 @@ services:
       - ./projects/placeholder:/backend/placeholder
       - ./wordpress:/backend/wordpress
       - ./devtools/adminer:/backend/devtools/adminer
+      - ./projects/personal:/backend/personal
     networks:
       - webnetwork
     hostname: phpfpm
@@ -116,6 +119,7 @@ services:
       context: ./docker/cron
     volumes:
       - ./projects/congregate:/backend/congregate
+      - ./projects/personal:/backend/personal
     networks:
       - webnetwork
     hostname: cron
@@ -132,6 +136,7 @@ services:
     volumes:
       - ./projects/congregate:/backend/congregate
       - ./projects/placeholder:/backend/placeholder
+      - ./projects/personal:/backend/personal
     networks:
       - webnetwork
     hostname: supervisor
@@ -144,6 +149,7 @@ services:
       - ./projects/chat:/projects/chat
       - ./projects/congregate:/projects/congregate
       - ./projects/placeholder:/projects/placeholder
+      - ./projects/personal:/projects/personal
     hostname: nodejs
     command: tail -F anything
     ports:

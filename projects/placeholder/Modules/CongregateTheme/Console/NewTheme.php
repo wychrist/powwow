@@ -43,7 +43,7 @@ class NewTheme extends Command
     {
         $name = $this->argument('name');
         $module = $this->option('module');
-        $path = config('congregatetheme.theme_directory') .'/'. $name;
+        $path = config('congregatetheme.themes_directory') .'/'. $name;
 
         if($module !== false) {
 
