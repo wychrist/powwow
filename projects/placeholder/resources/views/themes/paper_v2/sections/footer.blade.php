@@ -1,6 +1,10 @@
 <?php
 $setting = app('Modules\CongregateContract\Setting\SettingInterface');
-//flex-column d-flex
+
+// @todo source this from settings or somewhere !?!?!
+$legalUrl = \Modules\CongregateCms\Services\Url::page('legal');
+$incUrl = \Modules\CongregateCms\Services\Url::page('incorporation');
+$privacyUrl = \Modules\CongregateCms\Services\Url::page('privacy');
 ?>
 <div class="row">
   <div class="navbar-buffer"></div>
@@ -22,19 +26,28 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
             </div>
             <form class="footer-nav-item" method="POST" action="{{ route('newsletter_subscribe') }}">
               @csrf
-              <div class="input-group">
-                <label for="subscribe_email" class="footer-subscribe-label">Subscribe:</label>
+              <div class="input-group input-group-footer">
+                <label for="subscribe_email" class="footer-subscribe-label">Subscribe to our Newsletter:</label>
               </div>
-              <div class="input-group">
+              <div class="input-group input-group-footer">
                 <div class="input-group-prepend">
                   <span class="input-group-text input-prepend-for-icon">
-                    <i class="fa fa-envelope-o"></i>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
                   </span>
                 </div>
-                <input required type="email" name="email" placeholder="john.doe@example.com" class="form-control footer-subscribe-field" id="subscribe_email">
-                <div class="input-group-append">
-                  <button class="btn btn-danger btn-round"><i class="fa fa-newspaper-o" aria-hidden="true" alt="Subscribe Button"></i></button>
-                </div>
+                <input required type="email" name="subscribe_email" placeholder="john.doe@example.com" class="form-control footer-subscribe-field" aria-label="user email input for subscribe form" id="subscribe_email">
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label" for="consent_footer" data-toggle="tooltip" data-placement="bottom" data-original-title="Consent to Privacy Policy">
+                  <input class="form-check-input" type="checkbox" name="consent_footer" value="" alt="Consent to Privacy Policy" aria-label="Consent to Privacy Policy" required id="consent_footer">
+                  Consent to
+                  <span class="form-check-sign"></span>
+                </label>
+                <a class="privacy-policy-padding" href="{{ $privacyUrl }}"> Privacy Policy</a>
+              </div>
+
+              <div class="input-group input-group-footer">
+                <button class="btn btn-danger btn-round" type="submit" alt="Subscribe Button"> Subscribe </button>
               </div>
             </form>
             <div class="row">
@@ -91,11 +104,7 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
         </a>
       </div>
       <div class="col-xl-3 footer-black-right-col px-sm-4">
-        <?php
-            // @todo source this from settings or somewhere !?!?!
-            $legalUrl = \Modules\CongregateCms\Services\Url::page('legal');
-            $incUrl = \Modules\CongregateCms\Services\Url::page('incorporation');
-        ?>
+
         <h3 class="text-center no-margin">Legal</h3>
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -103,6 +112,9 @@ $setting = app('Modules\CongregateContract\Setting\SettingInterface');
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ $incUrl }}">Incorporation Details</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ $privacyUrl }}">Privacy Policy</a>
           </li>
         </ul>
       </div>

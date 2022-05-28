@@ -12,12 +12,11 @@
 
 .footer-subscribe-label {
     font-weight: 400;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
 }
 
 .footer-subscribe-field {
     height: auto;
-    font-size: unset;
 }
 
 .input-prepend-for-icon {
@@ -46,4 +45,17 @@
 
 .btn-modal {
     border-color: #00000044;
+}
+
+.card a:not(.btn) {
+    text-decoration: underline;
+}
+
+.input-group-footer {
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.privacy-policy-padding {
+    padding-left: 0.5rem;
 }
