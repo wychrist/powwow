@@ -48,7 +48,7 @@ if (!function_exists('get_data')) {
 if (!function_exists('theme_dir')) {
     function theme_dir(string $append = ''): string
     {
-        return config('congregatetheme.theme_directory', '') . (($append) ? '/'. $append: '');
+        return config('congregatetheme.themes_directory', '') . (($append) ? '/'. $append: '');
     }
 }
 

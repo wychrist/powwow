@@ -90,7 +90,7 @@ class CongregateThemeServiceProvider extends ServiceProvider
 
         // theme setup
         $themeBasePath = module_path($this->moduleName, 'Resources/views/themes/base');
-        $currentTheme = Config::get('congregatetheme.theme_directory') .'/'. (settings('app.theme', Config::get('congregatetheme.theme')));
+        $currentTheme = Config::get('congregatetheme.active_theme_directory') .'/'. (settings('app.theme', Config::get('congregatetheme.theme')));
 
         // the base theme
         $this->loadViewsFrom([
