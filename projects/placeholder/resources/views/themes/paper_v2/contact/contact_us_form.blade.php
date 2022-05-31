@@ -2,6 +2,7 @@
 
 <?php
 $flash = app('Modules\CongregateContract\Theme\FlashMessageInterface');
+$privacyUrl = \Modules\CongregateCms\Services\Url::page('privacy');
 /*$confirmMessage = $flash->get('contact_us_form_confirm');
 
     if($confirmMessage) {
@@ -96,6 +97,14 @@ $flash = app('Modules\CongregateContract\Theme\FlashMessageInterface');
                 <div class="form-group">
                     <label for="contact_message" class="contact-form-label">Message:</label>
                     <textarea name="data[message]" placeholder="Message ..." class="form-control contact-us-textarea" id="contact_message"></textarea>
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="consent_contact_us" data-toggle="tooltip" data-placement="bottom" data-original-title="Consent to Privacy Policy">
+                        <input class="form-check-input" type="checkbox" name="consent_contact_us" value="" alt="Consent to Privacy Policy" aria-label="Consent to Privacy Policy" required id="consent_contact_us">
+                        Consent to
+                        <span class="form-check-sign"></span>
+                    </label>
+                    <a class="privacy-policy-padding" href="{{ $privacyUrl }}"> Privacy Policy</a>
                 </div>
                 <div class="form-group button-flex-box">
                     <button type="submit" value="Submit" class="btn btn-danger btn-round btn-move-right">Submit</button>

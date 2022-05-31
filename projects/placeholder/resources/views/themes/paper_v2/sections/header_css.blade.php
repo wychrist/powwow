@@ -6,7 +6,7 @@
 <link rel="icon" type="image/png" href="/assets/paper_theme_v2/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>
-  {{ $page->title }}
+  {{ $page->title ?? "Wyreema Christians Inc."}}
 </title>
 <meta name="viewport" content="width=device-width, initial-scale=0.86, maximum-scale=5.0, minimum-scale=0.86">
 <!--     Fonts and icons      shrink-to-fit=no-->

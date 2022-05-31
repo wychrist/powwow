@@ -16765,12 +16765,12 @@ body {
 .form-control {
     font-weight: 400;
     font-size: 1.3rem;
-    border-radius: 20px;
+    border-radius: 40px;
 }
 
 .form-control::placeholder {
     font-weight: 300;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: #333333;
 }
 
@@ -16794,4 +16794,3 @@ body {
     padding: 20px;
     color: #fff;
 }
-
