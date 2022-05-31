@@ -27,7 +27,7 @@ return new class extends Migration
     public function down()
     {
         if (file_exists(content_dir())) {
-            File::unlink(content_dir());
+            File::deleteDirectories(content_dir());
         }
     }
 };
