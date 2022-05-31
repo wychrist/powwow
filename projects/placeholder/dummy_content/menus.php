@@ -22,7 +22,7 @@ $menuItemsData = [  // the order of this array is important
 ];
 
 $menus = []; // array of menu instances initiated
-$disable = []; // keys in here will be remove from the menu list
+$disable = ['about-us']; // keys in here will be remove from the menu list
 
 foreach ($menuItemsData as $key => $data) {
     if (in_array($key, $disable)) {
