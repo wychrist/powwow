@@ -1,0 +1,6 @@
+vendor/
+storage/debugbar
+storage/logs/*.log
+storage/app/content
+storage/app/framework
+.env
