@@ -32,7 +32,7 @@ class HandleNewSubscription
 
         ['email' => $email] = $data;
 
-        $result = EmailValidator::enter($email, [AddSubscriber::class, 'execute'], $data);
+        $result = EmailValidator::register($email, [AddSubscriber::class, 'execute'], $data);
 
         return $result;
     }

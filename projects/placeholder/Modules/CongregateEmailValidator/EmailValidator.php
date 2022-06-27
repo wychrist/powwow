@@ -9,7 +9,7 @@ use Modules\CongregateEmailValidator\Entities\EmailPending;
 
 class EmailValidator
 {
-    public static function enter(string $email, array $callback, array $payload = []): ValidatorResult
+    public static function register(string $email, array $callback, array $payload = []): ValidatorResult
     {
         $model = EmailPending::where([
             'email' => $email,

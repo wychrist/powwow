@@ -35,7 +35,7 @@ class HandleNewContact
 
         ['email' => $email] = $data;
 
-        $result =  EmailValidator::enter($email, [AddContactEntry::class, 'execute'], $data);
+        $result =  EmailValidator::register($email, [AddContactEntry::class, 'execute'], $data);
 
         return $result;
     }
