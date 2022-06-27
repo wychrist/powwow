@@ -38,17 +38,20 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 # Add user for laravel application
 RUN groupadd -g 1000 www
 RUN useradd -u 1000 -ms /bin/bash -g www www
+RUN usermod -a -G www-data www
 
 # Copy code to /var/www
 COPY --chown=www:www-data . /var/www
 
 # add root to www group
-RUN chmod -R ug+w /var/www/storage
+RUN chmod -R ug+rw /var/www/storage
 
 # Copy nginx/php/supervisor configs
 RUN cp docker/supervisor.conf /etc/supervisord.conf
 RUN cp docker/php.ini /usr/local/etc/php/conf.d/app.ini
 RUN cp docker/nginx.conf /etc/nginx/sites-enabled/default
+
+RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
 
 # PHP Error Log Files
 RUN mkdir /var/log/php
@@ -59,4 +62,5 @@ RUN composer install --optimize-autoloader --no-dev
 RUN chmod +x /var/www/docker/run.sh
 
 EXPOSE 80
+
 ENTRYPOINT ["/var/www/docker/run.sh"]
