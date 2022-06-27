@@ -14,8 +14,7 @@
         "league/plates": "^3.5",
         "nwidart/laravel-modules": "^9.0",
         "wychrist/congregatecontract": "dev-main",
-        "kpama/easybuilder": "dev-main",
-        "wychrist/themes": "dev-main"
+        "kpama/easybuilder": "dev-main"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",
@@ -74,10 +73,6 @@
         },
         {
             "url": "git@github.com:kpama/easybuilder.git",
-            "type": "vcs"
-        },
-        {
-            "url": "git@github.com:wychrist/wychrist_theme.git",
             "type": "vcs"
         }
     ]
