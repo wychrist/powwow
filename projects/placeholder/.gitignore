@@ -13,4 +13,7 @@ npm-debug.log
 yarn-error.log
 /.idea
 /.vscode
-composer.lock
+resources/views/themes
+!resources/views/themes/.gitkeep
+public/assets/
+
