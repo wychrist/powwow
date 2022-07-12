@@ -1,8 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\View;
-use Modules\CongregateContract\Setting\SettingInterface;
-
 if (!function_exists('app_root_dir')) {
     function app_root_dir(string $append = ''): string
     {
