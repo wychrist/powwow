@@ -17,6 +17,7 @@ use Modules\CongregateCms\Http\Controllers\PageController;
 if (config()->get('congregatecms.register_posts_endpoint', true)) {
     Route::prefix(config()->get('congregatecms.posts_endpoint', 'posts'))->group(function () {
         Route::get('/', [PostsController::class, 'indexAction'])->name('congregatecms.latest_posts');
+        Route::get('/posts-list', [PostsController::class, 'listAction'])->name('congregatecms.list_of_posts');
         Route::get('/{id}', [PostsController::class, 'serveAction'])->name('congregatecms.a_posts');
     });
 }
