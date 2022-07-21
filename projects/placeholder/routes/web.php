@@ -32,10 +32,8 @@ Route::get('/menu', function() {
     return $menu->toArray();
 });
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-Route::get('test', function(FlashMessageInterface $flash){
-    $flash->information("This is a success message");
-    return view('fake', [
-        'page' => new Page()
-    ]);
-});
+require __DIR__.'/auth.php';
