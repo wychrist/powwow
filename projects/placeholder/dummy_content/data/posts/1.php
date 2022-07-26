@@ -5,22 +5,20 @@ use App\Cms\Page;
 
 $post = new Page();
 
-$post->title = "Post 1";
-$post->slug = '1';
-$post->intro = "1 Porttitor Felis Nulla Neque Senectus Nunc";
-$post->poster = '/assets/img/latest_post.jpg';
+$post->title = "The Love of Money";
+$post->subtitle = 'Worship Lesson Sunday 30-01-2022';
+$post->slug = '0';
+$post->intro = 'Worship Lesson "The Love of Money" presenter Jibao Mansaray Lesson from Sunday 30-01-2022';
+$post->poster = '/assets/paper_theme_v2/img/post/Post1.jpg';
 
 // content
-$post->content ="
-<h2>Aliquam Morbi Nostra Amet A</h2>
-<p>Nullam leo Lectus interdum justo consequat. Pretium tortor risus commodo tincidunt <strong>imperdiet</strong> nisl ad suspendisse faucibus Metus egestas orci magnis dolor neque pharetra accumsan. Litora risus, sodales. Varius augue vivamus fames ut orci mollis volutpat.</p>
+$post->content = '
+<h2>The Love of Money</h2>
+<p>Worship Lesson "The Love of Money" presenter Jibao Mansaray Lesson from Sunday 30-01-2022</p>
 
-<p><strong>Molestie</strong> condimentum. <em>Arcu</em> montes <em>luctus</em> mi nibh commodo ridiculus, arcu sem <em>scelerisque</em> habitasse parturient praesent conubia et sed pulvinar arcu vitae dis sagittis. Cras ad malesuada fermentum.</p>
 
-<p>Auctor ut facilisis sapien magna scelerisque. Cursus fames fames. Netus Placerat accumsan aptent nonummy dignissim amet Pharetra felis.</p>
-
-<p>Sit egestas maecenas turpis dignissim mollis amet sociosqu etiam dictumst pede rutrum dictumst. Interdum diam nisl dignissim phasellus justo iaculis.</p>";
-
+<iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fwyreemadcoc%2Fvideos%2F1299511560549745%2F&show_text=false&width=560&t=0" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+    ';
 
 // display settings
 // @todo not sure about this format yet
