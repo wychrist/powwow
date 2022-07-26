@@ -19,7 +19,12 @@ class ContentRepository
     }
 
     public function getListOfPosts($total = 10): array {
-        return include_once content_dir('data/posts/list.php');
+        $lists = include_once content_dir('data/posts/list.php');
+        if(count($lists) > $total) {
+            return collect($lists)->splice(0, $total);
+        }
+
+        return $lists;
     }
 
     public function findPostById(int $id): Page | null
