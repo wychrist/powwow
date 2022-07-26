@@ -7,7 +7,7 @@ $post = new Page();
 
 $post->title = "When Good is not Good Enough";
 $post->subtitle = 'Worship Lesson Sunday 09-01-2022';
-$post->slug = '0';
+$post->slug = '2';
 $post->intro = 'Worship Lesson "When Good is not Good Enough" presenter Jibao Mansaray Lesson from Sunday 09-01-2022';
 $post->poster = '/assets/paper_theme_v2/img/post/Post2.jpg';
 
