@@ -19,9 +19,9 @@ class PostsController extends Controller
         return custom_template($template, ['post' => $post]);
     }
 
-    public function listAction()
+    public function listAction(ContentRepository $repo)
     {
-        $list = include_once content_dir('data/posts/list.php');
+        $list = $repo->getListOfPosts();
 
         return custom_template('congregatecms::templates/posts_list', compact('list'));
     }

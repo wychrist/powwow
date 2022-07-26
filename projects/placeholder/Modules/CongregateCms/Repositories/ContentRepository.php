@@ -18,6 +18,10 @@ class ContentRepository
         return (is_numeric($idOrSlug)) ? $this->findPostById($idOrSlug) : $this->findPostBySlug($idOrSlug);
     }
 
+    public function getListOfPosts($total = 10): array {
+        return include_once content_dir('data/posts/list.php');
+    }
+
     public function findPostById(int $id): Page | null
     {
         try {
