@@ -8,10 +8,10 @@ $post = new Page();
 $post->title = "Post 3";
 $post->slug = '3';
 $post->intro = "3 Porttitor Felis Nulla Neque Senectus Nunc";
-$post->poster = '/assets/img/latest_post.jpg';
+$post->image = '/assets/paper_theme_v2/img/aaron-burden-9zsHNt5OpqE-unsplash.jpg';
 
 // content
-$post->content ="
+$post->content = "
 <h2>Aliquam Morbi Nostra Amet A</h2>
 <p>Nullam leo Lectus interdum justo consequat. Pretium tortor risus commodo tincidunt <strong>imperdiet</strong> nisl ad suspendisse faucibus Metus egestas orci magnis dolor neque pharetra accumsan. Litora risus, sodales. Varius augue vivamus fames ut orci mollis volutpat.</p>
 
