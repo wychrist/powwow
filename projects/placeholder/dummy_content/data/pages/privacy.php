@@ -6,6 +6,7 @@ $page = new Page();
 
 $page->template = 'theme::templates/privacy';
 $page->title = "Privacy Policy";
+$page->slug  =  "privacy";
 $page->content = '<div class="container">
                 <div class="tab-content translations-content-item en visible" id="en">
                     <h1>Privacy Policy</h1>
