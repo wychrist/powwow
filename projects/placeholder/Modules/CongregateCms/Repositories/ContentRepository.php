@@ -18,9 +18,10 @@ class ContentRepository
         return (is_numeric($idOrSlug)) ? $this->findPostById($idOrSlug) : $this->findPostBySlug($idOrSlug);
     }
 
-    public function getListOfPosts($total = 10): array {
+    public function getListOfPosts($total = 10): array
+    {
         $lists = include_once content_dir('data/posts/list.php');
-        if(count($lists) > $total) {
+        if (count($lists) > $total) {
             return collect($lists)->splice(0, $total)->toArray();
         }
 
@@ -39,7 +40,8 @@ class ContentRepository
     public function findPostBySlug(string $slug): Page | null
     {
         try {
-            return collect(content_dir('data/posts/list.php'))->sole(function ($_, $value) use ($slug) {
+            $posts = include content_dir('data/posts/list.php');
+            return collect($posts)->sole(function ($value) use ($slug) {
                 return $value->slug == $slug;
             });
         } catch (\Exception $_) {
@@ -64,7 +66,8 @@ class ContentRepository
     public function findPageBySlug(string $slug): Page | null
     {
         try {
-            return collect(content_dir('data/pages/list.php'))->sole(function ($_, $value) use ($slug) {
+            $pages = include(content_dir('data/pages/list.php'));
+            return collect($pages)->sole(function ($value) use ($slug) {
                 return $value->slug == $slug;
             });
         } catch (\Exception $_) {
