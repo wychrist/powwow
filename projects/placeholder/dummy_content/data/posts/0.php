@@ -17,7 +17,7 @@ $post->images = [
     '/assets/paper_theme_v2/img/post/Post0_4.jpg',
     '/assets/paper_theme_v2/img/post/Post0_5.jpg',
 ];
-$post->video = '<iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fwyreemadcoc%2Fvideos%2F5012606668761855%2F&width=500&show_text=false&height=282&appId" width="500" height="282" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>';
+$post->video = 'ZK0GQ9VXCbI';
 
 // content
 $post->content = '
