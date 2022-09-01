@@ -14,7 +14,6 @@ class ContactController extends Controller
 
     public function indexAction(FlashMessageInterface $flash)
     {
-       // $flash->success('My test message', ['one' => ';ere']);
         $page = new Page();
         $page->title="Contact Us";
 
@@ -46,7 +45,6 @@ class ContactController extends Controller
         }
 
         $flash->success($message, $data);
-        // $flash->set('contact_us_form_confirm', 'Contact for submitted successfully', $data);
 
         return back();
     }
