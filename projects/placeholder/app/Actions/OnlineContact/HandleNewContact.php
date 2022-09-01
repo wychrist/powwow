@@ -2,6 +2,7 @@
 
 namespace App\Actions\OnlineContact;
 
+use App\Models\OnlineContact;
 use Illuminate\Support\Facades\Validator;
 use Modules\CongregateEmailValidator\EmailValidator;
 use Modules\CongregateEmailValidator\ValidatorResult;
@@ -35,8 +36,14 @@ class HandleNewContact
 
         ['email' => $email] = $data;
 
-        $result =  EmailValidator::register($email, [AddContactEntry::class, 'execute'], $data);
+        $existing = OnlineContact::where([
+            'email' => $email
+        ])->first();
 
-        return $result;
+        if($existing) {
+            return new ValidatorResult('', true, '');
+        }
+
+        return EmailValidator::register($email, [AddContactEntry::class, 'execute'], $data);
     }
 }
