@@ -4,9 +4,7 @@ namespace Modules\CongregateEmailValidator;
 
 class ValidatorResult
 {
-    public function __construct(protected string $token, protected bool $alreadyExist, protected string $url)
-    {
-    }
+    public function __construct(protected string $token, protected bool $alreadyExist, protected string $url){}
 
     public function getToken(): string
     {
