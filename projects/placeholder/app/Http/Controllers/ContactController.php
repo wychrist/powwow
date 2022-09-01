@@ -29,7 +29,12 @@ class ContactController extends Controller
         $data = $request->post();
 
         $result = $handleNewContact($data);
-        $sendEmail($result, $data);
+
+        if(!$result->alreadyExist()) {
+            $sendEmail($result, $data);
+        } else {
+            AddContactEntry::execute($data);
+        }
 
         $message = __('app.contact_request_confirm');
 
