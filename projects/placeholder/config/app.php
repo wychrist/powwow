@@ -19,7 +19,7 @@ return [
     /**
      * Send an email to the secretary for a new online contact
      */
-    'send_new_contact_to_secretary' => false,
+    'send_new_contact_to_secretary' => env('SEND_NEW_CONTACT_TO_SECRETARY', false),
     /*
     |--------------------------------------------------------------------------
     | Application Name
