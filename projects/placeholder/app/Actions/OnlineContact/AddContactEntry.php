@@ -61,8 +61,9 @@ class AddContactEntry
             'data' => $data
         ]);
 
-        if (config()->get('app.send_new_contact_to_secretary', false)) {
-            Mail::to($email)->queue(new SendEmailToSecretary([
+        $toEmail = env('MAIL_TO_ADDRESS');
+        if (config()->get('app.send_new_contact_to_secretary', false) && $toEmail) {
+            Mail::to($toEmail)->queue(new SendEmailToSecretary([
                 'email' => $email,
                 'type' => $type,
                 'data' => $data
