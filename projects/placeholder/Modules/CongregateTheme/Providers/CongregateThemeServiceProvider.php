@@ -88,49 +88,8 @@ class CongregateThemeServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(array_merge($this->getPublishableViewPaths(), [$sourcePath]), $this->moduleNameLower);
 
-        // theme setup
-        $themeBasePath = module_path($this->moduleName, 'Resources/views/themes/base');
-        $currentTheme = Config::get('congregatetheme.active_theme_directory') .'/'. (settings('app.theme', Config::get('congregatetheme.theme')));
-
-        // the base theme
-        $this->loadViewsFrom([
-            $themeBasePath
-        ],'base_theme');
-
-        // the current active theme
-        $this->loadViewsFrom([
-            $currentTheme,
-            $themeBasePath
-        ],'theme');
-
-        // the current active theme's layouts
-        $this->loadViewsFrom([
-            $currentTheme .'/layouts',
-            $themeBasePath .'/layouts'
-        ],'theme_layout');
-
-        // the current active theme's templates
-        $this->loadViewsFrom([
-            $currentTheme .'/templates',
-            $themeBasePath .'/templates',
-            resource_path('views')
-        ],'theme_template');
-
-        // the current active theme's sections
-        $this->loadViewsFrom([
-            $currentTheme .'/sections',
-            $themeBasePath .'/sections'
-        ],'theme_section');
-
-        // the current active theme's fragments
-        $this->loadViewsFrom([
-            $currentTheme .'/fragments',
-            $themeBasePath .'/fragments'
-        ],'theme_fragments');
-
-
-       //  dd(Config::get('view.paths'));
-        // @todo register component against the base theme
+        $this->setupFrontendTheme();
+        $this->setupBackendTheme();
 
     }
 
@@ -179,5 +138,91 @@ class CongregateThemeServiceProvider extends ServiceProvider
             NewTheme::class,
             UninstallTheme::class
         ]);
+    }
+
+    private function setupFrontendTheme()
+    {
+        // theme setup
+        $themeBasePath = module_path($this->moduleName, 'Resources/views/themes/base');
+        $currentTheme = Config::get('congregatetheme.active_theme_directory') .'/'. (settings('app.theme', Config::get('congregatetheme.theme')));
+
+        // the base theme
+        $this->loadViewsFrom([
+            $themeBasePath
+        ],'base_theme');
+
+        // the current active theme
+        $this->loadViewsFrom([
+            $currentTheme,
+            $themeBasePath
+        ],'theme');
+
+        // the current active theme's layouts
+        $this->loadViewsFrom([
+            $currentTheme .'/layouts',
+            $themeBasePath .'/layouts'
+        ],'theme_layout');
+
+        // the current active theme's templates
+        $this->loadViewsFrom([
+            $currentTheme .'/templates',
+            $themeBasePath .'/templates',
+            resource_path('views')
+        ],'theme_template');
+
+        // the current active theme's sections
+        $this->loadViewsFrom([
+            $currentTheme .'/sections',
+            $themeBasePath .'/sections'
+        ],'theme_section');
+
+        // the current active theme's fragments
+        $this->loadViewsFrom([
+            $currentTheme .'/fragments',
+            $themeBasePath .'/fragments'
+        ],'theme_fragments');
+    }
+
+    private function setupBackendTheme()
+    {
+        // theme setup
+        $themeBasePath = module_path($this->moduleName, 'Resources/views/themes/base');
+        $currentTheme = Config::get('congregatetheme.active_backend_theme_directory') .'/'. (settings('app.theme', Config::get('congregatetheme.backend_theme')));
+
+        // the base theme
+        $this->loadViewsFrom([
+            $themeBasePath
+        ],'backend_base_theme');
+
+        // the current active theme
+        $this->loadViewsFrom([
+            $currentTheme,
+            $themeBasePath
+        ],'backend_theme');
+
+        // the current active theme's layouts
+        $this->loadViewsFrom([
+            $currentTheme .'/layouts',
+            $themeBasePath .'/layouts'
+        ],'backend_theme_layout');
+
+        // the current active theme's templates
+        $this->loadViewsFrom([
+            $currentTheme .'/templates',
+            $themeBasePath .'/templates',
+            resource_path('views')
+        ],'backend_theme_template');
+
+        // the current active theme's sections
+        $this->loadViewsFrom([
+            $currentTheme .'/sections',
+            $themeBasePath .'/sections'
+        ],'backend_theme_section');
+
+        // the current active theme's fragments
+        $this->loadViewsFrom([
+            $currentTheme .'/fragments',
+            $themeBasePath .'/fragments'
+        ],'backend_theme_fragments');
     }
 }
