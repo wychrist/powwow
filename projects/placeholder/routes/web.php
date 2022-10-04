@@ -4,6 +4,7 @@ use App\Cms\Page;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsletterController;
+use App\Mail\OnlineContact\ValidateEmail;
 use Illuminate\Support\Facades\Route;
 use Modules\CongregateContract\Theme\FlashMessageInterface;
 
