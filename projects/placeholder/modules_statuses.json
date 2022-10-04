@@ -3,5 +3,6 @@
     "CongregateTheme": true,
     "CongregateSetting": true,
     "CongregateEav": true,
-    "CongregateEmailValidator": true
+    "CongregateEmailValidator": true,
+    "CongregateBackend": true
 }

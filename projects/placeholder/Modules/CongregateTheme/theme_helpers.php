@@ -71,6 +71,15 @@ if (!function_exists('render_template')) {
     }
 }
 
+
+if (!function_exists('render_backend_template')) {
+    function render_backend_template(string $template, array $data = [])
+    {
+        $data = inject_template_data($data);
+        return view("backend_theme_template::{$template}", $data)->render();
+    }
+}
+
 if(!function_exists('custom_template')) {
     function custom_template(string $template, array $data = []) {
         $data = inject_template_data($data);
@@ -82,5 +91,11 @@ if (!function_exists('serve_template')) {
     function serve_template(string $template, array $data = [])
     {
         echo render_template($template, $data);
+    }
+}
+if (!function_exists('serve_backend_template')) {
+    function serve_backend_template(string $template, array $data = [])
+    {
+        echo render_backend_template($template, $data);
     }
 }

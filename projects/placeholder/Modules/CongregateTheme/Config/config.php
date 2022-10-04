@@ -14,7 +14,20 @@ return [
     /**
      * The current active theme directory
      *
-     * Change this value if the theme is not in the 'themes_directory
+     * Change this value if the theme is not in the 'themes_directory'
      */
     'active_theme_directory' => env('ACTIVE_THEME_DIRECTORY',resource_path("views/themes")),
+
+    /**
+     * The current backend theme
+     */
+    'backend_theme' => env('DEFAULT_BACKEND_THEME', 'backend_base'),
+
+    /**
+     * The current active backend theme directory
+     *
+     * Change this value if the theme is not in the 'themes_directory'
+     */
+    'active_backend_theme_directory' => env('ACTIVE_BACKEND_THEME_DIRECTORY', resource_path('views/themes')),
+
 ];
