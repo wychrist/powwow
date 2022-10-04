@@ -1,4 +1,5 @@
-@extends('congregatebackend::layouts.master')
+
+@extends('backend_theme::layouts.two_columns_left')
 
 @section('content')
     <h1>Hello World</h1>
