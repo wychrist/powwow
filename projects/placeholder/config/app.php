@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'site_name' => env('SITE_NAME', 'Site Name'),
+    'site_name' => env('SITE_NAME', env('APP_NAME', 'Laravel')),
     'theme' => env('DEFAULT_THEME', 'base'),
     'socials' => [
         'facebook' => env('FACEBOOK_LINK'),
