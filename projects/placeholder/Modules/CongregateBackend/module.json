@@ -1,0 +1,11 @@
+{
+    "name": "CongregateBackend",
+    "alias": "congregatebackend",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateBackend\\Providers\\CongregateBackendServiceProvider"
+    ],
+    "files": []
+}
