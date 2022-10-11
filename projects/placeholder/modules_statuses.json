@@ -4,5 +4,6 @@
     "CongregateSetting": true,
     "CongregateEav": true,
     "CongregateEmailValidator": true,
-    "CongregateBackend": true
+    "CongregateBackend": true,
+    "CongregateUi": true
 }
