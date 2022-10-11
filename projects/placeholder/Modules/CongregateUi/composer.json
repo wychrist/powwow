@@ -1,0 +1,27 @@
+{
+    "name": "wychrist/congregateui",
+    "description": "",
+    "authors": [
+        {
+            "name": "Wychrist Developers",
+            "email": "developer@wychrist.org.au"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "require": {
+        "livewire/livewire": "^2",
+        "almasaeed2010/adminlte": "^3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\CongregateUi\\": ""
+        }
+    }
+}

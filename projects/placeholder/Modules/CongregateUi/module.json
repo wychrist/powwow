@@ -1,0 +1,11 @@
+{
+    "name": "CongregateUi",
+    "alias": "congregateui",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\CongregateUi\\Providers\\CongregateUiServiceProvider"
+    ],
+    "files": []
+}
