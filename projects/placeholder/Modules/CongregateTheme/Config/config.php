@@ -28,6 +28,6 @@ return [
      *
      * Change this value if the theme is not in the 'themes_directory'
      */
-    'active_backend_theme_directory' => env('ACTIVE_BACKEND_THEME_DIRECTORY', resource_path('views/themes')),
+    'active_backend_theme_directory' => env('ACTIVE_BACKEND_THEME_DIRECTORY', env('ACTIVE_THEME_DIRECTORY',resource_path("views/themes"))),
 
 ];
