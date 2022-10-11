@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Ui\View\Component\Base\Breadcrumb;
+namespace Modules\CongregateUi\View\Component\Base\Breadcrumb;
 
 use Illuminate\View\Component;
 use Modules\CongregateUi\Services\BreadcrumbService;
@@ -13,7 +13,7 @@ class Breadcrumb  extends Component
     use RenderTrait,
         ColorTrait;
 
-    private $view = 'ui::components.base.breadcrumb/breadcrumb';
+    private $view = 'congregateui::components.base.breadcrumb/breadcrumb';
 
     public array $crumbs = [];
 
