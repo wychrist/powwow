@@ -13,6 +13,7 @@ trait RenderTrait
       }
       if (method_exists($this, 'preMergeData')) {
         $data = $this->preMergeData($data);
+        $data['attributes'] = $data['attributes']->class($data['classes']);
       }
       // call all other traits
       foreach (class_uses_recursive($class = static::class) as $trait) {

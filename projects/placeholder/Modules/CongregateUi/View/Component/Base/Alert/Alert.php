@@ -3,9 +3,12 @@
 namespace Modules\CongregateUi\View\Component\Base\Alert;
 
 use Illuminate\View\Component;
+use Modules\CongregateUi\View\Traits\RenderTrait;
 
 class Alert extends Component
 {
+    use RenderTrait;
+
     const TYPE_PRIMARY = 'primary',
         TYPE_SECONDARY = 'secondary',
         TYPE_SUCCESS = 'success',
@@ -35,17 +38,18 @@ class Alert extends Component
         self::TYPE_WARING => 'icon fas fa-exclamation-triangle'
     ];
 
+    protected $view = 'congregateui::components.base.alert/alert';
+
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct(string $title = '', string $type = self::TYPE_PRIMARY, string $icon = '', array $list = [])
+    public function __construct(string $title = '', string $icon = '', array $list = [], string $type = self::TYPE_PRIMARY)
     {
         $this->title = $title;
         $this->type = $type;
         $this->alertList = $list;
-        $this->classes["alert-{$this->type}"] = true;
         $this->icon = $icon;
 
         if(!$this->icon && isset($this->iconMaps[$this->type])) {
@@ -53,15 +57,10 @@ class Alert extends Component
         }
     }
 
-    /**
-     * Get the view / contents that represent the component.
-     *
-     * @return \Illuminate\View\View|string
-     */
-    public function render()
+    private function preMergeData(array $data)
     {
-        return function ($data) {
-            return view('congregateui::components.base.alert/alert', $data)->render();
-        };
+        $data['classes']["alert-{$this->type}"] = true;
+        return $data;
     }
+
 }

@@ -3,7 +3,6 @@
 namespace Modules\CongregateUi\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Facades\Blade;
 
 class CongregateUiServiceProvider extends ServiceProvider
@@ -41,6 +40,9 @@ class CongregateUiServiceProvider extends ServiceProvider
 
         // Card
         Blade::componentNamespace('Modules\\CongregateUi\\View\\Component\\Base\\Card', 'ui-base-card');
+
+        // Button
+        Blade::componentNamespace('Modules\\CongregateUi\\View\\Component\\Base\\Button', 'ui-base-button');
     }
 
     /**

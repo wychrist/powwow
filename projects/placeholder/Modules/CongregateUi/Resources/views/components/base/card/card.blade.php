@@ -1,4 +1,4 @@
-<div @class($classes)>
+<div {{ $attributes }}>
     <div class="card-header">
         @if($header)
             <h3 class="card-title">{{$header}}</h3>
@@ -21,7 +21,7 @@
     <!-- /.card-header -->
     <div class="card-body">
         @if($title)
-            <h5 class="card-title">{{ $title}}</h5>
+            <h5 class="card-title">{{ $title}}</h5><br/>
         @endif
         <div>
             {{ $slot }}
