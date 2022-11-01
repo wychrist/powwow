@@ -97,5 +97,15 @@ $crumbs = [["foo", "http://"], ["bar", "#"]];
         </x-ui-base-alert::dark>
     </div>
 </div>
-<x-ui-base-breadcrumb::breadcrumb :$crumbs></x-ui-base-breadcrumb::breadcrumb>
+<div class="row">
+    <div class="col-12">
+        <x-ui-base-breadcrumb::breadcrumb :$crumbs></x-ui-base-breadcrumb::breadcrumb>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <x-ui-base-nav::nav></x-ui-base-nav::nav>
+    </div>
+</div>
 @endsection

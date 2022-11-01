@@ -43,6 +43,9 @@ class CongregateUiServiceProvider extends ServiceProvider
 
         // Button
         Blade::componentNamespace('Modules\\CongregateUi\\View\\Component\\Base\\Button', 'ui-base-button');
+
+        // nav
+        Blade::componentNamespace('Modules\\CongregateUi\\View\\Component\\Base\\Nav', 'ui-base-nav');
     }
 
     /**

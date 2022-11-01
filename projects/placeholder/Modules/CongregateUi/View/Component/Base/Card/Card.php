@@ -3,6 +3,7 @@
 namespace Modules\CongregateUi\View\Component\Base\Card;
 
 use Illuminate\View\Component;
+use Modules\CongregateTheme\Services\PageAsset;
 use Modules\CongregateUi\View\Traits\ColorTrait;
 use Modules\CongregateUi\View\Traits\RenderTrait;
 
