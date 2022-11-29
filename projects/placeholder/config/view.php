@@ -14,7 +14,8 @@ return [
     */
 
     'paths' => [
-        resource_path('views/themes/' . env('DEFAULT_THEME', 'base')),
+        env('ACTIVE_THEME_DIRECTORY', resource_path('views/themes/')) . '/' . env('DEFAULT_THEME', 'base'),
+        env('ACTIVE_BACKEND_THEME_DIRECTORY', resource_path('views/themes')) . '/' . env('DEFAULT_BACKEND_THEME', 'base'),
         resource_path('views'),
     ],
 
