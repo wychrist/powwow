@@ -6,15 +6,27 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 
-class CongregateBackendController extends Controller
+class CongregateBackendController extends BackendBaseController
 {
+
+    public function __construct()
+    {
+        $this->addBreadcrumb("Backend", "backend");
+    }
     /**
      * Display a listing of the resource.
      * @return Renderable
      */
     public function index()
     {
+        $this->addBreadcrumb("Dashboard", "", true);
         return view('congregatebackend::index');
+    }
+
+    public function setting()
+    {
+        $this->addBreadcrumb("Settings", "", true);
+        return view('congregatebackend::setting');
     }
 
     /**
