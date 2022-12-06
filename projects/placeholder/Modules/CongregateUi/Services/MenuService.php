@@ -50,7 +50,7 @@ class MenuService
             $name = \Request::route()->getName();
             if(isset(self::$nameRoutes[$name])) {
                 foreach(self::$nameRoutes[$name] as $entry) {
-                        $entry->setActive(true);
+                        $entry->setActive(true, true);
                 }
             }
         }
