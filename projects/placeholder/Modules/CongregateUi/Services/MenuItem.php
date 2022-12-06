@@ -11,7 +11,8 @@ class MenuItem
     private string $link;
     private string $id;
     private bool $active;
-    private $parent;
+    private  MenuItem | null $parent = null;
+    private bool $hasActiveChild = false;
 
     public function __construct(string $label, string | array $link, string $id = null, bool $active = false)
     {
@@ -38,8 +39,8 @@ class MenuItem
         return $this;
     }
 
-    public function getParent() {
-        $this->parent;
+    public function getParent(): MenuItem | null {
+       return $this->parent;
     }
 
     public function getLabel(): string
@@ -61,9 +62,23 @@ class MenuItem
         $this->active = $active;
 
         if($this->parent && $applyToParent) {
-            $this->parent->setActive($active, $applyToParent);
+            $this->parent->setHasActiveChild($active);
         }
 
+        return $this;
+    }
+
+    public function getHasActiveChild(): bool
+    {
+        return $this->hasActiveChild;
+    }
+
+    public function setHasActiveChild(bool $has = true): self
+    {
+        $this->hasActiveChild = $has;
+        if($has && $this->parent) {
+            $this->getParent()->setHasActiveChild($has);
+        }
         return $this;
     }
 
