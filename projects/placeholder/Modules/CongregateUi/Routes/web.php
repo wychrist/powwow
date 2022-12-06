@@ -12,5 +12,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::prefix('congregateui')->group(function() {
-    Route::get('/', 'CongregateUiController@index');
+    Route::get('/', 'CongregateUiController@index')->name('congregateui');
 });
