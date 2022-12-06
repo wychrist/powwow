@@ -33,7 +33,8 @@ class MenuService
         return self::$menus[$menuId];
     }
 
-    public static function getMenus(): array {
+    public static function getMenus(): array
+    {
         return self::$menus;
     }
 

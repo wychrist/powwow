@@ -19,6 +19,14 @@ class CongregateBackendController extends BackendBaseController
         $backendMenu->addChild('Settings', '/settings')->addChild('Api Settings', '#');
 
         MenuService::addToMenu($backendMenu);
+
+        $backendMenu->addChild('Root 3', 'r3')
+            ->addChild('Root 3, Child 1', 'r3.1');
+        $backendMenu->addChild('Root 4', 'r4');
+        $backendMenu->addChild('Root 5', 'r5')
+            ->addChild('Root 5, Child 1', 'r5.1')
+            ->addChild('Root 5, Child 1.1', 'r5.1.1')
+            ->addChild('Root 5, Child 1.1.1', 'r5.1.1.1');
     }
     /**
      * Display a listing of the resource.
