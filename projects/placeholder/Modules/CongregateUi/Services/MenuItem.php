@@ -61,7 +61,7 @@ class MenuItem
         $this->active = $active;
 
         if($this->parent && $applyToParent) {
-            $this->parent->setActive($active);
+            $this->parent->setActive($active, $applyToParent);
         }
 
         return $this;
