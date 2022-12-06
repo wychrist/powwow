@@ -5,6 +5,8 @@ namespace Modules\CongregateBackend\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\CongregateUi\Services\MenuService;
+use Modules\CongregateUi\Services\MenuItemService;
 
 class CongregateBackendController extends BackendBaseController
 {
@@ -12,6 +14,11 @@ class CongregateBackendController extends BackendBaseController
     public function __construct()
     {
         $this->addBreadcrumb("Backend", "backend");
+        $backendMenu = new MenuItemService('Backend', '#', null);
+        $backendMenu->addChild('Dashboard', '/backend');
+        $backendMenu->addChild('Settings', '/settings')->addChild('Api Settings', '#');
+
+        MenuService::addToMenu($backendMenu);
     }
     /**
      * Display a listing of the resource.

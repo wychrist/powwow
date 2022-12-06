@@ -3,7 +3,7 @@
 namespace Modules\CongregateUi\View\Component\Base\Nav;
 
 use Illuminate\View\Component;
-use Modules\CongregateUi\Services\MainMenuService;
+use Modules\CongregateUi\Services\MenuService;
 use Modules\CongregateUi\View\Traits\ColorTrait;
 use Modules\CongregateUi\View\Traits\RenderTrait;
 
@@ -18,7 +18,7 @@ class Nav extends Component
     private function preMergeData(array $data)
     {
 
-        $data['mainMenu'] = MainMenuService::getMenuById()->getChildren();
+        $data['mainMenu'] = MenuService::getMenuById()->getChildren();
 
         return $data;
     }

@@ -6,7 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\CongregateUi\Services\BreadcrumbService;
-use Modules\CongregateUi\Services\MainMenuService;
+use Modules\CongregateUi\Services\MenuService;
 use Modules\CongregateUi\Services\MenuItemService;
 
 class CongregateUiController extends Controller
@@ -18,7 +18,7 @@ class CongregateUiController extends Controller
     public function index()
     {
         $firstChild = new MenuItemService('First', '#', null, true);
-        MainMenuService::addToMenu($firstChild);
+        MenuService::addToMenu($firstChild);
 
         $firstChild->addChild('Child child 1', 'c1');
         $firstChild->addChild('Child child 2', 'c2');
