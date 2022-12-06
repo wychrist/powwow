@@ -20,11 +20,13 @@ class MenuService
     }
 
 
-    public static function getMainMenu(): MenuItemService {
+    public static function getMainMenu(): MenuItemService
+    {
         return self::getMenuById();
     }
 
-    public static function getMenuById($menuId = self::MAIN_MENU): MenuItemService {
+    public static function getMenuById($menuId = self::MAIN_MENU): MenuItemService
+    {
         if (!isset(self::$menus[$menuId])) {
             self::$menus[$menuId] = new MenuItemService($menuId, '#', $menuId);
         }
@@ -32,8 +34,8 @@ class MenuService
         return self::$menus[$menuId];
     }
 
-    public static function getMenus(): array {
+    public static function getMenus(): array
+    {
         return self::$menus;
     }
-
 }

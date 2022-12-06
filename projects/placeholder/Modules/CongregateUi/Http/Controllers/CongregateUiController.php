@@ -17,14 +17,7 @@ class CongregateUiController extends Controller
      */
     public function index()
     {
-        $firstChild = new MenuItemService('First', '#', null, true);
-        MenuService::addToMenu($firstChild);
 
-        $firstChild->addChild('Child child 1', 'c1');
-        $firstChild->addChild('Child child 2', 'c2');
-        $firstChild->addChild('Child child 3', 'c3')
-            ->addChild('Child Child 3 child 1', 'c31')
-            ->addChild('Child Child 3 Child 1 child', 'c31');
 
         return view('congregateui::index');
     }
