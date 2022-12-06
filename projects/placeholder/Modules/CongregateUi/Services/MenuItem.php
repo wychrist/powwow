@@ -3,7 +3,7 @@
 namespace Modules\CongregateUi\Services;
 
 
-class MenuItemService
+class MenuItem
 {
 
     private $children = [];
@@ -12,12 +12,24 @@ class MenuItemService
     private string $id;
     private bool $active;
 
-    public function __construct(string $label, string $link, string $id = null, bool $active = false)
+    public function __construct(string $label, string | array $link, string $id = null, bool $active = false)
     {
         $this->label = $label;
-        $this->link = $link;
-        $this->id  = $id ?? md5($this->label . $this->link);
+        $routeName = $link;
+
+        if (is_array($link)) {
+            $routeName = $link[0];
+            $parameters = (isset($link[1])) ? $link[1] : [];
+            $this->link = route($routeName, $parameters);
+        } else {
+            $this->link = $link;
+        }
         $this->active = $active;
+        $this->id  = $id ?? md5($this->label . $routeName);
+
+        if (is_array($link)) {
+            MenuService::watchRoute($routeName, $this);
+        }
     }
 
     public function getLabel(): string
@@ -35,6 +47,11 @@ class MenuItemService
         return $this->active;
     }
 
+    public function setActive(bool $active = true): self {
+        $this->active = $active;
+        return $this;
+    }
+
     public function getId()
     {
         return $this->id;
@@ -45,12 +62,12 @@ class MenuItemService
         $this->children[$item->getId()] = $item;
         return $item;
     }
-    public function addChild(string $label, string $link, string $id = null, bool $active = false)
+    public function addChild(string $label, string | array $link, string $id = null, bool $active = false)
     {
-        $id = $id ?? md5($label . $link);
-        $this->children[$id] = new self($label, $link, $id, $active);
+        $child = new self($label, $link, $id, $active);
+        $this->children[$child->id] = $child;
 
-       return  $this->children[$id];
+        return  $this->children[$child->id];
     }
 
     public function addChildren(array $children)
