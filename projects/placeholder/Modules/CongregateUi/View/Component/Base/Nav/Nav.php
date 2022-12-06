@@ -26,7 +26,7 @@ class Nav extends Component
 
 
         $data['mainMenu'] = MenuService::getMenuById()->getChildren();
-        $data['menu'] = MenuService::getMenuById($this->menu);
+        $data['menu'] = MenuService::getMenuById($this->menu)->getChildren();
 
         return $data;
     }
