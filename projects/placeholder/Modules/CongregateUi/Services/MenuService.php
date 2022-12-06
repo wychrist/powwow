@@ -39,14 +39,19 @@ class MenuService
     }
 
     public static function watchRoute(string $name, MenuItem $menuItem) {
-        self::$nameRoutes[$name] = $menuItem;
+        if(!isset(self::$nameRoutes[$name])) {
+         self::$nameRoutes[$name] = [];
+        }
+        self::$nameRoutes[$name][] = $menuItem;
     }
 
     public static function markCurrentRouteActive() {
         if (!empty(self::$nameRoutes)) {
             $name = \Request::route()->getName();
             if(isset(self::$nameRoutes[$name])) {
-                self::$nameRoutes[$name]->setActive(true);
+                foreach(self::$nameRoutes[$name] as $entry) {
+                        $entry->setActive(true);
+                }
             }
         }
     }
