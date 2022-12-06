@@ -12,13 +12,21 @@ class Nav extends Component
     use RenderTrait;
     use ColorTrait;
 
+
     protected $view = 'congregateui::components.base.nav/nav';
+
+    public function __construct(public string $menu = MenuService::MAIN_MENU)
+    {
+        MenuService::markCurrentRouteActive();
+    }
 
 
     private function preMergeData(array $data)
     {
 
+
         $data['mainMenu'] = MenuService::getMenuById()->getChildren();
+        $data['menu'] = MenuService::getMenuById($this->menu);
 
         return $data;
     }
