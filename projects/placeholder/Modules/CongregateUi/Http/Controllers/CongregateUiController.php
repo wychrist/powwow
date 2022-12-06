@@ -19,12 +19,12 @@ class CongregateUiController extends Controller
     {
         $menu = MenuService::getMainMenu();
 
-        $menu->addChild('Child child 1', 'c1');
-        $menu->addChild('Child child 2', 'c2');
+        $menu->addChild('Root 1', '1');
+        $menu->addChild('Root 2', '2')->addChild('Root 2, Child 1', '2.1');
         $menu->addChild('Congregate UI', ['congregateui']);
-        $menu->addChild('Child child 3', 'c3')
-            ->addChild('Child Child 3 child 1', 'c31')
-            ->addChild('Child Child 3 Child 1 child', ['congregateui']);
+        $menu->addChild('Root 3', '3')
+            ->addChild('Root 3 child 1', '3.1')
+            ->addChild('Root 3 Child 1 child 1', ['congregateui']);
 
         return view('congregateui::index');
     }

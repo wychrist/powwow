@@ -14,11 +14,9 @@ class CongregateBackendController extends BackendBaseController
     public function __construct()
     {
         $this->addBreadcrumb("Backend", "backend");
-        $backendMenu = new MenuItem('Backend', '#', null);
+        $backendMenu = MenuService::getMainMenu();
         $backendMenu->addChild('Dashboard', '/backend');
         $backendMenu->addChild('Settings', '/settings')->addChild('Api Settings', '#');
-
-        MenuService::addToMenu($backendMenu);
 
         $backendMenu->addChild('Root 3', 'r3')
             ->addChild('Root 3, Child 1', 'r3.1');
