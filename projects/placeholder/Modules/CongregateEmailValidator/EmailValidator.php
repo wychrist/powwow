@@ -14,11 +14,10 @@ class EmailValidator
         $model = EmailPending::where([
             'email' => $email,
         ])->first();
-        $alreadyExist = false;
 
-        if ($model && $model->id && $model->callback[0] == $callback[0]) {
-            $alreadyExist = true;
-        } else {
+        $alreadyExist = false; // should always revalidate
+
+        if (!$model || $model->callback[0] != $callback[0]) {
             $model = new EmailPending();
             $model->email = $email;
             $model->callback = $callback;

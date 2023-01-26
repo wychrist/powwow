@@ -27,7 +27,9 @@ class HandleNewContact
      */
     public function __invoke(array $payload): ValidatorResult
     {
-        $data = Validator::make($payload, [
+        $data = Validator::make(
+            $payload,
+            [
                 'email' => ['required', 'string', 'email', 'max:255'],
                 'type' => ['required', 'string', 'max:255'],
                 'data'  => ['required', 'array']
@@ -35,14 +37,6 @@ class HandleNewContact
         )->validate();
 
         ['email' => $email] = $data;
-
-        $existing = OnlineContact::where([
-            'email' => $email
-        ])->first();
-
-        if($existing) {
-            return new ValidatorResult('', true, '');
-        }
 
         return EmailValidator::register($email, [AddContactEntry::class, 'execute'], $data);
     }
