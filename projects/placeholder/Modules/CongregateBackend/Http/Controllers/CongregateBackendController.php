@@ -15,8 +15,11 @@ class CongregateBackendController extends BackendBaseController
     {
         $this->addBreadcrumb("Backend", "backend");
         $backendMenu = MenuService::getMainMenu();
-        $backendMenu->addChild('Dashboard', '/backend');
-        $backendMenu->addChild('Settings', '/settings')->addChild('Api Settings', '#');
+        $backendMenu->addChild('Dashboard', ['backend-index'], 'fas fa-tachometer-alt');
+
+        $settingsMenu = $backendMenu->addChild('Settings', '#', 'fa-solid fa-screwdriver-wrench');
+        $settingsMenu->addChild('General', ['settings-general']);
+        $settingsMenu->addChild('Api Settings', '#');
 
         $backendMenu->addChild('Root 3', 'r3')
             ->addChild('Root 3, Child 1', 'r3.1');

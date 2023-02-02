@@ -23,7 +23,12 @@ function walkMenuItem($entries, int $level)
             echo "<a href=\"{$link}\" class=\"nav-link {$active}\">";
 
             echo '<i class="';
-            echo $menuLevelIcons[$level % count($menuLevelIcons)];
+            $icon = $item->getIcon();
+            if ($icon == null) {
+                echo $menuLevelIcons[$level % count($menuLevelIcons)];
+            } else {
+                echo $icon;
+            }
             echo ' nav-icon"></i>';
             echo "<p>{$item->getLabel()}";
             if ($children) {

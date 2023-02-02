@@ -10,11 +10,12 @@ class MenuItem
     private string $label;
     private string $link;
     private string $id;
+    private string | null $icon;
     private bool $active;
     private  MenuItem | null $parent = null;
     private bool $hasActiveChild = false;
 
-    public function __construct(string $label, string | array $link, string $id = null, bool $active = false)
+    public function __construct(string $label, string | array $link, string $icon = null, string $id = null, bool $active = false)
     {
         $this->label = $label;
         $routeName = $link;
@@ -28,19 +29,22 @@ class MenuItem
         }
         $this->active = $active;
         $this->id  = $id ?? md5($this->label . $routeName);
+        $this->icon = $icon;
 
         if (is_array($link)) {
             MenuService::watchRoute($routeName, $this);
         }
     }
 
-    public function setParent(MenuItem $parent): self {
+    public function setParent(MenuItem $parent): self
+    {
         $this->parent = $parent;
         return $this;
     }
 
-    public function getParent(): MenuItem | null {
-       return $this->parent;
+    public function getParent(): MenuItem | null
+    {
+        return $this->parent;
     }
 
     public function getLabel(): string
@@ -53,15 +57,21 @@ class MenuItem
         return $this->link;
     }
 
+    public function getIcon(): string | null
+    {
+        return $this->icon;
+    }
+
     public function isActive(): bool
     {
         return $this->active;
     }
 
-    public function setActive(bool $active = true, bool $applyToParent = false): self {
+    public function setActive(bool $active = true, bool $applyToParent = false): self
+    {
         $this->active = $active;
 
-        if($this->parent && $applyToParent) {
+        if ($this->parent && $applyToParent) {
             $this->parent->setHasActiveChild($active);
         }
 
@@ -76,7 +86,7 @@ class MenuItem
     public function setHasActiveChild(bool $has = true): self
     {
         $this->hasActiveChild = $has;
-        if($has && $this->parent) {
+        if ($has && $this->parent) {
             $this->getParent()->setHasActiveChild($has);
         }
         return $this;
@@ -92,9 +102,9 @@ class MenuItem
         $this->children[$item->getId()] = $item;
         return $item;
     }
-    public function addChild(string $label, string | array $link, string $id = null, bool $active = false)
+    public function addChild(string $label, string | array $link, string | null $icon = null, string $id = null, bool $active = false)
     {
-        $child = new self($label, $link, $id, $active);
+        $child = new self($label, $link, $icon, $id, $active);
         $this->children[$child->id] = $child;
 
         $child->setParent($this);

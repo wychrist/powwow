@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix(config('congregatebackend.backend_segment_uri', 'backend'))->middleware('auth')->group(function() {
-    Route::get('/', 'CongregateBackendController@index');
-    Route::get('/settings', 'CongregateBackendController@setting');
+Route::prefix(config('congregatebackend.backend_segment_uri', 'backend'))->middleware('auth')->group(function () {
+    Route::get('/', 'CongregateBackendController@index')->name('backend-index');
+    Route::get('/settings', 'CongregateBackendController@setting')->name('settings-general');
 });
