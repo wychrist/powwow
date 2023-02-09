@@ -15,7 +15,7 @@ class MenuItem
     private  MenuItem | null $parent = null;
     private bool $hasActiveChild = false;
 
-    public function __construct(string $label, string | array $link, string $icon = null, string $id = null, bool $active = false)
+    public function __construct(string $label, string | array $link = '#', string $icon = null, string $id = null, bool $active = false)
     {
         $this->label = $label;
         $routeName = $link;
@@ -102,8 +102,9 @@ class MenuItem
         $this->children[$item->getId()] = $item;
         return $item;
     }
-    public function addChild(string $label, string | array $link, string | null $icon = null, string $id = null, bool $active = false)
+    public function addChild(string $label, string | array $link = '#', string | null $icon = null, string $id = null, bool $active = false)
     {
+        $this->link = '#';
         $child = new self($label, $link, $icon, $id, $active);
         $this->children[$child->id] = $child;
 
@@ -114,6 +115,7 @@ class MenuItem
 
     public function addChildren(array $children)
     {
+        $this->link = '#';
         foreach ($children as $child) {
             $this->children[$child->getId()] = $child;
         }
