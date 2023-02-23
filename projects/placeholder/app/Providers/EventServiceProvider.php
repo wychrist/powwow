@@ -2,10 +2,12 @@
 
 namespace App\Providers;
 
+use App\Listeners\Backend\HandleOnlineContactTable;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
+use Modules\CongregateBackend\Events\BackendTableFetchEvent;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,8 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+
+        Event::listen(BackendTableFetchEvent::makeName('online-contacts'), HandleOnlineContactTable::class);
         //
     }
 }
