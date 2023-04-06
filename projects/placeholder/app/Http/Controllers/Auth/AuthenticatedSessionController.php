@@ -36,6 +36,24 @@ class AuthenticatedSessionController extends Controller
     }
 
     /**
+     * Handle an incoming authentication request.
+     *
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function apiStore(LoginRequest $request)
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return [
+            'success' => true
+        ];
+    }
+
+
+    /**
      * Destroy an authenticated session.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -50,5 +68,23 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerateToken();
 
         return redirect('/');
+    }
+
+    /**
+     * Destroy an authenticated session.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     */
+    public function apiDestroy(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return [
+            'success' => true
+        ];
     }
 }

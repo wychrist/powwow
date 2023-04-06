@@ -63,7 +63,7 @@ module.exports = configure(function (/* ctx */) {
 
       // publicPath: '/',
       // analyze: true,
-      // env: {},
+      env: require('dotenv').config().parsed,
       // rawDefine: {}
       // ignorePublicFolder: true,
       // minify: false,
@@ -95,6 +95,23 @@ module.exports = configure(function (/* ctx */) {
     devServer: {
       // https: true
       open: true, // opens browser window automatically
+<<<<<<< HEAD
+=======
+      proxy: {
+        "/api": {
+          target: process.env.API_URL
+        },
+        "/sanctum": {
+          target: process.env.API_URL
+        },
+        "/api-login": {
+          target: process.env.API_URL
+        },
+        "/api-logout": {
+          target: process.env.API_URL
+        }
+      }
+>>>>>>> 2c335c73485e1d783f6d7ae172f6c040805389fa
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
