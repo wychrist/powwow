@@ -100,6 +100,15 @@ module.exports = configure(function (/* ctx */) {
       proxy: {
         "/api": {
           target: process.env.API_URL
+        },
+        "/sanctum": {
+          target: process.env.API_URL
+        },
+        "/api-login": {
+          target: process.env.API_URL
+        },
+        "/api-logout": {
+          target: process.env.API_URL
         }
       }
     },
