@@ -16,12 +16,15 @@
         </q-toolbar-title>
 
         <div>Quasar v{{ $q.version }}</div>
+        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
+      overlay
+      behavior="mobile"
       bordered
     >
       <q-list>
@@ -39,9 +42,31 @@
       </q-list>
     </q-drawer>
 
+    <q-drawer v-model="rightDrawerOpen" side="right" overlay behavior="mobile" bordered>
+      <div class="row">
+      <q-avatar>
+            <img src="../assets/img/avatar1.png">
+      </q-avatar>
+      </div>
+      <div class="row">
+        User Profile
+      </div>
+    </q-drawer>
+
     <q-page-container>
       <router-view />
     </q-page-container>
+
+    <q-footer elevated class="bg-grey-8 text-white">
+      <q-toolbar>
+        <q-toolbar-title>
+          <q-avatar>
+            <img src="../assets/img/logo.png">
+          </q-avatar>
+          <div>Title</div>
+        </q-toolbar-title>
+      </q-toolbar>
+    </q-footer>
   </q-layout>
 </template>
 
@@ -103,12 +128,17 @@ export default defineComponent({
 
   setup () {
     const leftDrawerOpen = ref(false)
+    const rightDrawerOpen = ref(false)
 
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
+      },
+      rightDrawerOpen,
+      toggleRightDrawer () {
+        rightDrawerOpen.value = !rightDrawerOpen.value
       }
     }
   }

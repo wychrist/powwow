@@ -6,6 +6,8 @@
       :todos="todos"
       :meta="meta"
     ></example-component>
+    <q-btn color="secondary">I'm a button don't press me</q-btn>
+    <router-link to="/login">Login</router-link>
   </q-page>
 </template>
 
