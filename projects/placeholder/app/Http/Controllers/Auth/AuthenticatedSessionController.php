@@ -43,6 +43,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function apiStore(LoginRequest $request)
     {
+
         $request->authenticate();
 
         $request->session()->regenerate();
