@@ -1,7 +1,7 @@
 <template>
-  <q-layout view="lHh Lpr fFf">
+  <q-layout view="lHh lpR lFf">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="bg-primary">
         <q-btn
           flat
           dense
@@ -9,22 +9,26 @@
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
+          class="lt-sm"
         />
 
         <q-toolbar-title>
-          Quasar App
+          <q-btn class="text-h6 no-margin no-padding" flat to="/">Wyreema Christians Inc.</q-btn>
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
-        <q-btn dense flat round icon="menu" @click="toggleRightDrawer" />
       </q-toolbar>
     </q-header>
 
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
-      overlay
-      behavior="mobile"
+
+      :mini="miniState"
+      @mouseover="miniState = false"
+      @mouseout="miniState = true"
+      mini-to-overlay
+
+      :width="300"
+      :breakpoint="600"
       bordered
     >
       <q-list>
@@ -40,17 +44,6 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
-
-    <q-drawer v-model="rightDrawerOpen" side="right" overlay behavior="mobile" bordered>
-      <div class="row">
-      <q-avatar>
-            <img src="../assets/img/avatar1.png">
-      </q-avatar>
-      </div>
-      <div class="row">
-        User Profile
-      </div>
     </q-drawer>
 
     <q-page-container>
@@ -103,7 +96,7 @@ const linksList = [
   {
     title: 'Quasar Awesome',
     caption: 'Community Quasar projects',
-    icon: 'favorite',
+    icon: 'favourite',
     link: 'https://awesome.quasar.dev'
   }
 ]
@@ -117,7 +110,6 @@ export default defineComponent({
 
   setup () {
     const leftDrawerOpen = ref(false)
-    const rightDrawerOpen = ref(false)
 
     return {
       essentialLinks: linksList,
@@ -125,10 +117,7 @@ export default defineComponent({
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
-      rightDrawerOpen,
-      toggleRightDrawer () {
-        rightDrawerOpen.value = !rightDrawerOpen.value
-      }
+      miniState: ref(true)
     }
   }
 })
