@@ -1,6 +1,6 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <q-card flat bordered>
+    <q-card>
       <q-item align="center" class="bg-primary text-white">
         <q-item-section>
           <h1 class="text-h5 q-mt-sm q-mb-xs">Register</h1>
@@ -15,7 +15,7 @@
 
       <form>
         <q-item>
-          <q-card-section>
+          <q-card-section class="full-width">
               <q-input
                   v-model="name"
                   name="name"
@@ -189,14 +189,11 @@ export default defineComponent({
         // check if password field was invalid
         if (errorMessage !== true) { // Field not valid
           passGoodClass.value = '' // remove 'good' class from both fields
-          console.log('error')
           return errorMessage
         } else if (password.value === password2.value) { // Password match
-          console.log('match')
           passGoodClass.value = 'pass-good' // Add 'good' class for both fields
           return true
         } else { // valid, but no match
-          console.log('no match')
           passGoodClass.value = '' // remove 'good' class from both fields
           return 'Passwords Don\'t match'
         }
