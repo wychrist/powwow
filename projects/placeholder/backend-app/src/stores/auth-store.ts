@@ -11,7 +11,8 @@ export const useAuthStore = defineStore('auth-store', {
     loginState: {
       isLogin: false
     },
-    apiClient: axios
+    apiClient: axios,
+    hasCookie: false
   }),
   getters: {
 
@@ -34,9 +35,14 @@ export const useAuthStore = defineStore('auth-store', {
     }
   },
   actions: {
-
+    async init () {
+      if (!this.hasCookie) {
+        await this.http.get('/sanctum/csrf-cookie')
+        this.hasCookie = true
+      }
+    },
     async check (): Promise<{ success: boolean }> {
-      await this.http.get('/sanctum/csrf-cookie')
+      await this.init()
       const response = await this.http.get('/api-check')
       const data = response.data as { success: boolean }
 
@@ -68,7 +74,7 @@ export const useAuthStore = defineStore('auth-store', {
         return true
       }
       try {
-        const response = this.http.post('/api-logout')
+        await this.http.post('/api-logout')
         return true
       } catch (e) {
         return false

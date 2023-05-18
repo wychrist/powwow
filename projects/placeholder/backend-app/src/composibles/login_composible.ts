@@ -1,20 +1,20 @@
+import { useAuthStore } from 'src/stores/auth-store'
 import { computed, readonly, ref } from 'vue'
 
 const username = ref('')
 const password = ref('')
 const isUsernameValid = ref(true)
 const isPasswordValid = ref(true)
+const authStore = useAuthStore()
 
-export const doLogin = () => {
+export const doLogin = async () => {
   // validate the data first
   if (username.value.length < 10) {
     isUsernameValid.value = false
-    return
+    return false
   }
-  console.log('logging in', {
-    username: username.value,
-    password: password.value
-  })
+
+  return await authStore.login(username.value, password.value)
 }
 
 export function useLogin () {
@@ -25,14 +25,14 @@ export function useLogin () {
     username: computed({
       get: () => username.value,
       set: (v: string) => {
-        // is actually an email. ldldld
+        // is actually an email
         username.value = v
       }
     }),
     password: computed({
       get: () => password.value,
       set: (v: string) => {
-        // is actually an email. ldldld
+        // is actually an password.
         password.value = v
       }
     })

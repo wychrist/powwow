@@ -9,7 +9,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/login',
     component: () => import('layouts/LoginLayout.vue'),
-    children: [{ path: '', component: () => import('pages/login/LoginPage.vue') }]
+    children: [{ path: '', component: () => import('pages/login/LoginPage.vue'), name: 'login-form' }]
   },
   {
     path: '/register',
@@ -26,6 +26,15 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/LoginLayout.vue'),
     children: [{ path: '', component: () => import('pages/login/ForgotPasswordPage.vue') }]
   },
+
+  {
+    path: '/secure/dashboard',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/secure/HomeDashboard.vue'), name: 'secure-dashboard' }
+    ]
+  },
+
   // Always leave this as last one,
   // but you can also remove it
   {
