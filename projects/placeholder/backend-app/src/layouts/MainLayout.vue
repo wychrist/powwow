@@ -32,11 +32,13 @@
       bordered
     >
       <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+        <q-item header>
+            <q-item-section
+              avatar
+            >
+              <q-icon name="img:/img/logo.png"/>
+            </q-item-section>
+        </q-item>
 
         <EssentialLink
           v-for="link in essentialLinks"
