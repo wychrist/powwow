@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh lpR lFf">
+  <q-layout view="lHh lpR lFf" v-if="show">
     <q-header elevated>
       <q-toolbar class="bg-primary">
         <q-btn
@@ -86,6 +86,9 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import EssentialLink from 'components/EssentialLink.vue'
+import { useAuthStore } from 'src/stores/auth-store'
+import { useRouter } from 'vue-router'
+import { useQuasar } from 'quasar'
 
 const linksList = [
   {
@@ -141,6 +144,22 @@ export default defineComponent({
 
   setup () {
     const leftDrawerOpen = ref(false)
+    const router = useRouter()
+    const auth = useAuthStore()
+    const $q = useQuasar()
+    const show = ref(false)
+
+    $q.loading.show()
+
+    ;(async () => {
+      const data = await auth.check()
+      if (!data.success) {
+        router.replace({ name: 'login-form' })
+      } else {
+        show.value = true
+      }
+      $q.loading.hide()
+    })()
 
     return {
       essentialLinks: linksList,
@@ -148,7 +167,8 @@ export default defineComponent({
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
-      miniState: ref(true)
+      miniState: ref(true),
+      show
     }
   }
 })

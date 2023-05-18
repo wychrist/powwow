@@ -35,7 +35,7 @@
         <q-separator color="grey" />
         <q-card-section>
           <q-card-actions align="right">
-            <q-btn color="primary" type="submit" @click="doLogin">Sign-in</q-btn>
+            <q-btn color="primary" @click="onLoginBtnClick">Sign-in</q-btn>
           </q-card-actions>
         </q-card-section>
       </form>
@@ -46,12 +46,24 @@
 import { defineComponent, ref } from 'vue'
 import { useLogin } from 'src/composibles/login_composible'
 import { validateEmail, validateNotEmpty } from 'src/composibles/validate_composible'
+import { useRouter } from 'vue-router'
 
 export default defineComponent({
   name: 'LoginForm',
   setup () {
     const { username, password, doLogin } = useLogin()
     const makeVisible = ref(false)
+    const router = useRouter()
+
+    function onLoginBtnClick () {
+      doLogin().then((result: boolean) => {
+        if (result) {
+          router.replace({ name: 'secure-dashboard' })
+        }
+      }).catch((error) => {
+        console.error(error)
+      })
+    }
 
     return {
       password,
@@ -59,7 +71,7 @@ export default defineComponent({
       makeVisible,
       emailRules: [validateEmail('Field is required')],
       passwordRules: [validateNotEmpty('Field is required')],
-      doLogin
+      onLoginBtnClick
     }
   }
 })
