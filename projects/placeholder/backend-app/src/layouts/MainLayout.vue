@@ -27,18 +27,47 @@
       @mouseout="miniState = true"
       mini-to-overlay
 
-      :width="300"
+      :width="350"
       :breakpoint="600"
       bordered
     >
       <q-list>
-        <q-item header>
+        <q-item
+          header
+          clickable
+          tag="a"
+          target="_blank"
+          :href="link"
+         >
             <q-item-section
               avatar
             >
               <q-icon name="img:/img/logo.png"/>
             </q-item-section>
+            <q-item-section>
+              <q-item-label class="text-h5">Wyreema Christians Inc.</q-item-label>
+            </q-item-section>
         </q-item>
+
+        <q-separator />
+
+        <q-item
+          clickable
+          tag="a"
+          target="_blank"
+          :href="link"
+        >
+            <q-item-section
+              avatar
+            >
+              <q-icon name="img:/img/avatar1.png"/>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>John Doe</q-item-label>
+            </q-item-section>
+        </q-item>
+
+        <q-separator />
 
         <EssentialLink
           v-for="link in essentialLinks"
