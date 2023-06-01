@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh lpR lFf" v-if="show">
+  <q-layout view="hHh lpR lFf" v-if="show">
     <q-header elevated>
       <q-toolbar class="bg-primary">
         <q-btn
@@ -9,7 +9,7 @@
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-          class="lt-sm"
+          class=""
         />
 
         <q-toolbar-title>
@@ -20,16 +20,14 @@
 
     <q-drawer
       v-model="leftDrawerOpen"
-      show-if-above
 
       :mini="miniState"
-      @mouseover="miniState = false"
-      @mouseout="miniState = true"
-      mini-to-overlay
-
+      @mouseover="$event => toggleDrawMini(false)"
+      @mouseout="$event => toggleDrawMini(true)"
       :width="350"
       :breakpoint="600"
       bordered
+      :overlay="drawOverlay"
     >
       <q-list>
         <q-item
@@ -37,7 +35,7 @@
           clickable
           tag="a"
           target="_blank"
-          :href="link"
+          href="#"
          >
             <q-item-section
               avatar
@@ -55,7 +53,7 @@
           clickable
           tag="a"
           target="_blank"
-          :href="link"
+          href="#"
         >
             <q-item-section
               avatar
@@ -143,11 +141,14 @@ export default defineComponent({
   },
 
   setup () {
-    const leftDrawerOpen = ref(false)
+    const leftDrawerOpen = ref(true)
     const router = useRouter()
     const auth = useAuthStore()
     const $q = useQuasar()
     const show = ref(false)
+    const drawState = ref(0)
+    const miniState = ref(false)
+    const drawOverlay = ref(false)
 
     $q.loading.show()
 
@@ -165,9 +166,37 @@ export default defineComponent({
       essentialLinks: linksList,
       leftDrawerOpen,
       toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
+        drawState.value++
+        if (drawState.value >= 3) {
+          drawState.value = 0
+        }
+        switch (drawState.value) {
+          case 0:
+            leftDrawerOpen.value = true
+            miniState.value = false
+            drawOverlay.value = false
+            break
+          case 1:
+            leftDrawerOpen.value = true
+            miniState.value = true
+            drawOverlay.value = true
+            break
+          case 2:
+            leftDrawerOpen.value = false
+            miniState.value = false
+            drawOverlay.value = false
+            break
+          default:
+            break
+        }
       },
-      miniState: ref(true),
+      toggleDrawMini (request : boolean) {
+        if (drawOverlay.value) {
+          miniState.value = request
+        }
+      },
+      miniState,
+      drawOverlay,
       show
     }
   }
