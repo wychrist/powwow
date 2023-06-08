@@ -28,13 +28,15 @@
       :breakpoint="600"
       bordered
       :overlay="drawOverlay"
+      persistent
+
+      style="overflow-x: hidden!important;"
     >
       <q-list>
         <q-item
           header
           clickable
           tag="a"
-          target="_blank"
           href="#"
          >
             <q-item-section
@@ -52,7 +54,6 @@
         <q-item
           clickable
           tag="a"
-          target="_blank"
           href="#"
         >
             <q-item-section
@@ -62,6 +63,22 @@
             </q-item-section>
             <q-item-section>
               <q-item-label>John Doe</q-item-label>
+            </q-item-section>
+        </q-item>
+
+        <q-item
+          clickable
+          tag="a"
+          target="_blank"
+          href="#"
+        >
+            <q-item-section
+              avatar
+            >
+              <q-icon name="logout"/>
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>Logout</q-item-label>
             </q-item-section>
         </q-item>
 
@@ -177,9 +194,16 @@ export default defineComponent({
             drawOverlay.value = false
             break
           case 1:
-            leftDrawerOpen.value = true
-            miniState.value = true
-            drawOverlay.value = true
+            if ($q.platform.is.mobile) { // Skip mini state if mobile as mini will not function on mobile
+              leftDrawerOpen.value = false
+              miniState.value = false
+              drawOverlay.value = false
+              drawState.value = 2
+            } else {
+              leftDrawerOpen.value = true
+              miniState.value = true
+              drawOverlay.value = true
+            }
             break
           case 2:
             leftDrawerOpen.value = false
