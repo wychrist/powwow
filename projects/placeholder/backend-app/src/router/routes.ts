@@ -26,9 +26,8 @@ const routes: RouteRecordRaw[] = [
     component: () => import('layouts/LoginLayout.vue'),
     children: [{ path: '', component: () => import('pages/login/ForgotPasswordPage.vue') }]
   },
-
   {
-    path: '/secure/dashboard',
+    path: '/secure',
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/secure/HomeDashboard.vue'), name: 'secure-dashboard' }
