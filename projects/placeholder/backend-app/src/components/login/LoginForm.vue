@@ -20,6 +20,7 @@
               :type="makeVisible ? 'text': 'password'"
               :rules="passwordRules"
               required
+              @keyup="onKeyup"
               >
               <template v-slot:append>
                 <q-icon
@@ -55,6 +56,12 @@ export default defineComponent({
     const makeVisible = ref(false)
     const router = useRouter()
 
+    function onKeyup (event: KeyboardEvent) {
+      if (event.key.toLocaleLowerCase() === 'enter') {
+        onLoginBtnClick()
+      }
+    }
+
     function onLoginBtnClick () {
       doLogin().then((result: boolean) => {
         if (result) {
@@ -71,7 +78,8 @@ export default defineComponent({
       makeVisible,
       emailRules: [validateEmail('Field is required')],
       passwordRules: [validateNotEmpty('Field is required')],
-      onLoginBtnClick
+      onLoginBtnClick,
+      onKeyup
     }
   }
 })

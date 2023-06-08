@@ -17,6 +17,12 @@ export const doLogin = async () => {
   return await authStore.login(username.value, password.value)
 }
 
+export function useLogout () {
+  return {
+    logout: async () => authStore.logout()
+  }
+}
+
 export function useLogin () {
   return {
     isPasswordValid: readonly(isPasswordValid),

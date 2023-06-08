@@ -68,9 +68,7 @@
 
         <q-item
           clickable
-          tag="a"
-          target="_blank"
-          href="#"
+          @click="onLogout"
         >
             <q-item-section
               avatar
@@ -104,6 +102,7 @@ import EssentialLink from 'components/EssentialLink.vue'
 import { useAuthStore } from 'src/stores/auth-store'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
+import { useLogout } from 'src/composibles/login_composible'
 
 const linksList = [
   {
@@ -166,8 +165,15 @@ export default defineComponent({
     const drawState = ref(0)
     const miniState = ref(false)
     const drawOverlay = ref(false)
+    const { logout } = useLogout()
 
     $q.loading.show()
+
+    const onLogout = () => {
+      logout().then(() => {
+        router.replace({ name: 'login-form' })
+      })
+    }
 
     ;(async () => {
       const data = await auth.check()
@@ -221,7 +227,8 @@ export default defineComponent({
       },
       miniState,
       drawOverlay,
-      show
+      show,
+      onLogout
     }
   }
 })
