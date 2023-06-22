@@ -27,7 +27,7 @@
       :width="350"
       :breakpoint="600"
       bordered
-      :overlay="drawOverlay"
+      :mini-to-overlay="drawOverlay"
       persistent
 
       style="overflow-x: hidden!important;"
@@ -37,7 +37,7 @@
           header
           clickable
           tag="a"
-          href="#"
+          to=""
          >
             <q-item-section
               avatar
@@ -51,41 +51,53 @@
 
         <q-separator />
 
-        <q-item
-          clickable
-          tag="a"
-          href="#"
+        <q-expansion-item
+          expand-separator
+          icon="img:/img/avatar1.png"
+          label="John Doe"
+          group="main_menu"
+          class="menu-item-active-top"
         >
+          <q-item
+            clickable
+            tag="a"
+            target="_blank"
+            href="#"
+            :active=true
+            active-class="menu-item-active"
+          >
             <q-item-section
               avatar
             >
-              <q-icon name="img:/img/avatar1.png"/>
+              <q-icon name="person" />
             </q-item-section>
-            <q-item-section>
-              <q-item-label>John Doe</q-item-label>
-            </q-item-section>
-        </q-item>
 
-        <q-item
-          clickable
-          @click="onLogout"
-        >
-            <q-item-section
-              avatar
-            >
-              <q-icon name="logout"/>
-            </q-item-section>
             <q-item-section>
-              <q-item-label>Logout</q-item-label>
+              <q-item-label>Profile</q-item-label>
             </q-item-section>
-        </q-item>
+          </q-item>
+
+          <q-item
+            clickable
+            @click="onLogout"
+          >
+              <q-item-section
+                avatar
+              >
+                <q-icon name="logout"/>
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Logout</q-item-label>
+              </q-item-section>
+          </q-item>
+        </q-expansion-item>
 
         <q-separator />
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
+        <MainMenu
+          v-for="MenuItem in essentialLinks"
+          :key="MenuItem.id"
+          :menu="MenuItem"
         />
       </q-list>
     </q-drawer>
@@ -98,20 +110,133 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import MainMenu from 'src/components/MenuSlot.vue'
+import { MenuItem } from 'src/composibles/main_menu_composible'
 import { useAuthStore } from 'src/stores/auth-store'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { useLogout } from 'src/composibles/login_composible'
+import '@quasar/extras/fontawesome-v5'
 
-const linksList = [
+const linksList:[MenuItem] = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
+    id: 1,
+    label: 'Docs',
+    // link: 'https://quasar.dev',
     icon: 'school',
-    link: 'https://quasar.dev'
+    active: false,
+    hasActiveChild: false,
+    children: [
+      {
+        id: 11,
+        label: 'Docs',
+        link: 'https://quasar.dev',
+        icon: 'school',
+        active: false,
+        hasActiveChild: false,
+        children: [],
+        parentID: null
+      },
+      {
+        id: 12,
+        label: 'Github',
+        link: 'https://github.com/wychrist',
+        icon: 'fa-brands fa-github',
+        active: false,
+        hasActiveChild: false,
+        children: [
+          {
+            id: 121,
+            label: 'Sub 1.2.1',
+            link: 'https://github.com/wychrist',
+            icon: undefined,
+            active: false,
+            hasActiveChild: false,
+            children: [
+              {
+                id: 1211,
+                label: 'Sub 1.2.1.1',
+                link: 'https://github.com/wychrist',
+                icon: undefined,
+                active: false,
+                hasActiveChild: false,
+                children: [],
+                parentID: 121
+              }
+            ],
+            parentID: 12
+          }
+        ],
+        parentID: 1
+      }
+    ],
+    parentID: null
   },
   {
+    id: 2,
+    label: 'Top 2',
+    // link: 'https://quasar.dev',
+    icon: undefined,
+    active: false,
+    hasActiveChild: false,
+    children: [
+      {
+        id: 21,
+        label: 'Mid 2.1',
+        link: 'https://quasar.dev',
+        icon: undefined,
+        active: false,
+        hasActiveChild: false,
+        children: [],
+        parentID: 2
+      },
+      {
+        id: 22,
+        label: 'Mid 2.2',
+        link: 'https://github.com/wychrist',
+        icon: 'fa-brands fa-github',
+        active: false,
+        hasActiveChild: false,
+        children: [
+          {
+            id: 221,
+            label: 'Sub 2.2.1',
+            link: 'https://github.com/wychrist',
+            icon: undefined,
+            active: false,
+            hasActiveChild: false,
+            children: [
+              {
+                id: 2211,
+                label: 'Sub 2.2.1.1',
+                link: 'https://github.com/wychrist',
+                icon: undefined,
+                active: false,
+                hasActiveChild: false,
+                children: [],
+                parentID: 221
+              }
+            ],
+            parentID: 22
+          }
+        ],
+        parentID: 2
+      }
+    ],
+    parentID: null
+  },
+  {
+    id: 3,
+    label: 'Top 3',
+    link: 'https://github.com/wychrist',
+    icon: undefined,
+    active: false,
+    hasActiveChild: false,
+    children: [],
+    parentID: null
+  }
+  //,
+  /* {
     title: 'Github',
     caption: 'github.com/quasarframework',
     icon: 'code',
@@ -146,14 +271,14 @@ const linksList = [
     caption: 'Community Quasar projects',
     icon: 'favourite',
     link: 'https://awesome.quasar.dev'
-  }
+  } */
 ]
 
 export default defineComponent({
   name: 'MainLayout',
 
   components: {
-    EssentialLink
+    MainMenu
   },
 
   setup () {
@@ -228,8 +353,20 @@ export default defineComponent({
       miniState,
       drawOverlay,
       show,
+      // fabGithub,
       onLogout
     }
   }
 })
 </script>
+
+<style>
+.menu-item-active{
+  background-color: #a8beda;
+}
+.menu-item-active-top::before{
+  content: "";
+  background-color: black;
+  width: 3px;
+}
+</style>
