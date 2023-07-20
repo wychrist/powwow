@@ -24,7 +24,7 @@
       :mini="miniState"
       @mouseover="$event => toggleDrawMini(false)"
       @mouseout="$event => toggleDrawMini(true)"
-      :width="350"
+      :width="370"
       :breakpoint="600"
       bordered
       :mini-to-overlay="drawOverlay"
@@ -56,7 +56,6 @@
           icon="img:/img/avatar1.png"
           label="John Doe"
           group="main_menu"
-          class="menu-item-active-top"
         >
           <q-item
             clickable
@@ -65,6 +64,7 @@
             href="#"
             :active=true
             active-class="menu-item-active"
+            class="menu-item-inset-1"
           >
             <q-item-section
               avatar
@@ -80,6 +80,7 @@
           <q-item
             clickable
             @click="onLogout"
+            class="menu-item-inset-1"
           >
               <q-item-section
                 avatar
@@ -95,7 +96,7 @@
         <q-separator />
 
         <MainMenu
-          v-for="MenuItem in essentialLinks"
+          v-for="MenuItem in MenuData"
           :key="MenuItem.id"
           :menu="MenuItem"
         />
@@ -118,14 +119,14 @@ import { useQuasar } from 'quasar'
 import { useLogout } from 'src/composibles/login_composible'
 import '@quasar/extras/fontawesome-v5'
 
-const linksList:[MenuItem] = [
+const MenuData: Array<MenuItem> = [
   {
     id: 1,
     label: 'Docs',
     // link: 'https://quasar.dev',
     icon: 'school',
     active: false,
-    hasActiveChild: false,
+    hasActiveChild: true,
     children: [
       {
         id: 11,
@@ -143,7 +144,7 @@ const linksList:[MenuItem] = [
         link: 'https://github.com/wychrist',
         icon: 'fa-brands fa-github',
         active: false,
-        hasActiveChild: false,
+        hasActiveChild: true,
         children: [
           {
             id: 121,
@@ -151,7 +152,7 @@ const linksList:[MenuItem] = [
             link: 'https://github.com/wychrist',
             icon: undefined,
             active: false,
-            hasActiveChild: false,
+            hasActiveChild: true,
             children: [
               {
                 id: 1211,
@@ -159,8 +160,72 @@ const linksList:[MenuItem] = [
                 link: 'https://github.com/wychrist',
                 icon: undefined,
                 active: false,
-                hasActiveChild: false,
-                children: [],
+                hasActiveChild: true,
+                children: [
+                  {
+                    id: 12111,
+                    label: 'Sub 1.2.1.1.1',
+                    link: 'https://github.com/wychrist',
+                    icon: undefined,
+                    active: false,
+                    hasActiveChild: true,
+                    children: [
+                      {
+                        id: 121111,
+                        label: 'Sub 1.2.1.1.1.1',
+                        link: 'https://github.com/wychrist',
+                        icon: undefined,
+                        active: false,
+                        hasActiveChild: true,
+                        children: [
+                          {
+                            id: 1211111,
+                            label: 'Sub 1.2.1.1.1.1.1',
+                            link: 'https://github.com/wychrist',
+                            icon: undefined,
+                            active: false,
+                            hasActiveChild: false,
+                            children: [
+                              {
+                                id: 12111111,
+                                label: 'Sub 1.2.1.1.1.1.1.1',
+                                link: 'https://github.com/wychrist',
+                                icon: undefined,
+                                active: false,
+                                hasActiveChild: false,
+                                children: [],
+                                parentID: 1211111
+                              }
+                            ],
+                            parentID: 121111
+                          },
+                          {
+                            id: 1211112,
+                            label: 'Sub 1.2.1.1.1.1.2',
+                            link: 'https://github.com/wychrist',
+                            icon: undefined,
+                            active: true,
+                            hasActiveChild: false,
+                            children: [],
+                            parentID: 121111
+                          }
+                        ],
+                        parentID: 12111
+                      },
+                      {
+                        id: 121112,
+                        label: 'Sub 1.2.1.1.2',
+                        link: 'https://github.com/wychrist',
+                        icon: undefined,
+                        active: false,
+                        hasActiveChild: false,
+                        children: [],
+                        parentID: 12111
+                      }
+                    ],
+                    parentID: 1211
+                  }
+                ],
                 parentID: 121
               }
             ],
@@ -311,7 +376,7 @@ export default defineComponent({
     })()
 
     return {
-      essentialLinks: linksList,
+      MenuData,
       leftDrawerOpen,
       toggleLeftDrawer () {
         drawState.value++
@@ -361,12 +426,5 @@ export default defineComponent({
 </script>
 
 <style>
-.menu-item-active{
-  background-color: #a8beda;
-}
-.menu-item-active-top::before{
-  content: "";
-  background-color: black;
-  width: 3px;
-}
+
 </style>
