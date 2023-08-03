@@ -13,9 +13,10 @@ class EmailValidator
     {
         $model = EmailPending::where([
             'email' => $email,
+            'callback' => json_encode($callback)
         ])->first();
 
-        $alreadyExist = false; // should always revalidate
+        $alreadyExist = true;
 
         if (!$model || $model->callback[0] != $callback[0]) {
             $model = new EmailPending();
@@ -23,6 +24,7 @@ class EmailValidator
             $model->callback = $callback;
             $model->payload = $payload;
             $model->save();
+            $alreadyExist = false;
         }
 
         return new ValidatorResult($model->token, $alreadyExist, route('congregateemailvalidator.validate', ['token' => $model->token]));

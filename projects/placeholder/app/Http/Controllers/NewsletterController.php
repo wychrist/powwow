@@ -20,13 +20,13 @@ class NewsletterController extends Controller
         ['email' => $email] = $this->validate($request, [
             'email' => ['required', 'string', 'email', 'max:255'],
         ]);
-        $result = $handler($email, $request->user()? $request->user()->id: 0);
+        $result = $handler($email, $request->user() ? $request->user()->id : 0);
         $sendEmail($result, $data);
 
 
         $message = __('app.subscription_confirm');
 
-        if($request->isJson()) {
+        if ($request->isJson()) {
             return [
                 'success' => true,
                 'message' => $message

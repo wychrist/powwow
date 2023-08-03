@@ -15,9 +15,9 @@ class ContactController extends Controller
     public function indexAction(FlashMessageInterface $flash)
     {
         $page = new Page();
-        $page->title="Contact Us";
+        $page->title = "Contact Us";
 
-       return view('contact.contact_us_form', compact('page'));
+        return view('contact.contact_us_form', compact('page'));
     }
 
     /**
@@ -29,15 +29,13 @@ class ContactController extends Controller
 
         $result = $handleNewContact($data);
 
-        if(!$result->alreadyExist()) {
+        if (!$result->alreadyExist()) {
             $sendEmail($result, $data);
-        } else {
-            AddContactEntry::execute($data);
         }
 
         $message = __('app.contact_request_confirm');
 
-        if($request->isJson()) {
+        if ($request->isJson()) {
             return [
                 'success' => true,
                 'message' => $message
@@ -48,5 +46,4 @@ class ContactController extends Controller
 
         return back();
     }
-
 }
