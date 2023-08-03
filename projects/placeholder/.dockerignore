@@ -3,4 +3,6 @@ storage/debugbar
 storage/logs/*.log
 storage/app/content
 storage/app/framework
+public/assets/back_end
+public/assets/paper_theme_v2
 .env
