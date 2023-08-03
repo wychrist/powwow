@@ -8,7 +8,7 @@ fi
 cd /var/www
 
 php artisan cache:clear
-php artisan migrate
+#php artisan migrate
 php artisan route:cache
 php artisan view:cache
 
