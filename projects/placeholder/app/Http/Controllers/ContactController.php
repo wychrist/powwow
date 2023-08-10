@@ -16,8 +16,12 @@ class ContactController extends Controller
     {
         $page = new Page();
         $page->title = "Contact Us";
+        $challenge = [
+            rand(1, 6000),
+            rand(1, 10)
+        ];
 
-        return view('contact.contact_us_form', compact('page'));
+        return view('contact.contact_us_form', ['page' => $page, 'challenge' => $challenge]);
     }
 
     /**
@@ -27,10 +31,18 @@ class ContactController extends Controller
     {
         $data = $request->post();
 
-        $result = $handleNewContact($data);
+        if (isset($data['challenge']) && is_array($data['challenge']) && isset($data['challenge_ans'])) {
+            $ans = $data['challenge'][0] + $data['challenge'][1];
 
-        if (!$result->alreadyExist()) {
-            $sendEmail($result, $data);
+            if ($ans == $data['challenge_ans']) {
+                unset($data['challenge']);
+                unset($data['challenge_ans']);
+                $result = $handleNewContact($data);
+
+                if (!$result->alreadyExist()) {
+                    $sendEmail($result, $data);
+                }
+            }
         }
 
         $message = __('app.contact_request_confirm');
