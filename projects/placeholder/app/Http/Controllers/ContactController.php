@@ -7,12 +7,13 @@ use App\Actions\OnlineContact\HandleNewContact;
 use App\Actions\OnlineContact\SendContactValidationEmail;
 use App\Cms\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use Modules\CongregateContract\Theme\FlashMessageInterface;
 
 class ContactController extends Controller
 {
 
-    public function indexAction(FlashMessageInterface $flash)
+    public function indexAction()
     {
         $page = new Page();
         $page->title = "Contact Us";
@@ -20,6 +21,9 @@ class ContactController extends Controller
             rand(1, 9000),
             rand(1, 13)
         ];
+
+        Session::put('form_challenge_ans', $challenge[0] + $challenge[1]);
+
         $numberToString = [
             "one",
             "two",
@@ -48,14 +52,10 @@ class ContactController extends Controller
     {
         $data = $request->post();
         $challengeAnsField = false;
-        $ans = 0;
+        $ans = Session::pull('form_challenge_ans', 0);
+        $challengeAnsField = "challenge_ans_{$ans}"; // A prefix wil be added a the time of rendering the form
 
-        if (isset($data['challenge']) && is_array($data['challenge'])) {
-            $ans = intval($data['challenge'][0]) + intval($data['challenge'][1]);
-            $challengeAnsField = "challenge_ans_{$ans}"; // A prefix wil be added a the time of rendering the form
-        }
-
-        if ($challengeAnsField && isset($data[$challengeAnsField]) && intval($data[$challengeAnsField]) == $ans) {
+        if (isset($data[$challengeAnsField]) && intval($data[$challengeAnsField]) == $ans) {
 
             // Not needed at this stage
             unset($data['challenge']);
