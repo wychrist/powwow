@@ -17,11 +17,28 @@ class ContactController extends Controller
         $page = new Page();
         $page->title = "Contact Us";
         $challenge = [
-            rand(1, 6000),
-            rand(1, 10)
+            rand(1, 9000),
+            rand(1, 13)
+        ];
+        $numberToString = [
+            "one",
+            "two",
+            "three",
+            "four",
+            "five",
+            "six",
+            "seven",
+            "eight",
+            "nine",
+            "ten",
+            "eleven",
+            "twelve",
+            "thirteen"
         ];
 
-        return view('contact.contact_us_form', ['page' => $page, 'challenge' => $challenge]);
+        $surfix = $challenge[0] + $challenge[1]; // challenge answer field will be named "challenge_ans_[whatever the answer is]"
+
+        return view('contact.contact_us_form', ['page' => $page, 'challenge' => $challenge, 'challenge_field' => "challenge_ans_$surfix", "number_to_str" => $numberToString]);
     }
 
     /**
@@ -30,18 +47,23 @@ class ContactController extends Controller
     public function handleAction(Request $request, HandleNewContact $handleNewContact, SendContactValidationEmail $sendEmail, FlashMessageInterface $flash)
     {
         $data = $request->post();
+        $challengeAnsField = false;
+        $ans = 0;
 
-        if (isset($data['challenge']) && is_array($data['challenge']) && isset($data['challenge_ans'])) {
-            $ans = $data['challenge'][0] + $data['challenge'][1];
+        if (isset($data['challenge']) && is_array($data['challenge'])) {
+            $ans = intval($data['challenge'][0]) + intval($data['challenge'][1]);
+            $challengeAnsField = "challenge_ans_{$ans}"; // A prefix wil be added a the time of rendering the form
+        }
 
-            if ($ans == $data['challenge_ans']) {
-                unset($data['challenge']);
-                unset($data['challenge_ans']);
-                $result = $handleNewContact($data);
+        if ($challengeAnsField && isset($data[$challengeAnsField]) && intval($data[$challengeAnsField]) == $ans) {
 
-                if (!$result->alreadyExist()) {
-                    $sendEmail($result, $data);
-                }
+            // Not needed at this stage
+            unset($data['challenge']);
+            unset($data[$challengeAnsField]);
+
+            $result = $handleNewContact($data);
+            if (!$result->alreadyExist()) {
+                $sendEmail($result, $data);
             }
         }
 
