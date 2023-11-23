@@ -13,5 +13,7 @@ $homeMenu->addChild(new MenuItem(['title' => 'About us', 'url' => url('pages', [
 // spiritual
 $homeMenu->addChild(new MenuItem(['title' => 'About us', 'url' => url('pages', ['id' => 'spiritual'])]));
 
+$homeMenu->addChild(new MenuItem(['title' => 'Community Garden', 'url' => url('pages', ['id' => 'garden'])]));
+
 
 return $homeMenu;

@@ -9,6 +9,11 @@ $menuItemsData = [  // the order of this array is important
         'link' => '/',
         'children' => []
     ],
+    'garden' => [
+        'label' => 'Community Garden',
+        'link' => Url::page('garden'),
+        'children' => []
+    ],
     'about-us' => [
         'label' => 'About Us',
         'link' => Url::page('about-us'),

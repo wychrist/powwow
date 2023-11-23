@@ -3,12 +3,15 @@ if (!defined('WYCHRIST_INIT')) {
     exit;
 }
 
+dd("got herer - data");
+
 use App\Cms\Page;
 use App\Repository\PageRepository;
 
-$data = include_once content_dir('data/paper_2/about_us_template.php');
+$data = include_once content_dir('data/paper_2/garden_template.php');
 
-/* $content = [
+/*
+ $content = [
   'title' => 'About US',
   'subtitle' => 'Who we are, What we do',
   'intro' => 'intro string',
@@ -32,7 +35,7 @@ $page =  new Page($content);
 $data = [
   'page' => $page,
   'whoWeAre' => $section1
-]; */
+];
 
 //$data['page']->title = 'This is a new title'; // we are overriding the title for the page
 
@@ -41,7 +44,7 @@ $data = [
 // we are overriding the content for the first page in section 1
 //$whoWeAreChildren[0]->content = 'We are working hard in wyreema and we are loving it';
 
-//$data['whoWeAre']->children = $whoWeAreChildren;
+//$data['whoWeAre']->children = $whoWeAreChildren;*/
 
 
 serve_template('templates/about_us_template', $data);

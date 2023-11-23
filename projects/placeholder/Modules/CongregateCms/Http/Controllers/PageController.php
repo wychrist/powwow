@@ -14,6 +14,8 @@ class PageController extends Controller
         // @todo We need to implement this asap!!!
         if ($id == '5' || $id == 'about-us') {
             return  $this->getAboutusPage();
+        } elseif ($id == 'garden') {
+            return  $this->getGardenPage();
         } else {
             $page = $repo->findAPage($id);
             if ($page) {
@@ -33,5 +35,13 @@ class PageController extends Controller
         $data = include_once content_dir('data/paper_2/about_us_template.php');
 
         return render_template('about_us', $data);
+    }
+
+    private function getGardenPage(): string
+    {
+
+        $data = include_once content_dir('data/paper_2/garden_data.php');
+
+        return render_template('garden', $data);
     }
 }

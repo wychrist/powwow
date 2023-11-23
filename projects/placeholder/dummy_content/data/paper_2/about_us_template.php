@@ -2,16 +2,18 @@
 
 use App\Cms\Page;
 
+
+
 $content = [
-  'title' => 'About US',
-  'subtitle' => 'Who we are, What we do',
-  'intro' => 'intro string',
-  'content' => 'content for body of page',
-  'image' => '/assets/img/emily-morter-8xAA0f9yQnE-unsplash-cropped.webp',
-  'images' => [
-    'first' => '',
-    'second' => ''
-  ],
+    'title' => 'About Us',
+    'subtitle' => 'Who we are, What we do',
+    'intro' => 'intro string',
+    'content' => 'content for body of page',
+    'image' => '/assets/img/emily-morter-8xAA0f9yQnE-unsplash-cropped.webp',
+    'images' => [
+        'first' => '',
+        'second' => ''
+    ],
 ];
 
 $page = new Page($content);
@@ -21,8 +23,8 @@ $whoWeArePage1Content = ['content' => 'Who we are section, page 1. A paragraph o
 $whoWeArePage2Content = ['content' => 'Who we are section, page 2. A paragraph of a nice size. Some more content in the same paragraph. More sentences with expanding stories, lots of detail and descriptive words.', 'image' => '/assets/img/worship_hall_2.webp'];
 
 $whoWeAre->children = [
-  new Page($whoWeArePage1Content),
-  new Page($whoWeArePage2Content),
+    new Page($whoWeArePage1Content),
+    new Page($whoWeArePage2Content),
 ];
 
 $communityInvolvement = new Page(['title' => 'Community Involvement']);
@@ -30,8 +32,8 @@ $communityInvolvementPage1Content = ['title' => 'Tony\'s Kitchen', 'content' => 
 $communityInvolvementPage2Content = ['title' => 'Operation Christmas Child', 'content' => 'Shoe boxes for impoverished children full of essential items and items to love. Packed and ready to ship for Christmas.', 'image' => '/assets/img/Operation_chrismas_Child.jpg'];
 
 $communityInvolvement->children = [
-  new Page($communityInvolvementPage1Content),
-  new Page($communityInvolvementPage2Content),
+    new Page($communityInvolvementPage1Content),
+    new Page($communityInvolvementPage2Content),
 ];
 
 $history = new Page(['title' => 'History']);
@@ -39,14 +41,14 @@ $historyPage1Content = ['title' => 'Worshiping in the Homes', 'content' => 'Wors
 $historyPage2Content = ['title' => 'Worshiping in the Hall', 'content' => 'Worshiping in the Wyreema Community Hall.', 'image' => '/assets/img/worship_hall_3.jpg'];
 
 $history->children = [
-  new Page($historyPage1Content),
-  new Page($historyPage2Content),
+    new Page($historyPage1Content),
+    new Page($historyPage2Content),
 ];
 
 
 return [
-  'page' => $page,
-  'whoWeAre' => $whoWeAre,
-  'communityInvolvement' => $communityInvolvement,
-  'history' => $history,
+    'page' => $page,
+    'whoWeAre' => $whoWeAre,
+    'communityInvolvement' => $communityInvolvement,
+    'history' => $history,
 ];
