@@ -18,7 +18,7 @@ $page = new Page($content);
 
 $what = new Page(['title' => 'Garden']);
 $whatPage1Content = ['content' => 'The Wyreema Community Garden was founded by Wyreema Christians with a vision to transform a vacant piece of land into a vibrant, green sanctuary. Our garden has since blossomed into a tapestry of colours and flavours, drawing together people from all walks of life who share a passion for gardening, sustainability, and community.', 'image' => '/assets/paper_theme_v2/img/Garden_Close.jpg'];
-$whatPage2Content = ['content' => 'Wyreema Community Garden thrives because of our dedicated members. Meeting every 1st and 3rd Tuesdays 9:30 am at the Wyreema Community Hall. We invite you to join us, roll up your sleeves, and be part of this green revolution. Together, we\'ll sow the seeds of positive change, one garden bed at a time.', 'image' => '/assets/paper_theme_v2/img/Gardening.jpg'];
+$whatPage2Content = ['content' => 'Wyreema Community Garden thrives because of our dedicated members. Meeting every 1st and 3rd Tuesdays 9:30 am at the Wyreema Community Hall. We invite you to join us, roll up your sleeves, and be part of this green revolution. Together, we\'ll sow the seeds of positive change, one garden bed at a time. </br> </br> <a href="https://www.facebook.com/profile.php?id=61550695902390" class="btn btn-facebook btn-block" rel=" tooltip" title="Wyreema Community Garden\'s Facebook"><i class="fa fa-facebook"></i>Wyreema Community Garden Facebook Page<i class="fa fa-facebook"></i></a>', 'image' => '/assets/paper_theme_v2/img/Gardening.jpg'];
 
 $what->children = [
     new Page($whatPage1Content),
