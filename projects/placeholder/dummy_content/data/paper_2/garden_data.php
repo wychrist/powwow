@@ -4,10 +4,10 @@ use App\Cms\Page;
 
 $content = [
     'title' => 'Community Garden',
-    'subtitle' => 'Wyreema Community Hall',
+    'subtitle' => 'Australia Day Awards',
     'intro' => 'intro string',
     'content' => 'content for body of page',
-    'image' => '/assets/paper_theme_v2/img/Prize_Wide.jpg',
+    'image' => '/assets/paper_theme_v2/img/aus_day_presentation.jpg',
     'images' => [
         'first' => '',
         'second' => ''
@@ -34,6 +34,15 @@ $where->children = [
     new Page($wherePage2Content),
 ];
 
+$aus = new Page(['title' => 'Australia Day Awards']);
+$ausPage1Content = ['title' => 'Presentation', 'content' => 'We were surprised to receive a letter informing us that we were nominated for an Australia Day Award. We were even more surprised and delighted to receive the award. The community garden has had a larger impact on Wyreema then we even realised.', 'image' => '/assets/paper_theme_v2/img/aus_day_group.jpg'];
+$ausPage2Content = ['title' => 'Award', 'content' => 'Wyreema Community Gardens Cambooya, Community Group Award, Australia Day Awards 2024', 'image' => '/assets/paper_theme_v2/img/aus_day_award.jpg'];
+
+$aus->children = [
+    new Page($ausPage1Content),
+    new Page($ausPage2Content),
+];
+
 $why = new Page(['title' => 'Produce Stall']);
 $whyPage1Content = ['title' => 'Under Construction', 'content' => 'Getting ready for the Carnival of Flowers the community garden and Wyreema Christians volunteers building the produce cart.', 'image' => '/assets/paper_theme_v2/img/Stall In progress.webp'];
 $whyPage2Content = ['title' => 'Fully Loaded', 'content' => 'The produce stall, fully loaded and ready to share with the Wyreema Community.', 'image' => '/assets/paper_theme_v2/img/Stall.jpg'];
@@ -49,4 +58,5 @@ return [
     'what' => $what,
     'where' => $where,
     'why' => $why,
+    'aus_day' => $aus,
 ];
