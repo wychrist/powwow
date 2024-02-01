@@ -1,13 +1,11 @@
 <?php
 
-namespace Modules\CongregateTheme\Events\Backend;
+namespace Modules\CongregateUi\Events;
 
 use Illuminate\Queue\SerializesModels;
 
 class MenuLevelTransition
 {
-    use SerializesModels;
-
     private $handled = false;
     private $builtHtml = "";
 

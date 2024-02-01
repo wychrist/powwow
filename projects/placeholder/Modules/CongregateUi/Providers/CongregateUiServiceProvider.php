@@ -46,6 +46,9 @@ class CongregateUiServiceProvider extends ServiceProvider
 
         // nav
         Blade::componentNamespace('Modules\\CongregateUi\\View\\Component\\Base\\Nav', 'ui-base-nav');
+
+        // table
+        Blade::componentNamespace('Modules\\CongregateUi\\View\\Component\\Base\\Table', 'ui-base-table');
     }
 
     /**
@@ -55,6 +58,7 @@ class CongregateUiServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        require_once dirname(__DIR__) . '/ui_helpers.php';
         $this->app->register(RouteServiceProvider::class);
     }
 

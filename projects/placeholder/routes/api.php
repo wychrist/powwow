@@ -21,6 +21,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->group(function () {
     Route::resource('online-contacts', OnlineContactApiController::class);
+    Route::get('me', function (Request $request) {
+        return [
+            'user' => auth('sanctum')->user(),
+            'success' => true
+        ];
+    });
 })->middleware('auth:sanctum');
 
 Route::get('/time', function (Request $request) {

@@ -4,7 +4,7 @@ namespace Modules\CongregateUi\Services;
 
 class BreadcrumbService
 {
-    private static  array $crumbs;
+    private static array $crumbs;
 
     public static function add(string $label, string $url = '#')
     {
@@ -25,13 +25,13 @@ class BreadcrumbService
     {
         self::$crumbs = self::$crumbs ?? [];
 
-        self::$crumbs = array_merge([[
-            'label' => 'Home',
-            'link' => '/',
-            'active' => false
-        ]], self::$crumbs);
+        // self::$crumbs = array_merge([[
+        //     'label' => 'Home',
+        //     'link' => '/',
+        //     'active' => false
+        // ]], self::$crumbs);
 
-        self::$crumbs[count(self::$crumbs)- 1]['active'] = true;
+        self::$crumbs[count(self::$crumbs) - 1]['active'] = true;
 
         return self::$crumbs;
     }

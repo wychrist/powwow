@@ -13,7 +13,7 @@ class CongregateBackendController extends BackendBaseController
 
     public function __construct()
     {
-        $this->addBreadcrumb("Backend", "backend");
+        // $this->addBreadcrumb("Backend", "backend");
         $backendMenu = MenuService::getMainMenu();
         $backendMenu->addChild('Dashboard', ['backend-index'], 'fas fa-tachometer-alt');
 

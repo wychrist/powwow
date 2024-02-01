@@ -24,9 +24,7 @@ class Nav extends Component
     private function preMergeData(array $data)
     {
 
-
-        $data['mainMenu'] = MenuService::getMenuById()->getChildren();
-        $data['menu'] = MenuService::getMenuById($this->menu)->getChildren();
+        $data['theMenu'] = MenuService::getMenuById($this->menu)->getChildren();
 
         return $data;
     }
