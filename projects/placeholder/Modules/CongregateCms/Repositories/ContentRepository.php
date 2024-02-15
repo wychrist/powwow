@@ -28,6 +28,32 @@ class ContentRepository
         return $lists;
     }
 
+    public function getNextPost(string $slug): Page | null
+    {
+        $currentPost = $this->findPostBySlug($slug);
+        if ($currentPost) {
+            $posts = include content_dir('data/posts/list.php');
+            return collect($posts)->first(function ($item) use ($currentPost) {
+                return $item->id > $currentPost->id;
+            });
+        }
+
+        return null;
+    }
+
+    public function getPreviousPost(string $slug): Page | null
+    {
+        $currentPost = $this->findPostBySlug($slug);
+
+        if ($currentPost) {
+            $posts = include content_dir('data/posts/list.php');
+            return collect($posts)->filter(function ($item) use ($currentPost) {
+                return $item->id < $currentPost->id;
+            })->last();
+        }
+        return null;
+    }
+
     public function findPostById(int $id): Page | null
     {
         try {
@@ -41,7 +67,7 @@ class ContentRepository
     {
         try {
             $posts = include content_dir('data/posts/list.php');
-            return collect($posts)->sole(function ($value) use ($slug) {
+            return collect($posts)->first(function ($value) use ($slug) {
                 return $value->slug == $slug;
             });
         } catch (\Exception $_) {
