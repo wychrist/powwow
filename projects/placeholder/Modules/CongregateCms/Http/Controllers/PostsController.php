@@ -16,7 +16,10 @@ class PostsController extends Controller
 
         $template = $post->template ? $post->template : $template; // @todo refactor this code. we need a post setting !?!?!
 
-        return custom_template($template, ['post' => $post]);
+        $next = $repo->getNextPost($post->slug);
+        $previous = $repo->getPreviousPost($post->slug);
+
+        return custom_template($template, ['post' => $post, 'nextPost' => $next, 'previousPost' => $previous]);
     }
 
     public function listAction(ContentRepository $repo)
@@ -31,7 +34,7 @@ class PostsController extends Controller
         $template = config()->get('congregatecms.post_default_template', 'one_column');
         $post = $repo->findAPost($id);
 
-        if(!$post) {
+        if (!$post) {
             return custom_template('congregatecms::templates/post_not_found', [
                 'list' => include_once content_dir('data/posts/list.php')
             ]);
@@ -39,6 +42,9 @@ class PostsController extends Controller
 
         $template = $post->template ? $post->template : $template; // @todo refactor this code. we need a post setting !?!?!
 
-        return custom_template($template, ['post' => $post]);
+        $next = $repo->getNextPost($post->slug);
+        $previous = $repo->getPreviousPost($post->slug);
+
+        return custom_template($template, ['post' => $post, 'nextPost' => $next, 'previousPost' => $previous]);
     }
 }
