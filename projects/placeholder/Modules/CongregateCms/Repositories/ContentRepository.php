@@ -21,11 +21,9 @@ class ContentRepository
     public function getListOfPosts($total = 10): array
     {
         $lists = include_once content_dir('data/posts/list.php');
-        if (count($lists) > $total) {
-            return collect($lists)->splice(0, $total)->toArray();
-        }
-
-        return $lists;
+        return collect($lists)->splice(0, $total)->sort(function ($a, $b) {
+            return $a->id < $b->id ? 1 : 0;
+        })->toArray();
     }
 
     public function getNextPost(string $slug): Page | null
