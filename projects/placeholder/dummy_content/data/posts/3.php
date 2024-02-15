@@ -8,6 +8,7 @@ $post = new Page();
 $post->title = "Post 3";
 $post->subtitle = "blah";
 $post->slug = '3';
+$post->id = 3;
 $post->intro = "3 Porttitor Felis Nulla Neque Senectus Nunc";
 //$post->image = '/assets/paper_theme_v2/img/aaron-burden-9zsHNt5OpqE-unsplash.jpg';
 

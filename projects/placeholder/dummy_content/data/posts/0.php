@@ -8,6 +8,7 @@ $post = new Page();
 $post->title = "Counter Culture";
 $post->subtitle = 'Worship Lesson Sunday 06-02-2022';
 $post->slug = '0';
+$post->id = 0;
 $post->intro = 'Worship Lesson "Counter Culture" presenter Bill Dusza Lesson from Sunday 06-02-2022';
 $post->image = '/assets/paper_theme_v2/img/post/Post0.jpg';
 $post->images = [
