@@ -44,8 +44,8 @@ class ContentRepository
         if ($currentPost) {
             $posts = include content_dir('data/posts/list.php');
             return $this->doSort(collect($posts))->filter(function ($item) use ($currentPost) {
-                return ($item->id + 1) == $currentPost->id;
-            })->last();
+                return $item->id < $currentPost->id;
+            })->first();
         }
         return null;
     }
