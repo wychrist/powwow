@@ -29,7 +29,7 @@ class ContentRepository
         $currentPost = $this->findPostBySlug($slug);
         if ($currentPost) {
             $posts = include content_dir('data/posts/list.php');
-            return $this->doSort(collect($posts))->first(function ($item) use ($currentPost) {
+            return $this->doSort(collect($posts))->reverse()->first(function ($item) use ($currentPost) {
                 return ($item->id - 1) >= $currentPost->id;
             });
         }
