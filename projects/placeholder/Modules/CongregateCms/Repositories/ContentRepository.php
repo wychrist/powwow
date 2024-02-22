@@ -3,13 +3,13 @@
 namespace Modules\CongregateCms\Repositories;
 
 use App\Cms\Page;
+use Illuminate\Support\Collection;
 
 class ContentRepository
 {
 
     public function getLatestPost(): Page
     {
-        // $default = new Page(['title' => 'We are cooking something', 'intro' => '', 'content' => 'A post will be out here soon']);
         return include_once content_dir('data/posts/latest.php');
     }
 
@@ -21,9 +21,7 @@ class ContentRepository
     public function getListOfPosts($total = 10): array
     {
         $lists = include_once content_dir('data/posts/list.php');
-        return collect($lists)->sort(function ($a, $b) {
-            return $a->id < $b->id ? 1 : -1;
-        })->splice(0, $total)->toArray();
+        return  $this->doSort(collect($lists))->splice(0, $total)->toArray();
     }
 
     public function getNextPost(string $slug): Page | null
@@ -31,8 +29,8 @@ class ContentRepository
         $currentPost = $this->findPostBySlug($slug);
         if ($currentPost) {
             $posts = include content_dir('data/posts/list.php');
-            return collect($posts)->first(function ($item) use ($currentPost) {
-                return $item->id > $currentPost->id;
+            return $this->doSort(collect($posts))->first(function ($item) use ($currentPost) {
+                return ($item->id - 1) >= $currentPost->id;
             });
         }
 
@@ -45,8 +43,8 @@ class ContentRepository
 
         if ($currentPost) {
             $posts = include content_dir('data/posts/list.php');
-            return collect($posts)->filter(function ($item) use ($currentPost) {
-                return $item->id < $currentPost->id;
+            return $this->doSort(collect($posts))->filter(function ($item) use ($currentPost) {
+                return ($item->id + 1) == $currentPost->id;
             })->last();
         }
         return null;
@@ -97,5 +95,12 @@ class ContentRepository
         } catch (\Exception $_) {
             return null;
         }
+    }
+
+    private function doSort(Collection $collection): Collection
+    {
+        return $collection->sort(function ($a, $b) {
+            return $a->id < $b->id ? 1 : -1;
+        });
     }
 }
