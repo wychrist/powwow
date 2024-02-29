@@ -10,7 +10,7 @@ class ContentRepository
 
     public function getLatestPost(): Page
     {
-        return include_once content_dir('data/posts/latest.php');
+        return include content_dir('data/posts/latest.php');
     }
 
     public function findAPost(string | int $idOrSlug): Page | null
@@ -20,7 +20,7 @@ class ContentRepository
 
     public function getListOfPosts($total = 10): array
     {
-        $lists = include_once content_dir('data/posts/list.php');
+        $lists = include content_dir('data/posts/list.php');
         return  $this->doSort(collect($lists))->splice(0, $total)->toArray();
     }
 
