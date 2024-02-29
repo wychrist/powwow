@@ -36,7 +36,7 @@ class PostsController extends Controller
 
         if (!$post) {
             return custom_template('congregatecms::templates/post_not_found', [
-                'list' => include_once content_dir('data/posts/list.php')
+                'list' => $repo->getListOfPosts(5)
             ]);
         }
 
