@@ -19,7 +19,7 @@
       "reflect-metadata": "^0.1.10",
       "socket.io": "^4.0.0",
       "socket.io-redis": "^6.1.0",
-      "typeorm": "0.2.31",
+      "typeorm": "0.3.0",
       "utf-8-validate": "^5.0.4"
    },
    "scripts": {
