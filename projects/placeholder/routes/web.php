@@ -4,11 +4,8 @@ use App\Cms\Page;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsletterController;
-use App\Mail\OnlineContact\ValidateEmail;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
-use Kpama\Easybuilder\Lib\Api\RouteBuilder;
-use Modules\CongregateContract\Theme\FlashMessageInterface;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,7 +62,5 @@ Route::post('/sanctum/token', function (Request $request) {
 });
 
 
-
-RouteBuilder::generate(User::class);
 
 require __DIR__ . '/auth.php';

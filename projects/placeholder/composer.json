@@ -15,7 +15,6 @@
         "laravel/framework": "^11.0",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.5",
-        "kpama/easybuilder": "dev-main",
         "league/plates": "^3.5",
         "livewire/livewire": "^3.0",
         "nwidart/laravel-modules": "^9.0",
@@ -75,10 +74,6 @@
     "repositories": [
         {
             "url": "git@github.com:wychrist/congregate_contract.git",
-            "type": "vcs"
-        },
-        {
-            "url": "git@github.com:kpama/easybuilder.git",
             "type": "vcs"
         }
     ]
