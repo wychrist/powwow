@@ -1,4 +1,4 @@
-name: congregate
+version: "3.6"
 services:
   workspace:
     build:
