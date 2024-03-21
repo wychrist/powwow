@@ -59,15 +59,15 @@ class ContactController extends Controller
 
         $result = $this->turnstileValidate($turnstileToken, $turnstileIP);
 
-        if (isset($data[$challengeAnsField]) && intval($data[$challengeAnsField]) == $ans && (isset($result['success']) && $result['success'])) {
+        if (isset($data[$challengeAnsField]) && intval($data[$challengeAnsField]) == $ans && (env('APP_DEBUG') || (isset($result['success']) && $result['success']))) {
 
             // Not needed at this stage
             unset($data['challenge']);
             unset($data[$challengeAnsField]);
 
-            $result = $handleNewContact($data);
-            if (!$result->alreadyExist()) {
-                $sendEmail($result, $data);
+            $handler = $handleNewContact($data);
+            if (!$handler->alreadyExist()) {
+                $sendEmail($handler, $data);
             }
         }
 

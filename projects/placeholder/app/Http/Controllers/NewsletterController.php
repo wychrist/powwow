@@ -21,7 +21,7 @@ class NewsletterController extends Controller
         $turnstileIP = $request->post('CF-Connecting-IP');
         $result = $this->turnstileValidate($turnstileToken, $turnstileIP);
 
-        if (isset($result['success']) && $result['success']) {
+        if (env('APP_DEBUG') || (isset($result['success']) && $result['success'])) {
             ['email' => $email] = $this->validate($request, [
                 'email' => ['required', 'string', 'email', 'max:255'],
             ]);
