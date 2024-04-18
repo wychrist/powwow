@@ -12,8 +12,6 @@ use Modules\CongregateUi\Services\MenuService;
 class BackendBaseController extends Controller
 {
 
-    protected $foo;
-
     protected function addBreadcrumb(string $label, string $path, bool $isActive = false)
     {
         BreadcrumbService::add($label, ($isActive) ? '#' : $path);

@@ -32,7 +32,7 @@ Route::get('/menu', function () {
     return $menu->toArray();
 });
 
-// @todo this suppose to be under "backend/..."
+// TODO: this suppose to be under "backend/..."
 // this is the original dashboard Laravel provides
 Route::get('/dashboard', function () {
     return view('dashboard');

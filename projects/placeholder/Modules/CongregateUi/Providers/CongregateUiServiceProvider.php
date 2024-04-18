@@ -4,6 +4,7 @@ namespace Modules\CongregateUi\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
+use Modules\CongregateUi\View\Component\Base\Form\Input\Input as FormInputBase;
 
 class CongregateUiServiceProvider extends ServiceProvider
 {
@@ -49,6 +50,9 @@ class CongregateUiServiceProvider extends ServiceProvider
 
         // table
         Blade::componentNamespace('Modules\\CongregateUi\\View\\Component\\Base\\Table', 'ui-base-table');
+
+        // Form - Input Field
+        Blade::componentNamespace('Modules\\CongregateUi\\View\\Component\\Base\\Form\\Input', 'ui-base-form-input');
     }
 
     /**

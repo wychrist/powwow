@@ -1,0 +1,31 @@
+1. Definitions:
+      - Record: Is the main data to create, edit or view
+      - Related Record: Is the subordinates records
+      - Relationship: Is the relationship between a Record and it's subordinates
+
+2. Relationships between a record and related record:
+       ┌───────────┐
+       │  Record   │
+       └─────▲─────┘
+             │
+             │
+             │
+             │
+    ┌────────┴─────────┐
+    │  Related record  │
+    └──────────────────┘
+
+3. Types of relationships:
+      - One to many:
+      Where the related records are in an array collection
+      ┌─────────┐        One to Many          ┌───────────────────────────┐
+      │ Record  │◄────────────────────────────┤ Array of related records  │
+      └─────────┘                             └───────────────────────────┘
+
+      - One to One:
+      ┌────────┐      One to One       ┌───────────────┐
+      │ Record │◄──────────────────────┤Related Record │
+      └────────┘                       └───────────────┘
+  These are the only relationships that are supported
+
+  

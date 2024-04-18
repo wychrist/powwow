@@ -97,9 +97,21 @@ $crumbs = [["foo", "http://"], ["bar", "#"]];
     </x-ui-base-alert::dark>
   </div>
 </div>
+<p> Component: Breadcrumb</p>
+<hr />
 <div class="row">
   <div class="col-12">
     <x-ui-base-breadcrumb::breadcrumb :$crumbs></x-ui-base-breadcrumb::breadcrumb>
+  </div>
+</div>
+
+<p> Component: Form - input</p>
+<hr />
+<div>
+  <div class="row">
+    <div class="col-12">
+      <x-ui-base-form-input::input type="number" name="foobar"></x-ui-base-form-input::input>
+    </div>
   </div>
 </div>
 @endsection
