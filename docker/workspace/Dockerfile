@@ -7,11 +7,11 @@ ARG USER_NAME
 
 USER root
 
-RUN groupadd -g ${GROUPID} ${GROUP_NAME} && \
-    useradd -u ${USERID} -g ${GROUPID} -m ${USER_NAME}
+#RUN groupadd -g ${GROUPID} ${GROUP_NAME} && \
+#    useradd -u ${USERID} -g ${GROUPID} -m ${USER_NAME}
 
 RUN apt-get update &&  apt-get -y install vim redis-tools
 
 WORKDIR /
 
-USER ${USERID}
+#USER ${USERID}
