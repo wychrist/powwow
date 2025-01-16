@@ -14,6 +14,11 @@ Placeholder is the public facing website for your organisation or Church.
  - generate secret key: `php artisan key:generate`
  - migrate your database: `php artisan migrate`
  - seed the database: `php artisan db:seed`
+ - run the following code
+   ```bash
+   mkdir ./storage/app
+   ln -s /backend/placeholder/dummy_content /backend/placeholder/storage/app/content
+   ```
  - exit the php container and ssh into **nodejs** container: `docker-compose exec nodejs bash`
  - cd into the placeholder folder: `cd projects/placeholder`
  - run yarn: `yarn`
